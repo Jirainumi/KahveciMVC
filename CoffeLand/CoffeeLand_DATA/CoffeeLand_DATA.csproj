@@ -41,6 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Authorization.cs" />
+    <Compile Include="Classes\Barista.cs" />
+    <Compile Include="Classes\BaristaComment.cs" />
+    <Compile Include="Classes\Category.cs" />
+    <Compile Include="Classes\Coffee.cs" />
+    <Compile Include="Classes\CoffeeComment.cs" />
+    <Compile Include="Classes\ExtraMaterial.cs" />
+    <Compile Include="Classes\Order.cs" />
+    <Compile Include="Classes\OrderDetail.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
