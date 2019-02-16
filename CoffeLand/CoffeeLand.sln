@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoffeeLand_UI", "CoffeeLand_UI\CoffeeLand_UI.csproj", "{AE54F636-43D1-432D-BC86-F04D0587853A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoffeeLand_DATA", "CoffeeLand_DATA\CoffeeLand_DATA.csproj", "{0D99881D-A1C1-4D78-933B-FC72E17B0EDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoffeeLand_DAL", "CoffeeLand_DAL\CoffeeLand_DAL.csproj", "{282094D8-5970-4E06-BD8A-DEF81978C191}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoffeeLand_BLL", "CoffeeLand_BLL\CoffeeLand_BLL.csproj", "{6D6379E5-5333-4B97-A7AD-C5E564679B34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE54F636-43D1-432D-BC86-F04D0587853A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE54F636-43D1-432D-BC86-F04D0587853A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE54F636-43D1-432D-BC86-F04D0587853A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE54F636-43D1-432D-BC86-F04D0587853A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D99881D-A1C1-4D78-933B-FC72E17B0EDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D99881D-A1C1-4D78-933B-FC72E17B0EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D99881D-A1C1-4D78-933B-FC72E17B0EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D99881D-A1C1-4D78-933B-FC72E17B0EDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{282094D8-5970-4E06-BD8A-DEF81978C191}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{282094D8-5970-4E06-BD8A-DEF81978C191}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{282094D8-5970-4E06-BD8A-DEF81978C191}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{282094D8-5970-4E06-BD8A-DEF81978C191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D6379E5-5333-4B97-A7AD-C5E564679B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D6379E5-5333-4B97-A7AD-C5E564679B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D6379E5-5333-4B97-A7AD-C5E564679B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D6379E5-5333-4B97-A7AD-C5E564679B34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EBE83523-BF91-4EA8-98B4-01998CC4E6B9}
+	EndGlobalSection
+EndGlobal
