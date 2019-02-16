@@ -15,6 +15,7 @@ namespace CoffeeLand_DATA.Classes
 		public int CoffeeID { get; set; }
 		public virtual Coffee CoffeeOfCoffeeComment { get; set; }
 
+
 		public virtual User UserOfCoffeeComment { get; set; }
 	}
 }
