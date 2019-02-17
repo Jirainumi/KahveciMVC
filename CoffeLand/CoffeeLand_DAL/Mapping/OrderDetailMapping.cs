@@ -8,7 +8,7 @@ using CoffeeLand_DATA.Classes;
 
 namespace CoffeeLand_DAL.Mapping
 {
-   public class OrderDetailMapping : EntityTypeConfiguration<OrderDetail>
+    public class OrderDetailMapping : EntityTypeConfiguration<OrderDetail>
     {
         public OrderDetailMapping()
         {
@@ -17,13 +17,8 @@ namespace CoffeeLand_DAL.Mapping
             Property(x => x.Quantity).HasColumnType("smallint");
 
             HasRequired(x => x.OrderOfOrderDetail).WithMany(x => x.OrderDetails).HasForeignKey(x => x.OrderID);
-
             HasRequired(x => x.CoffeeOfOrderDetail).WithMany(x => x.OrderDetails).HasForeignKey(x => x.CoffeeID);
-
             HasRequired(x => x.BaristaOfOrderDetail).WithMany(x => x.OrderDetails).HasForeignKey(x => x.BaristaID);
-
         }
-
-
     }
 }

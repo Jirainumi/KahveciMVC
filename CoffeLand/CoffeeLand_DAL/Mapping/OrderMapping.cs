@@ -8,7 +8,7 @@ using CoffeeLand_DATA.Classes;
 
 namespace CoffeeLand_DAL.Mapping
 {
-   public class OrderMapping:EntityTypeConfiguration<Order>
+    public class OrderMapping : EntityTypeConfiguration<Order>
     {
         public OrderMapping()
         {
@@ -16,8 +16,7 @@ namespace CoffeeLand_DAL.Mapping
             Property(x => x.OrderDate).HasColumnType("datetime2");
             Property(x => x.TotalPrice).HasColumnType("money");
 
-
-            HasRequired(x => x.UserOfOrder).WithMany(x => x.Orders).HasForeignKey(x => x.UserID);
+            HasRequired(x => x.UserOfOrder).WithMany(x => x.OrdersOfUser).HasForeignKey(x => x.UserID);
         }
     }
 }

@@ -14,9 +14,6 @@ namespace CoffeeLand_DAL.Mapping
         {
             HasKey(x => x.ID);
             Property(x => x.AuthorizationType).HasColumnType("nvarchar").HasMaxLength(30);
-
-
-           
         }
     }
 }

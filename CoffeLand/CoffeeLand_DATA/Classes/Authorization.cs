@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CoffeeLand_DATA.Classes
 {
-	public class Authorization
-	{
-		public int ID { get; set; }
-		public string AuthorizationType { get; set; }
+    public class Authorization
+    {
+        public int ID { get; set; }
+        public string AuthorizationType { get; set; }
 
-		public virtual User UserOfAuthorization { get; set; }
-	}
+        public virtual List<User> UsersOfAuthorization { get; set; }
+    }
 }

@@ -8,7 +8,7 @@ using CoffeeLand_DATA.Classes;
 
 namespace CoffeeLand_DAL.Mapping
 {
-   public class CoffeeCommentMapping:EntityTypeConfiguration<CoffeeComment>
+    public class CoffeeCommentMapping : EntityTypeConfiguration<CoffeeComment>
     {
         public CoffeeCommentMapping()
         {
@@ -16,13 +16,8 @@ namespace CoffeeLand_DAL.Mapping
             Property(x => x.Comment).HasColumnType("nvarchar");
             Property(x => x.Point).HasColumnType("tinyint");
 
-
             HasRequired(x => x.CoffeeOfCoffeeComment).WithMany(x => x.CoffeeComments).HasForeignKey(x => x.CoffeeID);
-
-            HasRequired(x => x.UserOfCoffeeComment).WithRequiredPrincipal(x => x.CoffeeCommentOfUser);
-
-
-
+            HasRequired(x => x.UserOfCoffeeComment).WithMany(x => x.CoffeeCommentsOfUser).HasForeignKey(x => x.UserID);
         }
     }
 }

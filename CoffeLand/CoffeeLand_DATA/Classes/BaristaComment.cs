@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace CoffeeLand_DATA.Classes
 {
-	public class BaristaComment
-	{
-		public int ID { get; set; }
-		public string Comment { get; set; }
-		public byte Point { get; set; }
+    public class BaristaComment
+    {
+        public int ID { get; set; }
+        public string Comment { get; set; }
+        public byte Point { get; set; }
 
-		public int BaristaID { get; set; }
-		public virtual Barista BaristaOfBaristaComment { get; set; }
+        public int BaristaID { get; set; }
+        public virtual Barista BaristaOfBaristaComment { get; set; }
 
-		public virtual User UserOfBaristaComment { get; set; }
-	}
+        public int UserID { get; set; }
+        public virtual User UserOfBaristaComment { get; set; }
+    }
 }

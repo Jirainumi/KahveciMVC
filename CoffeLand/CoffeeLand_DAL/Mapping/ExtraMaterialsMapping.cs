@@ -16,7 +16,6 @@ namespace CoffeeLand_DAL.Mapping
             Property(x => x.Name).HasColumnType("nvarchar").HasMaxLength(50);
             Property(x => x.Quantity).HasColumnType("smallint");
             Property(x => x.UnitPrice).HasColumnType("money");
-
         }
     }
 }

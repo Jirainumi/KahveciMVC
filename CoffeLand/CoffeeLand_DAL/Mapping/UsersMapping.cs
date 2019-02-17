@@ -8,7 +8,7 @@ using CoffeeLand_DATA.Classes;
 
 namespace CoffeeLand_DAL.Mapping
 {
-   public class UsersMapping:EntityTypeConfiguration<User>
+    public class UsersMapping : EntityTypeConfiguration<User>
     {
         public UsersMapping()
         {
@@ -16,10 +16,7 @@ namespace CoffeeLand_DAL.Mapping
             Property(x => x.UserName).HasColumnType("nvarchar").HasMaxLength(30);
             Property(x => x.Password).HasColumnType("nvarchar").HasMaxLength(30);
 
-
-            HasRequired(x => x.CoffeeCommentOfUser).WithRequiredPrincipal(x => x.UserOfCoffeeComment);
-            HasRequired(x => x.BaristaCommentOfUser).WithRequiredPrincipal(x => x.UserOfBaristaComment);
-            HasRequired(x => x.AuthorizationOfUser).WithRequiredPrincipal(x => x.UserOfAuthorization);
+            HasRequired(x => x.AuthorizationOfUser).WithMany(x => x.UsersOfAuthorization);
         }
     }
 }

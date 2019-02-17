@@ -9,14 +9,13 @@ using CoffeeLand_DATA.Classes;
 
 namespace CoffeeLand_DAL
 {
-   public class Context:DbContext
+    public class Context : DbContext
     {
         public Context()
         {
-
-            Database.Connection.ConnectionString = "server=.;database=Kahveci;uid=sa;pwd=123";
-
+            Database.Connection.ConnectionString = "server=.;database=KahveciDb;uid=sa;pwd=123";
         }
+
         public DbSet<Barista> Baristas { get; set; }
         public DbSet<Authorization> Authorizations { get; set; }
         public DbSet<BaristaComment> BaristaComments { get; set; }
@@ -42,26 +41,7 @@ namespace CoffeeLand_DAL
             modelBuilder.Configurations.Add(new OrderMapping());
             modelBuilder.Configurations.Add(new UsersMapping());
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }

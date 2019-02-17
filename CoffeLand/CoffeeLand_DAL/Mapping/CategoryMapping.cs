@@ -8,7 +8,7 @@ using CoffeeLand_DATA.Classes;
 
 namespace CoffeeLand_DAL.Mapping
 {
-   public class CategoryMapping:EntityTypeConfiguration<Category>
+    public class CategoryMapping : EntityTypeConfiguration<Category>
     {
         public CategoryMapping()
         {

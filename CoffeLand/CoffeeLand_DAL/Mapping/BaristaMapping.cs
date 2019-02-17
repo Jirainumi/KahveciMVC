@@ -8,9 +8,8 @@ using CoffeeLand_DATA.Classes;
 
 namespace CoffeeLand_DAL.Mapping
 {
-   public class BaristaMapping:EntityTypeConfiguration<Barista>
+    public class BaristaMapping : EntityTypeConfiguration<Barista>
     {
-
         public BaristaMapping()
         {
             HasKey(x => x.ID);
@@ -20,12 +19,10 @@ namespace CoffeeLand_DAL.Mapping
             Property(x => x.HiredDate).HasColumnType("datetime2");
             Property(x => x.BirthDate).HasColumnType("datetime2");
             Property(x => x.Gender).HasColumnType("bit");
-
-
+            
             Ignore(x => x.YearOfExperience);
             Ignore(x => x.Age);
             Ignore(x => x.FullName);
         }
-
     }
 }
