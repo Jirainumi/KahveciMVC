@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context.cs" />
     <Compile Include="Mapping\AuthorizationMapping.cs" />
     <Compile Include="Mapping\BaristaCommentMapping.cs" />
     <Compile Include="Mapping\BaristaMapping.cs" />

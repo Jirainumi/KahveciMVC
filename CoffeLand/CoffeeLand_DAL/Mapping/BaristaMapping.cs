@@ -24,7 +24,7 @@ namespace CoffeeLand_DAL.Mapping
 
             Ignore(x => x.YearOfExperience);
             Ignore(x => x.Age);
-
+            Ignore(x => x.FullName);
         }
 
     }
