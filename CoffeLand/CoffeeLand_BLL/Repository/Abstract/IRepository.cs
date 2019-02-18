@@ -8,7 +8,6 @@ namespace CoffeeLand_BLL.Repository.Abstract
 {
     public interface IRepository<T> where T : class
     {
-        //sadasda
         //Generic olarak kullanılacak olan metodlar, soyut bir biçimde ve generic yapıda tanımlanır.
         IQueryable<T> GetAll();
         T GetById(int id);

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using CoffeeLand_BLL.Repository.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoffeeLand_BLL.Repository.Abstract
+namespace CoffeeLand_BLL.Repository.Concrete
 {
     public class EFRepository<T> : IRepository<T> where T : class
     {
@@ -37,14 +38,12 @@ namespace CoffeeLand_BLL.Repository.Abstract
         public void Insert(T entity)
         {
             _dbSet.Add(entity);
-            _dbContext.SaveChanges();
         }
 
         public void Update(T entity)
         {
             _dbSet.Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
-            _dbContext.SaveChanges();
         }
 
         public void Delete(T entity)
@@ -56,6 +55,5 @@ namespace CoffeeLand_BLL.Repository.Abstract
         {
             _dbSet.Remove(GetById(id));
         }
-
     }
 }
