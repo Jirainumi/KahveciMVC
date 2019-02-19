@@ -15,6 +15,7 @@ namespace CoffeeLand_DAL.Mapping
             HasKey(x => x.ID);
             Property(x => x.Comment).HasColumnType("nvarchar");
             Property(x => x.Point).HasColumnType("tinyint");
+			Property(x => x.CoffeeCommentDate).HasColumnType("datetime2");
 
             HasRequired(x => x.CoffeeOfCoffeeComment).WithMany(x => x.CoffeeComments).HasForeignKey(x => x.CoffeeID);
             HasRequired(x => x.UserOfCoffeeComment).WithMany(x => x.CoffeeCommentsOfUser).HasForeignKey(x => x.UserID);
