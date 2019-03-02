@@ -176,6 +176,10 @@
     <Content Include="Content\fonts\QuincyCF-Regular-webfont.ttf" />
     <Content Include="Content\fonts\QuincyCF-Regular-webfont.woff" />
     <Content Include="Content\fonts\QuincyCF-Regular-webfont.woff2" />
+    <Content Include="images\About\about_bg.jpg" />
+    <Content Include="images\About\avrupa_coffee.jpg" />
+    <Content Include="images\About\coffee_america.jpg" />
+    <Content Include="images\About\coffee_world.jpg" />
     <Content Include="images\arrow.png" />
     <Content Include="images\avatar\avatar_1.jpg" />
     <Content Include="images\avatar\avatar_2.jpg" />
@@ -425,6 +429,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

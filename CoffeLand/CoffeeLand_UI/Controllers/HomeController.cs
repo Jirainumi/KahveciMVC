@@ -13,5 +13,10 @@ namespace CoffeeLand_UI.Controllers
         {
             return View();
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
