@@ -13,12 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/font-awesome.css" rel="stylesheet" />
-    <link href="~/Content/settings.css" rel="stylesheet" />
-    <link href="~/Content/layers.css" rel="stylesheet" />
-    <link href="~/Content/navigation.css" rel="stylesheet" />
-    <link href="~/Content/style.css" rel="stylesheet" media="screen" />
+    <link href="~/Content/Index/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Index/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/Index/settings.css" rel="stylesheet" />
+    <link href="~/Content/Index/layers.css" rel="stylesheet" />
+    <link href="~/Content/Index/navigation.css" rel="stylesheet" />
+    <link href="~/Content/Index/style.css" rel="stylesheet" media="screen" />
 
 </head>
 <body>
@@ -34,7 +34,9 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html"><img alt="" src="images/logo.svg"></a>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="~/images/Index/logo.svg" />
+                        </a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <a href="#" class="open-menu">
@@ -54,7 +56,7 @@
                 <div id="rev_slider_46_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.0.7">
                     <ul>
                         <li data-index="rs-149" data-transition="fadetotopfadefrombottom" data-slotamount="default" data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500" data-rotate="0" data-saveperformance="off" data-title="Chill" data-description="">
-                            <img src="~/images/CoffeShopBG.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                            <img src="~/images/Index/CoffeShopBG.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
                             <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-3"
                                  id="slide-149-layer-1"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
@@ -81,7 +83,7 @@
 
                         <li data-index="rs-150" data-transition="fadetotopfadefrombottom" data-slotamount="default" data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500" data-rotate="0" data-saveperformance="off" data-title="Chill" data-description="">
 
-                            <img src="~/images/CoffeShopBG.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                            <img src="~/images/Index/CoffeShopBG.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
 
 
 
@@ -145,15 +147,15 @@
                 <div class="menu-top">
                     <a class="close-sidebar" href=""></a>
                     <a href="Index" class="menu-logo">
-                        <img src="~/images/logo.svg" />
+                        <img src="~/images/Index/logo.svg" />
                     </a>
                 </div>
                 <ul>
                     <li>
-                        @Html.ActionLink("ANASAYFA", "Index")
+                        @Html.ActionLink("ANASAYFA", "Index", "Home")
                     </li>
                     <li>
-                        <a href="#">HAKKIMIZDA</a>
+                        @Html.ActionLink("HAKKIMIZDA", "About", "Home")
                     </li>
                     <li>
                         <a href="#">ANTIUMAN</a>
@@ -169,29 +171,29 @@
         </div>
     </div>
 
+    <script src="~/Scripts/Index/jquery.min.js"></script>
+    <script src="~/Scripts/Index/jquery.min.js"></script>
+    <script src="~/Scripts/Index/jquery.migrate.js"></script>
+    <script src="~/Scripts/Index/bootstrap.js"></script>
+    <script src="~/Scripts/Index/jquery.imagesloaded.min.js"></script>
+    <script src="~/Scripts/Index/waypoint.min.js"></script>
 
-    <script src="~/Scripts/jquery.min.js"></script>
-    <script src="~/Scripts/jquery.migrate.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/jquery.imagesloaded.min.js"></script>
-    <script src="~/Scripts/waypoint.min.js"></script>
-
-    <script src="~/Scripts/jquery.themepunch.tools.min.js"></script>
-    <script src="~/Scripts/jquery.themepunch.revolution.min.js"></script>
+    <script src="~/Scripts/Index/jquery.themepunch.tools.min.js"></script>
+    <script src="~/Scripts/Index/jquery.themepunch.revolution.min.js"></script>
 
 
-    <script src="~/Scripts/extensions/revolution.extension.actions.min.js"></script>
-    <script src="~/Scripts/extensions/revolution.extension.carousel.min.js"></script>
-    <script src="~/Scripts/extensions/revolution.extension.kenburn.min.js"></script>
-    <script src="~/Scripts/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script src="~/Scripts/extensions/revolution.extension.migration.min.js"></script>
-    <script src="~/Scripts/extensions/revolution.extension.navigation.min.js"></script>
-    <script src="~/Scripts/extensions/revolution.extension.parallax.min.js"></script>
-    <script src="~/Scripts/extensions/revolution.extension.slideanims.min.js"></script>
-    <script src="~/Scripts/extensions/revolution.extension.video.min.js"></script>
+    <script src="~/Scripts/Index/extensions/revolution.extension.actions.min.js"></script>
+    <script src="~/Scripts/Index/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="~/Scripts/Index/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="~/Scripts/Index/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="~/Scripts/Index/extensions/revolution.extension.migration.min.js"></script>
+    <script src="~/Scripts/Index/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="~/Scripts/Index/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="~/Scripts/Index/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="~/Scripts/Index/extensions/revolution.extension.video.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
-    <script src="~/Scripts/gmap3.min.js"></script>
-    <script src="~/Scripts/script.js"></script>
+    <script src="~/Scripts/Index/gmap3.min.js"></script>
+    <script src="~/Scripts/Index/script.js"></script>
 
 
     <script type="text/javascript">
