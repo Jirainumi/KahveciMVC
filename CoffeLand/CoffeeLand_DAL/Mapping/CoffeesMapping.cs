@@ -17,8 +17,10 @@ namespace CoffeeLand_DAL.Mapping
             Property(x => x.Description).HasColumnType("nvarchar");
             Property(x => x.Price).HasColumnType("money");
             Property(x => x.AVGPoint).HasColumnType("decimal");
+			Property(x => x.ImageUrl).HasColumnType("nvarchar").HasMaxLength(500);
+			Property(x => x.AltText).HasColumnType("nvarchar").HasMaxLength(200);
 
-            HasRequired(x => x.ExtraMaterialOfCoffee).WithMany(x => x.Coffees).HasForeignKey(x => x.ExtraMaterialsID);
+			HasRequired(x => x.ExtraMaterialOfCoffee).WithMany(x => x.Coffees).HasForeignKey(x => x.ExtraMaterialsID);
             HasRequired(x => x.CategoryOfCoffee).WithMany(x => x.Coffees).HasForeignKey(x => x.CategoryID);
         }
     }
