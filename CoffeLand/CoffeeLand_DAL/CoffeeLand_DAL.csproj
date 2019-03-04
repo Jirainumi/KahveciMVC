@@ -73,31 +73,5 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="images\Caylarimiz\Chai Tea.jpg" />
-    <Content Include="images\Caylarimiz\Earl Grey.jpg" />
-    <Content Include="images\Caylarimiz\English Breakfast.jpg" />
-    <Content Include="images\Espresso\Caffè Americano.jpg" />
-    <Content Include="images\Espresso\Caffè Latte.jpg" />
-    <Content Include="images\Espresso\Caffè Mocha.jpg" />
-    <Content Include="images\Espresso\Cappuccino.jpg" />
-    <Content Include="images\Espresso\Caramel Macchiato.jpg" />
-    <Content Include="images\Espresso\Espresso Con Panna.jpg" />
-    <Content Include="images\Espresso\Espresso Macchiato.jpg" />
-    <Content Include="images\Espresso\Espresso.jpg" />
-    <Content Include="images\Espresso\Flat White.jpg" />
-    <Content Include="images\Espresso\Ristretto Bianco.jpg" />
-    <Content Include="images\Espresso\White Chocolate Mocha.jpg" />
-    <Content Include="images\Filtre\Caffè Misto.jpg" />
-    <Content Include="images\Filtre\Cold Brew.jpg" />
-    <Content Include="images\Filtre\Filtre Kahve.jpg" />
-    <Content Include="images\Frappuccino\Espresso Frappuccino.jpg" />
-    <Content Include="images\Frappuccino\White Chocolate Cream Frappuccino.jpg" />
-    <Content Include="images\Portakal\Portakal Suyu.jpg" />
-    <Content Include="images\Sicak\Classic Hot Chocolate.jpg" />
-    <Content Include="images\Sicak\Signature Hot Chocolate.jpg" />
-    <Content Include="images\Turk\Double Türk Kahvesi.jpg" />
-    <Content Include="images\Turk\Türk Kahvesi.jpg" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
