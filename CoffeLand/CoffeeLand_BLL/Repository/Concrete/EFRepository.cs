@@ -20,10 +20,6 @@ namespace CoffeeLand_BLL.Repository.Concrete
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<T>();
         }
-        public IQueryable<T> GetAll()
-        {
-            return _dbSet;
-        }
 
         public T GetByEntity(T entity)
         {
@@ -55,5 +51,13 @@ namespace CoffeeLand_BLL.Repository.Concrete
         {
             _dbSet.Remove(GetById(id));
         }
-    }
+		public ICollection<T> GetAll()
+		{
+			return _dbSet.ToList();
+		}
+		public IQueryable<T> GetEntity()
+		{
+			return _dbSet;
+		}
+	}
 }

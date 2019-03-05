@@ -1,0 +1,55 @@
+﻿@model CoffeeLand_DATA.Classes.Coffee
+@{
+	ViewBag.Title = "CoffeeDetail";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+	<div class="row" style="margin-top:50px;">
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<img src="@Url.Content(Model.ImageUrl)" alt="@Url.Content(Model.AltText)" />
+			</div>
+		</div>
+		<div class="col-md-8">
+			<h2>@Model.CoffeeName</h2>
+			@{for (int i = 0; i < 5; i++)
+				{
+					<span class="glyphicon glyphicon-star" style="font-size:20px;color:orangered"></span>
+				}
+			}<br />
+			<h3 style="color:orange;">Fiyatı: @string.Format("{0:C2}",Model.Price)</h3>
+			<span style="background-color:gold"><strong>Ortalama Puanı:</strong>@Model.AVGPoint</span><br /><br />
+
+			<a class="btn btn-danger" href="@Url.Action("OrderNow","Order",new { id=Model.ID})" role="button">Sipariş Ver</a>
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#description" data-toggle="tab">Coffee Açıklaması</a>
+				</li>
+				<li>
+					<a href="#comments" data-toggle="tab">Yorumlar</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="description">
+					<p>@Model.Description</p>
+				</div>
+				<div class="tab-pane fade" id="comments">
+					<ul>
+						@{ 
+							foreach (var item in ViewData["Comments"] as IEnumerable<CoffeeLand_DATA.Classes.CoffeeComment>)
+							{
+						<li>
+							<p><strong>@item.CoffeeOfCoffeeComment.CoffeeName</strong></p>
+							<p><strong>@item.CoffeeCommentDate</strong></p>
+							<p>@item.Comment</p>
+						</li>
+							}
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
