@@ -1,0 +1,161 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Layout</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Areas/Admin/Content/bootstrap.css" rel="stylesheet" />
+    <!--external css-->
+    <link href="~/Areas/Admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/zabuto_calendar.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Scripts/gritter/css/jquery.gritter.css" rel="stylesheet" />
+    <link href="~/Areas/lineicons/style.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="~/Areas/Admin/Content/style.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/style-responsive.css" rel="stylesheet" />
+
+    <script src="~/Areas/Admin/Scripts/chart-master/Chart.js"></script>
+
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="row">
+            <header class="header black-bg">
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                </div>
+                <!--logo start-->
+                <a href="index.html" class="logo"><b>DASHGUM FREE</b></a>
+                <!--logo end-->
+                <div class="top-menu">
+                    <ul class="nav pull-right top-menu">
+                        <li><a class="logout" href="login.html">Logout</a></li>
+                    </ul>
+                </div>
+            </header>
+        </div>
+        <div class="row">
+            <aside>
+                <div id="sidebar" class="nav-collapse">
+                    <!-- sidebar menu start-->
+                    <ul class="sidebar-menu" id="nav-accordion">
+
+                        @*<p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                            <h5 class="centered">Marcel Newman</h5>*@
+
+                        <li class="mt">
+                            <a class="active" href="index.html">
+                                <i class="fa fa-dashboard"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-desktop"></i>
+                                <span>UI Elements</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="general.html">General</a></li>
+                                <li><a href="buttons.html">Buttons</a></li>
+                                <li><a href="panels.html">Panels</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-cogs"></i>
+                                <span>Components</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="calendar.html">Calendar</a></li>
+                                <li><a href="gallery.html">Gallery</a></li>
+                                <li><a href="todo_list.html">Todo List</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-book"></i>
+                                <span>Extra Pages</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="blank.html">Blank Page</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="lock_screen.html">Lock Screen</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-tasks"></i>
+                                <span>Forms</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="form_component.html">Form Components</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-th"></i>
+                                <span>Data Tables</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="basic_table.html">Basic Table</a></li>
+                                <li><a href="responsive_table.html">Responsive Table</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class=" fa fa-bar-chart-o"></i>
+                                <span>Charts</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="morris.html">Morris</a></li>
+                                <li><a href="chartjs.html">Chartjs</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <!-- sidebar menu end-->
+                </div>
+            </aside>
+        </div>
+        <div class="row" style="margin-top:50px; margin-left:1px;">
+            <section id="main-content">
+                @RenderBody()
+            </section>
+        </div>
+        <div class="row">
+            <footer class="site-footer">
+                <div class="text-center">
+                    2019 - CoffeLand &copy;
+                    <a href="#" class="go-top">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="~/Areas/Admin/Scripts/jquery.js"></script>
+    <script src="~/Areas/Admin/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/Areas/Admin/Scripts/bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/Scripts/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/Areas/Admin/Scripts/jquery.scrollTo.min.js"></script>
+    <script src="~/Areas/Admin/Scripts/jquery.nicescroll.js"></script>
+    <script src="~/Areas/Admin/Scripts/jquery.sparkline.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="~/Areas/Admin/Scripts/common-scripts.js"></script>
+    <script src="~/Areas/Admin/Scripts/gritter/js/jquery.gritter.js"></script>
+    <script src="~/Areas/Admin/Scripts/gritter-conf.js"></script>
+</body>
+</html>

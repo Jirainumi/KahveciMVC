@@ -19,8 +19,6 @@ namespace CoffeeLand_BLL.Repository.Concrete
 		public CoffeeCommentConcrete()
 		{
 			_dbContext = new Context();
-
-
 			_coffeeCommentUnitOfWork = new EFUnitOfWork(_dbContext);
 			_coffeeCommentRepository = _coffeeCommentUnitOfWork.GetRepository<CoffeeComment>();
 		}
