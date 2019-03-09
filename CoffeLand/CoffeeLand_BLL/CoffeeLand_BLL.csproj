@@ -50,11 +50,18 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Abstract\IUnitOfWork.cs" />
+    <Compile Include="Repository\Concrete\BaristaCommentConrete.cs" />
+    <Compile Include="Repository\Concrete\BaristaConcrete.cs" />
+    <Compile Include="Repository\Concrete\CategoryConcrete.cs" />
     <Compile Include="Repository\Concrete\CoffeeCommentConcrete.cs" />
     <Compile Include="Repository\Concrete\EFRepository.cs" />
     <Compile Include="Repository\Abstract\IRepository.cs" />
     <Compile Include="Repository\Concrete\EFUnitOfWork.cs" />
     <Compile Include="Repository\Concrete\CoffeeConcrete.cs" />
+    <Compile Include="Repository\Concrete\ExtraMaterialsConcrete.cs" />
+    <Compile Include="Repository\Concrete\OrderConrete.cs" />
+    <Compile Include="Repository\Concrete\OrderDetailConrete.cs" />
+    <Compile Include="Repository\Concrete\UserConcrete.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoffeeLand_DAL\CoffeeLand_DAL.csproj">

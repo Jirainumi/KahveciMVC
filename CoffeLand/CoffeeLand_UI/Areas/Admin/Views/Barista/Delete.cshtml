@@ -1,0 +1,73 @@
+﻿@model CoffeeLand_DATA.Classes.Barista
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Barista</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HiredDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HiredDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AVGPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AVGPoint)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

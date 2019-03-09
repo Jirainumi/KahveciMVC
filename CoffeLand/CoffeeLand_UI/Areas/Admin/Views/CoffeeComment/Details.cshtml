@@ -1,0 +1,59 @@
+﻿@model CoffeeLand_DATA.Classes.CoffeeComment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CoffeeComment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CoffeeOfCoffeeComment.CoffeeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoffeeOfCoffeeComment.CoffeeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserOfCoffeeComment.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserOfCoffeeComment.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Point)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Point)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoffeeCommentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoffeeCommentDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>_Layout</title>
+    <title>@ViewBag.Title</title>
 
     <!-- Bootstrap core CSS -->
     <link href="~/Areas/Admin/Content/bootstrap.css" rel="stylesheet" />
@@ -16,7 +16,7 @@
     <link href="~/Areas/Admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Content/zabuto_calendar.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Scripts/gritter/css/jquery.gritter.css" rel="stylesheet" />
-    <link href="~/Areas/lineicons/style.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/lineicons/style.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="~/Areas/Admin/Content/style.css" rel="stylesheet" />
@@ -52,76 +52,25 @@
                             <h5 class="centered">Marcel Newman</h5>*@
 
                         <li class="mt">
-                            <a class="active" href="index.html">
-                                <i class="fa fa-dashboard"></i>
-                                <span>Dashboard</span>
-                            </a>
+                            <a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i>Home Page</a>
                         </li>
 
                         <li class="sub-menu">
                             <a href="javascript:;">
-                                <i class="fa fa-desktop"></i>
-                                <span>UI Elements</span>
+                                <i class="fa fa-angle-double-down"></i>
+                                <span>CRUD Operations</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="general.html">General</a></li>
-                                <li><a href="buttons.html">Buttons</a></li>
-                                <li><a href="panels.html">Panels</a></li>
+                                <li><a href="@Url.Action("Index","Category")"><i class="fa fa-archive"></i>Category</a></li>
+                                <li><a href="@Url.Action("Index","Coffee")"><i class="fa fa-coffee"></i>Coffee</a></li>
+                                <li><a href="@Url.Action("Index","CoffeeComment")"><i class="fa fa-comment"></i>Coffee Comment</a></li>
+                                <li><a href="@Url.Action("Index","Barista")"><i class="fa fa-user"></i>Barista</a></li>
+                                <li><a href="@Url.Action("Index","BaristaComment")"><i class="fa fa-comment"></i>Barista Comment</a></li>
+                                <li><a href="@Url.Action("Index","ExtraMaterial")"><i class="fa fa-plus"></i>Extra Material</a></li>
+                                <li><a href="@Url.Action("Index","Order")"><i class="fa fa-list"></i>Order</a></li>
+                                <li><a href="@Url.Action("Index","OrderDetail")"><i class="fa fa-list-alt"></i>Order Detail</a></li>
                             </ul>
                         </li>
-
-                        <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class="fa fa-cogs"></i>
-                                <span>Components</span>
-                            </a>
-                            <ul class="sub">
-                                <li><a href="calendar.html">Calendar</a></li>
-                                <li><a href="gallery.html">Gallery</a></li>
-                                <li><a href="todo_list.html">Todo List</a></li>
-                            </ul>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class="fa fa-book"></i>
-                                <span>Extra Pages</span>
-                            </a>
-                            <ul class="sub">
-                                <li><a href="blank.html">Blank Page</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="lock_screen.html">Lock Screen</a></li>
-                            </ul>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class="fa fa-tasks"></i>
-                                <span>Forms</span>
-                            </a>
-                            <ul class="sub">
-                                <li><a href="form_component.html">Form Components</a></li>
-                            </ul>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class="fa fa-th"></i>
-                                <span>Data Tables</span>
-                            </a>
-                            <ul class="sub">
-                                <li><a href="basic_table.html">Basic Table</a></li>
-                                <li><a href="responsive_table.html">Responsive Table</a></li>
-                            </ul>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class=" fa fa-bar-chart-o"></i>
-                                <span>Charts</span>
-                            </a>
-                            <ul class="sub">
-                                <li><a href="morris.html">Morris</a></li>
-                                <li><a href="chartjs.html">Chartjs</a></li>
-                            </ul>
-                        </li>
-
                     </ul>
                     <!-- sidebar menu end-->
                 </div>

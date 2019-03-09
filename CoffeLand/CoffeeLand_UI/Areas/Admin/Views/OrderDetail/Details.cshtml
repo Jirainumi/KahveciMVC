@@ -1,0 +1,59 @@
+﻿@model CoffeeLand_DATA.Classes.OrderDetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BaristaOfOrderDetail.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaristaOfOrderDetail.Firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoffeeOfOrderDetail.CoffeeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoffeeOfOrderDetail.CoffeeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderOfOrderDetail.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderOfOrderDetail.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

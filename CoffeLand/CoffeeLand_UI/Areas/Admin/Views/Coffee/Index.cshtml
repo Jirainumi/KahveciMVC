@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CoffeeLand_DATA.Classes.Coffee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryOfCoffee.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExtraMaterialOfCoffee.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoffeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AVGPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltText)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryOfCoffee.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExtraMaterialOfCoffee.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoffeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AVGPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltText)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

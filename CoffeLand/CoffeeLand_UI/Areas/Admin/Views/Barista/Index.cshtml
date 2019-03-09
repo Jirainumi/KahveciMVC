@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CoffeeLand_DATA.Classes.Barista>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HiredDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AVGPoint)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HiredDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AVGPoint)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
