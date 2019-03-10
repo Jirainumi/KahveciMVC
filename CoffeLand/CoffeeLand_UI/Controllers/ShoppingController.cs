@@ -6,8 +6,17 @@ using System.Web.Mvc;
 
 namespace CoffeeLand_UI.Controllers
 {
-    public class WishListController : Controller
+    public class ShoppingController : Controller
     {
+        
+
+
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         /*
          İstek listesini sepetten farklı olarak bilerek yazdım daha ayrı clean bi şekilde kodlarız İsteğe bağlı tek Controller a atabiliriz
              Database e hem WishList Hemde Cart tabloları eklenicek

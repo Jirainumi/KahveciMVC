@@ -52,6 +52,7 @@
     <Compile Include="Classes\Order.cs" />
     <Compile Include="Classes\OrderDetail.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\WishList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

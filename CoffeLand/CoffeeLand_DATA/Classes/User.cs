@@ -18,5 +18,6 @@ namespace CoffeeLand_DATA.Classes
         public virtual List<Order> OrdersOfUser { get; set; }
         public virtual List<CoffeeComment> CoffeeCommentsOfUser { get; set; }
         public virtual List<BaristaComment> BaristaCommentsOfUser { get; set; }
+        public virtual List<WishList> WishLists { get; set; }
     }
 }

@@ -59,6 +59,7 @@
     <Compile Include="Mapping\OrderDetailMapping.cs" />
     <Compile Include="Mapping\OrderMapping.cs" />
     <Compile Include="Mapping\UsersMapping.cs" />
+    <Compile Include="Mapping\WishListMapping.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -679,7 +679,7 @@
     <Compile Include="Controllers\CoffeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\WishListController.cs" />
+    <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -695,7 +695,7 @@
     <Content Include="Views\Coffee\Coffee.cshtml" />
     <Content Include="Views\Coffee\CoffeeDetay.cshtml" />
     <Content Include="Views\Coffee\CoffeeDetail.cshtml" />
-    <Content Include="Views\WishList\WishList.cshtml" />
+    <Content Include="Views\Shopping\WishList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
