@@ -16,13 +16,13 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
     {
         CoffeeCommentConcrete _coffeeCommentConcrete;
         CoffeeConcrete _coffeeConcrete;
-        UserConcrete _userConcrete;
+        CustomerConcrete _customerConcrete;
 
         public CoffeeCommentController()
         {
             _coffeeCommentConcrete = new CoffeeCommentConcrete();
             _coffeeConcrete = new CoffeeConcrete();
-            _userConcrete = new UserConcrete();
+            _customerConcrete = new CustomerConcrete();
         }
 
         // GET: Admin/CoffeeComments
@@ -42,7 +42,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.CoffeeID = new SelectList(_coffeeConcrete._coffeeRepository.GetEntity(), "ID", "CoffeeName");
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName");
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
             }
 
             ViewBag.CoffeeID = new SelectList(_coffeeConcrete._coffeeRepository.GetEntity(), "ID", "CoffeeName");
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName");
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
             return View(coffeeComment);
         }
 
@@ -71,7 +71,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
             CoffeeComment coffeeComment = _coffeeCommentConcrete._coffeeCommentRepository.GetById(id);
 
             ViewBag.CoffeeID = new SelectList(_coffeeConcrete._coffeeRepository.GetEntity(), "ID", "CoffeeName");
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName");
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
             return View(coffeeComment);
         }
 
@@ -89,7 +89,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CoffeeID = new SelectList(_coffeeConcrete._coffeeRepository.GetEntity(), "ID", "CoffeeName");
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName");
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
             return View(coffeeComment);
         }
 

@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace CoffeeLand_BLL.Repository.Concrete
 {
-    public class UserConcrete
+    public class CustomerConcrete
     {
-        public IRepository<Customer> _userRepository;
-        public IUnitOfWork _userUnitOfWork;
+        public IRepository<Customer> _customerRepository;
+        public IUnitOfWork _customerUnitOfWork;
         private DbContext _dbContext;
 
-        public UserConcrete()
+        public CustomerConcrete()
         {
             _dbContext = new Context();
-            _userUnitOfWork = new EFUnitOfWork(_dbContext);
-            _userRepository = _userUnitOfWork.GetRepository<Customer>();
+            _customerUnitOfWork = new EFUnitOfWork(_dbContext);
+            _customerRepository = _customerUnitOfWork.GetRepository<Customer>();
         }
     }
 }

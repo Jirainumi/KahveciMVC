@@ -69,7 +69,7 @@
     <Compile Include="Repository\Concrete\ExtraMaterialsConcrete.cs" />
     <Compile Include="Repository\Concrete\OrderConcrete.cs" />
     <Compile Include="Repository\Concrete\OrderDetailConcrete.cs" />
-    <Compile Include="Repository\Concrete\UserConcrete.cs" />
+    <Compile Include="Repository\Concrete\CustomerConcrete.cs" />
     <Compile Include="Repository\Concrete\WishListConcrete.cs" />
   </ItemGroup>
   <ItemGroup>

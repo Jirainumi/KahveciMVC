@@ -15,13 +15,13 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
     public class BaristaCommentController : Controller
     {
         BaristaCommentConrete _baristaCommentConrete;
-        UserConcrete _userConcrete;
+        CustomerConcrete _customerConcrete;
         BaristaConcrete _baristaConcrete;
 
         public BaristaCommentController()
         {
             _baristaCommentConrete = new BaristaCommentConrete();
-            _userConcrete = new UserConcrete();
+            _customerConcrete = new CustomerConcrete();
             _baristaConcrete = new BaristaConcrete();
         }
 
@@ -42,7 +42,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.BaristaID = new SelectList(_baristaConcrete._baristaRepository.GetEntity(), "ID", "Firstname");
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName");
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
             }
 
             ViewBag.BaristaID = new SelectList(_baristaConcrete._baristaRepository.GetEntity(), "ID", "Firstname");
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName");
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
             return View(baristaComment);
         }
 
@@ -70,7 +70,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         {
             BaristaComment baristaComment = _baristaCommentConrete._baristaCommentRepository.GetById(id);
             ViewBag.BaristaID = new SelectList(_baristaConcrete._baristaRepository.GetEntity(), "ID", "Firstname");
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName");
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
             return View(baristaComment);
         }
 
@@ -88,7 +88,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.BaristaID = new SelectList(_baristaConcrete._baristaRepository.GetEntity(), "ID", "Firstname");
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName");
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
             return View(baristaComment);
         }
 

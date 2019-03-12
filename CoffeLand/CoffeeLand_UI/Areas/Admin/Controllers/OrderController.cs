@@ -15,12 +15,12 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
     public class OrderController : Controller
     {
         OrderConcrete _orderConrete;
-        UserConcrete _userConcrete;
+        CustomerConcrete _customerConcrete;
 
         public OrderController()
         {
             _orderConrete = new OrderConcrete();
-            _userConcrete = new UserConcrete();
+            _customerConcrete = new CustomerConcrete();
         }
 
         // GET: Admin/Orders
@@ -39,7 +39,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         // GET: Admin/Orders/Create
         public ActionResult Create()
         {
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName");
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName");
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
             return View(order);
         }
 
@@ -65,7 +65,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             Order order = _orderConrete._orderRepository.GetById(id);
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName");
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
             return View(order);
         }
 
@@ -82,7 +82,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
                 _orderConrete._orderUnitOfWork.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName", order.CustomerID);
+            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName", order.CustomerID);
             return View(order);
         }
 

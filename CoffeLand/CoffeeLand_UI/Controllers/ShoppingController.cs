@@ -38,14 +38,14 @@ namespace CoffeeLand_UI.Controllers
 			Coffee coffee = _coffeeConcrete._coffeeRepository.GetById(id);
 			Order order = new Order()
 			{
-				UserID = 1, //TODO: userıd eklenecek, dinamik hale getirilecek
+                CustomerID = "1", //TODO: userıd eklenecek, dinamik hale getirilecek
 				OrderDate = DateTime.Now,
 				TotalPrice = miktar * coffee.Price
 			};
 				_orderConcrete._orderRepository.Insert(order);
 
 			// TODO: userıd eklenecek, dinamik hale getirilecek
-			OrderDetail od = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.CoffeeID == id && x.OrderOfOrderDetail.UserID == 1 && x.IsCompleted == false);
+			OrderDetail od = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.CoffeeID == id && x.OrderOfOrderDetail.CustomerID == "1" && x.IsCompleted == false);
 
 			if (od == null) //yeni kayıt yaptırıyoruz
 			{
@@ -83,14 +83,14 @@ namespace CoffeeLand_UI.Controllers
 			_wishListConcrete = new WishListConcrete();
 
 			// TODO: userıd eklenecek, dinamik hale getirilecek
-			WishList wl = _wishListConcrete._wishListRepository.GetAll().FirstOrDefault(x => x.CoffeeID == id && x.UserID == 1 && x.IsActive == true);
+			WishList wl = _wishListConcrete._wishListRepository.GetAll().FirstOrDefault(x => x.CoffeeID == id && x.CustomerID == "1" && x.IsActive == true);
 
 			if (wl == null)
 			{
 				wl = new WishList()
 				{
 					CoffeeID = id,
-					UserID = 1, //TODO: userıd eklenecek, dinamik hale getirilecek
+					CustomerID = "1", //TODO: userıd eklenecek, dinamik hale getirilecek
 					IsActive = true
 				};
 				_wishListConcrete._wishListRepository.Insert(wl);
@@ -104,7 +104,7 @@ namespace CoffeeLand_UI.Controllers
 			_orderDetailConcrete = new OrderDetailConcrete();
 
 			//TODO: userıd eklenecek, dinamik hale getirilecek
-			return View(_orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.UserID == 1 && x.IsCompleted == false).ToList());
+			return View(_orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == "1" && x.IsCompleted == false).ToList());
 		}
 
 		public ActionResult WishList()
@@ -112,7 +112,7 @@ namespace CoffeeLand_UI.Controllers
 			_wishListConcrete = new WishListConcrete();
 
 			//TODO: userıd eklenecek, dinamik hale getirilecek
-			return View(_wishListConcrete._wishListRepository.GetAll().Where(x => x.UserID == 1 && x.IsActive == true).ToList());
+			return View(_wishListConcrete._wishListRepository.GetAll().Where(x => x.CustomerID == "1" && x.IsActive == true).ToList());
 		}
 	}
 }
