@@ -59,9 +59,10 @@
     <Compile Include="Repository\Concrete\EFUnitOfWork.cs" />
     <Compile Include="Repository\Concrete\CoffeeConcrete.cs" />
     <Compile Include="Repository\Concrete\ExtraMaterialsConcrete.cs" />
-    <Compile Include="Repository\Concrete\OrderConrete.cs" />
-    <Compile Include="Repository\Concrete\OrderDetailConrete.cs" />
+    <Compile Include="Repository\Concrete\OrderConcrete.cs" />
+    <Compile Include="Repository\Concrete\OrderDetailConcrete.cs" />
     <Compile Include="Repository\Concrete\UserConcrete.cs" />
+    <Compile Include="Repository\Concrete\WishListConcrete.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoffeeLand_DAL\CoffeeLand_DAL.csproj">

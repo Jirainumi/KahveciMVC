@@ -1,0 +1,100 @@
+﻿@model IEnumerable<CoffeeLand_DATA.Classes.OrderDetail>
+@{
+	ViewBag.Title = "CartList";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="noo-page-heading cart-heading">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="noo-heading-content">
+					<h1 class="page-title">Sepet</h1>
+
+					<div class="noo-page-breadcrumb">
+						<span>@Html.ActionLink("Anasayfa", "Index", "Home") <i class="arrow_right"></i> Sepetteki Ürünler</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="main">
+	<div class="section mt-10 mb-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="commerce-cart">
+						<table class="cart wishlist-table">
+							<thead>
+								<tr>
+									<th class="product-remove"></th>
+									<th class="product-thumbnail">Ürün Görseli</th>
+									<th class="product-name">Ürün Adı</th>
+									<th class="product-price">Fiyatı</th>
+									<th class="product-stock-stauts">Miktarı Güncelle</th>
+									<th class="product-add-to-cart"></th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									decimal toplamTutar = 0;
+									foreach (var item in Model as IEnumerable<CoffeeLand_DATA.Classes.OrderDetail>)
+									{
+										toplamTutar += item.OrderOfOrderDetail.TotalPrice;
+										<tr>
+											<td class="product-remove">
+												<a href="@Url.Action("RemoveFromCart","Shopping", new { id=item.OrderID})" style="font-size:25pt;"><span class="glyphicon glyphicon-trash" style="width:75px;height:75px;color:darkred"></span></a>
+											</td>
+											<td class="product-thumbnail">
+												<img src="@Url.Content(item.CoffeeOfOrderDetail.ImageUrl)" alt="@Url.Content(item.CoffeeOfOrderDetail.AltText)" style="width:100px;height:130px;" />
+											</td>
+											<td class="product-name">
+												<p class="lead">@item.CoffeeOfOrderDetail.CoffeeName</p>
+											</td>
+											<td class="product-price">
+												<p class="lead">@string.Format("{0:C2}", item.CoffeeOfOrderDetail.Price)</p>
+											</td>
+											<td class="product-stock-stauts">
+												@using (Html.BeginForm("UpdateQuantity", "Shopping", new { id = item.ID }, FormMethod.Post))
+												{
+													<input type="number" value="@item.Quantity" min="1" max="10" name="quantity" />
+													<button type="submit">
+														<span style="color:lawngreen;" class="glyphicon glyphicon-ok"></span>
+													</button>
+												}
+											</td>
+											<td class="product-add-to-cart">
+												<a href="@Url.Action("AddToWishListFromCart","Shopping", new { id=item.OrderID})"><span class="glyphicon glyphicon-heart" style="color:blueviolet;font-size:25pt;"></span> </a>
+											</td>
+										</tr>
+									}
+								}
+							</tbody>
+						</table>
+						<hr />
+						@{ 
+							if (Model.ToList().Count == 0)
+							{
+								<span class="lead">
+									Henüz sepete ürün eklenmemiş!
+								</span>
+							}
+							else
+							{
+								<span class="lead">
+									<p>
+										Toplam Tutar = @string.Format("{0:C2}",toplamTutar)
+									</p>
+								</span>
+
+								@Html.ActionLink("SİPARİŞ VER","GotoPayment","Shopping",null, new { @class="btn btn-success", @style="float:right"})
+							}
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

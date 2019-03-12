@@ -14,17 +14,17 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
 {
     public class OrderDetailController : Controller
     {
-        OrderDetailConrete _orderDetailConrete;
+        OrderDetailConcrete _orderDetailConrete;
         BaristaConcrete _baristaConcrete;
         CoffeeConcrete _coffeeConcrete;
-        OrderConrete _orderConrete;
+        OrderConcrete _orderConrete;
 
         public OrderDetailController()
         {
-            _orderDetailConrete = new OrderDetailConrete();
+            _orderDetailConrete = new OrderDetailConcrete();
             _baristaConcrete = new BaristaConcrete();
             _coffeeConcrete = new CoffeeConcrete();
-            _orderConrete = new OrderConrete();
+            _orderConrete = new OrderConcrete();
         }
 
         // GET: Admin/OrderDetails

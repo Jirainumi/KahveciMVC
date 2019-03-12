@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace CoffeeLand_BLL.Repository.Concrete
 {
-    public class OrderDetailConrete
+    public class OrderDetailConcrete
     {
         public IRepository<OrderDetail> _orderDetailRepository;
         public IUnitOfWork _orderDetailUnitOfWork;
         private DbContext _dbContext;
 
-        public OrderDetailConrete()
+        public OrderDetailConcrete()
         {
             _dbContext = new Context();
             _orderDetailUnitOfWork = new EFUnitOfWork(_dbContext);

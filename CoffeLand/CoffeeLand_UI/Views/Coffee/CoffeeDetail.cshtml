@@ -18,10 +18,19 @@
 					<span class="glyphicon glyphicon-star" style="font-size:20px;color:orangered"></span>
 				}
 			}<br />
-			<h3 style="color:orange;">Fiyatı: @string.Format("{0:C2}",Model.Price)</h3>
+			<h3 style="color:orange;">Fiyatı: @string.Format("{0:C2}", Model.Price)</h3>
 			<span style="background-color:gold"><strong>Ortalama Puanı:</strong>@Model.AVGPoint</span><br /><br />
+			@using (Html.BeginForm("AddToCart", "Shopping", new { id = Model.ID }, FormMethod.Post))
+			{
+				<p>
+					<strong>Kaç Adet: </strong>
+					<input type="number" name="miktar" value="1" min="1" max="10" />
+				</p>
+			<button type="submit" class="btn btn-danger">Sepete Ekle</button>
+			}
+			<a class="btn btn-danger" href="@Url.Action("OrderNow", "Order", new { id = Model.ID })" role="button">Sipariş Ver</a>
 
-			<a class="btn btn-danger" href="@Url.Action("OrderNow","Order",new { id=Model.ID})" role="button">Sipariş Ver</a>
+			<a class="btn btn-warning" href="@Url.Action("AddToWishList","Shopping",new { id=Model.ID})" role="button">İstek Listesine Ekle</a>
 			<ul class="nav nav-tabs">
 				<li class="active">
 					<a href="#description" data-toggle="tab">Coffee Açıklaması</a>
@@ -36,14 +45,14 @@
 				</div>
 				<div class="tab-pane fade" id="comments">
 					<ul>
-						@{ 
+						@{
 							foreach (var item in ViewData["Comments"] as IEnumerable<CoffeeLand_DATA.Classes.CoffeeComment>)
 							{
-						<li>
-							<p><strong>@item.CoffeeOfCoffeeComment.CoffeeName</strong></p>
-							<p><strong>@item.CoffeeCommentDate</strong></p>
-							<p>@item.Comment</p>
-						</li>
+								<li>
+									<p><strong>@item.CoffeeOfCoffeeComment.CoffeeName</strong></p>
+									<p><strong>@item.CoffeeCommentDate</strong></p>
+									<p>@item.Comment</p>
+								</li>
 							}
 						}
 					</ul>

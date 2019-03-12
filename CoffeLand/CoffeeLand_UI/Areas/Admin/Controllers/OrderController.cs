@@ -14,12 +14,12 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
 {
     public class OrderController : Controller
     {
-        OrderConrete _orderConrete;
+        OrderConcrete _orderConrete;
         UserConcrete _userConcrete;
 
         public OrderController()
         {
-            _orderConrete = new OrderConrete();
+            _orderConrete = new OrderConcrete();
             _userConcrete = new UserConcrete();
         }
 

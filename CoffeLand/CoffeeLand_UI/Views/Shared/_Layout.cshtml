@@ -47,59 +47,38 @@
 									<ul class="sub-menu">
 										<li>@Html.ActionLink("Ana Sayfa", "Index", "Home")</li>
 										<li>@Html.ActionLink("Espresso Bazlı İçeceklerimiz", "Coffee", "Coffee", new { id = 1 }, null)</li>
-										<li>@Html.ActionLink("Filtre Kahve", "Coffee", "Coffee", new { id = 2 },null)</li>
-										<li>@Html.ActionLink("Türk Kahvesi", "Coffee", "Coffee", new { id = 3 },null)</li>
+										<li>@Html.ActionLink("Filtre Kahve", "Coffee", "Coffee", new { id = 2 }, null)</li>
+										<li>@Html.ActionLink("Türk Kahvesi", "Coffee", "Coffee", new { id = 3 }, null)</li>
 										<li>@Html.ActionLink("Frappuccino® Blended Beverages", "Coffee", "Coffee", new { id = 4 }, null)</li>
 										<li>@Html.ActionLink("Sıcak Çikolata", "Coffee", "Coffee", new { id = 5 }, null)</li>
 										<li>@Html.ActionLink("Çaylarımız", "Coffee", "Coffee", new { id = 6 }, null)</li>
 										<li>@Html.ActionLink("Portakal Suyu", "Coffee", "Coffee", new { id = 7 }, null)</li>
-										<li><a href="index-7.html">Home page 7</a></li>
 									</ul>
 								</li>
 								<li class="menu-item-has-children">
-									<a href="#">Blog</a>
-									<ul class="sub-menu">
-										<li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-masonry.html">Blog Masonry</a></li>
-										<li><a href="blog-grid.html">Blog Grid</a></li>
-										<li><a href="blog-alternate.html">Blog Alternate</a></li>
-										<li class="menu-item-has-children">
-											<a href="#">Blog Zigzag <i class="fa fa-caret-right"></i></a>
-											<ul class="sub-menu">
-												<li><a href="blog-zigzag.html">Blog Zigzag</a></li>
-												<li><a href="blog-zigzag-2.html">Blog Zigzag 2</a></li>
-												<li><a href="blog-zigzag-3.html">Blog Zigzag 3</a></li>
-											</ul>
-										</li>
-										<li><a href="blog-detail.html">Single post</a></li>
-									</ul>
+									@* TODO: userıd eklenecek, dinamik hale getirilecek *@
+									<a href="@Url.Action("CartList","Shopping", new { id=1})">
+										Sepete Git
+										<span class="badge">
+											@{
+												var _orderDetailConcrete = new CoffeeLand_BLL.Repository.Concrete.OrderDetailConcrete();
+												var _wishListConcrete = new CoffeeLand_BLL.Repository.Concrete.WishListConcrete();
+											}
+
+											@* TODO: userıd eklenecek, dinamik hale getirilecek *@
+											@_orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.UserID == 1 && x.IsCompleted == false).ToList().Count
+										</span>
+									</a>
 								</li>
 								<li class="menu-item-has-children">
-									<a href="#">Shop</a>
-									<ul class="sub-menu">
-										<li class="menu-item-has-children">
-											<a href="#">Shop Grid <i class="fa fa-caret-right"></i></a>
-											<ul class="sub-menu">
-												<li><a href="shop.html">Style 1</a></li>
-												<li><a href="shop-2.html">Style 2</a></li>
-												<li><a href="shop-3.html">Style 3</a></li>
-											</ul>
-										</li>
-										<li><a href="shop-list.html">Shop List</a></li>
-										<li><a href="shop-detail.html">Shop Detail</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="cart-empty.html">Empty Cart</a></li>
-										<li><a href="my-account.html">My Account</a></li>
-										<li><a href="wishlist.html">Wishlist</a></li>
-									</ul>
-								</li>
-								<li class="menu-item-has-children">
-									<a href="#">Pages</a>
-									<ul class="sub-menu">
-										<li><a href="faq.html">FAQ</a></li>
-										<li><a href="about-us.html">About us</a></li>
-										<li><a href="404.html">404 page</a></li>
-									</ul>
+									<a href="@Url.Action("WishList","Shopping")">
+									İstek Listesini Gör
+										<span class="badge">
+											@* TODO: userıd eklenecek, dinamik hale getirilecek *@
+											@_wishListConcrete._wishListRepository.GetAll().Where(x => x.UserID == 1 && x.IsActive == true).ToList().Count
+										</span>
+									</a>
+									
 								</li>
 								<li><a href="contact-us.html">Contact</a></li>
 							</ul>

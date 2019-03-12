@@ -696,6 +696,7 @@
     <Content Include="Views\Coffee\CoffeeDetay.cshtml" />
     <Content Include="Views\Coffee\CoffeeDetail.cshtml" />
     <Content Include="Views\Shopping\WishList.cshtml" />
+    <Content Include="Views\Shopping\CartList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
