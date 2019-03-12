@@ -66,7 +66,7 @@
 											}
 
 											@* TODO: userıd eklenecek, dinamik hale getirilecek *@
-											@_orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.UserID == 1 && x.IsCompleted == false).ToList().Count
+											@_orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == "1"&& x.IsCompleted == false).ToList().Count
 										</span>
 									</a>
 								</li>
@@ -75,7 +75,7 @@
 									İstek Listesini Gör
 										<span class="badge">
 											@* TODO: userıd eklenecek, dinamik hale getirilecek *@
-											@_wishListConcrete._wishListRepository.GetAll().Where(x => x.UserID == 1 && x.IsActive == true).ToList().Count
+											@_wishListConcrete._wishListRepository.GetAll().Where(x => x.CustomerID == "1" && x.IsActive == true).ToList().Count
 										</span>
 									</a>
 									
