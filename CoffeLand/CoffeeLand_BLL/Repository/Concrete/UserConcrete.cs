@@ -12,7 +12,7 @@ namespace CoffeeLand_BLL.Repository.Concrete
 {
     public class UserConcrete
     {
-        public IRepository<User> _userRepository;
+        public IRepository<Customer> _userRepository;
         public IUnitOfWork _userUnitOfWork;
         private DbContext _dbContext;
 
@@ -20,7 +20,7 @@ namespace CoffeeLand_BLL.Repository.Concrete
         {
             _dbContext = new Context();
             _userUnitOfWork = new EFUnitOfWork(_dbContext);
-            _userRepository = _userUnitOfWork.GetRepository<User>();
+            _userRepository = _userUnitOfWork.GetRepository<Customer>();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace CoffeeLand_DATA.Classes
 		public int BaristaID { get; set; }
         public virtual Barista BaristaOfBaristaComment { get; set; }
 
-        public int UserID { get; set; }
-        public virtual User UserOfBaristaComment { get; set; }
+        public string CustomerID { get; set; }
+        public virtual Customer UserOfBaristaComment { get; set; }
     }
 }

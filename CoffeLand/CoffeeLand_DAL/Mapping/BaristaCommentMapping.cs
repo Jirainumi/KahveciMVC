@@ -20,7 +20,7 @@ namespace CoffeeLand_DAL.Mapping
 
             HasRequired(x => x.BaristaOfBaristaComment).WithMany(x => x.BaristaComments).HasForeignKey(x => x.BaristaID);
 
-            HasRequired(x => x.UserOfBaristaComment).WithMany(x => x.BaristaCommentsOfUser).HasForeignKey(x => x.UserID);
+            HasRequired(x => x.UserOfBaristaComment).WithMany(x => x.BaristaCommentsOfUser).HasForeignKey(x => x.CustomerID);
         }
     }
 }

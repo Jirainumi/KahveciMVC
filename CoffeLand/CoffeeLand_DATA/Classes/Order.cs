@@ -12,8 +12,8 @@ namespace CoffeeLand_DATA.Classes
         public DateTime OrderDate { get; set; }
         public decimal TotalPrice { get; set; }
 
-        public int UserID { get; set; }
-        public virtual User UserOfOrder { get; set; }
+        public string CustomerID { get; set; }
+        public virtual Customer UserOfOrder { get; set; }
 
         public virtual List<OrderDetail> OrderDetails { get; set; }
     }
