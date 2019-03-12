@@ -16,7 +16,7 @@ namespace CoffeeLand_DAL.Mapping
             Property(x => x.OrderDate).HasColumnType("datetime2");
             Property(x => x.TotalPrice).HasColumnType("money");
 
-            HasRequired(x => x.UserOfOrder).WithMany(x => x.OrdersOfUser).HasForeignKey(x => x.UserID);
+            HasRequired(x => x.UserOfOrder).WithMany(x => x.OrdersOfUser).HasForeignKey(x => x.CustomerID);
         }
     }
 }

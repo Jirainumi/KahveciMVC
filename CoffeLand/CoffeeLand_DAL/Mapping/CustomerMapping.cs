@@ -8,12 +8,13 @@ using CoffeeLand_DATA.Classes;
 
 namespace CoffeeLand_DAL.Mapping
 {
-   public class AuthorizationMapping:EntityTypeConfiguration<Authorization>
+    public class CustomerMapping : EntityTypeConfiguration<Customer>
     {
-        public AuthorizationMapping()
+        public CustomerMapping()
         {
             HasKey(x => x.ID);
-            Property(x => x.AuthorizationType).HasColumnType("nvarchar").HasMaxLength(30);
+            Property(x => x.UserName).HasColumnType("nvarchar").HasMaxLength(30);
+            Property(x => x.Password).HasColumnType("nvarchar").HasMaxLength(30);
         }
     }
 }

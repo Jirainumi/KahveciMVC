@@ -82,7 +82,7 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
                 _orderConrete._orderUnitOfWork.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName", order.UserID);
+            ViewBag.UserID = new SelectList(_userConcrete._userRepository.GetEntity(), "ID", "UserName", order.CustomerID);
             return View(order);
         }
 

@@ -1,5 +1,8 @@
 namespace CoffeeLand_DAL.Migrations
 {
+    using CoffeeLand_DATA.Classes;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,10 +17,28 @@ namespace CoffeeLand_DAL.Migrations
 
         protected override void Seed(CoffeeLand_DAL.Context context)
         {
-            //  This method will be called after migrating to the latest version.
+            var roleStore = new RoleStore<IdentityRole>(context);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+            if (!roleManager.RoleExists("admin"))
+                roleManager.Create(new IdentityRole() { Name = "admin" });
+            if (!roleManager.RoleExists("standart"))
+                roleManager.Create(new IdentityRole() { Name = "standart" });
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            var adminUser = userManager.FindByName("admin");
+            if (adminUser == null)
+            {
+                adminUser = new ApplicationUser()
+                {
+                    UserName = "admin@admin.com",
+                    Email = "admin@admin.com"
+                };
+                userManager.Create(adminUser, "Ankara1.");
+            }
+            if (!userManager.IsInRole(adminUser.Id, "admin"))
+                userManager.AddToRole(adminUser.Id, "admin");
         }
     }
 }

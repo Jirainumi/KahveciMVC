@@ -17,7 +17,7 @@ namespace CoffeeLand_DAL.Mapping
 
 
             HasRequired(x => x.Coffee).WithMany(x => x.WishLists).HasForeignKey(x => x.CoffeeID);
-            HasRequired(x => x.User).WithMany(x => x.WishLists).HasForeignKey(x => x.UserID);
+            HasRequired(x => x.User).WithMany(x => x.WishLists).HasForeignKey(x => x.CustomerID);
 
            
         }
