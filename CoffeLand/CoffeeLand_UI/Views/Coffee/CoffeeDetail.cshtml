@@ -3,21 +3,21 @@
 	ViewBag.Title = "CoffeeDetail";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="container">
 	<div class="row" style="margin-top:50px;">
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<img src="@Url.Content(Model.ImageUrl)" alt="@Url.Content(Model.AltText)" />
+				<img src="@Url.Content(Model.ImageUrl)" alt="@Url.Content(Model.AltText)" style="height:250px;" />
 			</div>
 		</div>
 		<div class="col-md-8">
 			<h2>@Model.CoffeeName</h2>
 			@{for (int i = 0; i < 5; i++)
 				{
-					<span class="glyphicon glyphicon-star" style="font-size:20px;color:orangered"></span>
+					<span style="color:red;font-size:15pt;">*</span>
+					@*<span class="glyphicon glyphicon-star" style="font-size:20px;color:orangered"></span>*@
 				}
-			}<br />
+			}
 			<h3 style="color:orange;">Fiyatı: @string.Format("{0:C2}", Model.Price)</h3>
 			<span style="background-color:gold"><strong>Ortalama Puanı:</strong>@Model.AVGPoint</span><br /><br />
 			@using (Html.BeginForm("AddToCart", "Shopping", new { id = Model.ID }, FormMethod.Post))
@@ -26,11 +26,21 @@
 					<strong>Kaç Adet: </strong>
 					<input type="number" name="miktar" value="1" min="1" max="10" />
 				</p>
-			<button type="submit" class="btn btn-danger">Sepete Ekle</button>
-			}
-			<a class="btn btn-danger" href="@Url.Action("OrderNow", "Order", new { id = Model.ID })" role="button">Sipariş Ver</a>
 
-			<a class="btn btn-warning" href="@Url.Action("AddToWishList","Shopping",new { id=Model.ID})" role="button">İstek Listesine Ekle</a>
+				<h5>Barista Seçiniz</h5>
+				foreach (var item in ViewBag.Baristas as IEnumerable<CoffeeLand_DATA.Classes.Barista>)
+				{
+					<label>
+						<input type="radio" name="barista" value="@item.ID" checked />
+						@item.FullName - AVG Puanı: @item.AVGPoint
+					</label>
+					<br />
+				}
+				<br />
+				<button type="submit" class="btn btn-warning">Sepete Ekle</button>
+				<a class="btn btn-danger" href="@Url.Action("OrderNow", "Order", new { id = Model.ID })" role="button">Hemen Sipariş Ver</a>
+				<a class="btn btn-warning" href="@Url.Action("AddToWishList","Shopping",new { id=Model.ID})" role="button">İstek Listesine Ekle</a>
+			}
 			<ul class="nav nav-tabs">
 				<li class="active">
 					<a href="#description" data-toggle="tab">Coffee Açıklaması</a>

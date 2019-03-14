@@ -24,12 +24,14 @@ namespace CoffeeLand_UI.Controllers
 			if (frm["miktar"] != null)
 				miktar = Convert.ToInt32(frm["miktar"]);
 
-			ControlCart(id, miktar);
+			int baristaId = int.Parse(frm["barista"]);
+
+			ControlCart(id, baristaId, miktar);
 
 			return RedirectToAction("CoffeeDetail", "Coffee", new { id = id });
 		}
 
-		private void ControlCart(int id, int miktar = 1)
+		private void ControlCart(int id, int baristaId, int miktar = 1)
 		{
 			_orderConcrete = new OrderConcrete();
 			_coffeeConcrete = new CoffeeConcrete();
@@ -38,11 +40,11 @@ namespace CoffeeLand_UI.Controllers
 			Coffee coffee = _coffeeConcrete._coffeeRepository.GetById(id);
 			Order order = new Order()
 			{
-                CustomerID = "1", //TODO: userıd eklenecek, dinamik hale getirilecek
+				CustomerID = "1", //TODO: userıd eklenecek, dinamik hale getirilecek
 				OrderDate = DateTime.Now,
 				TotalPrice = miktar * coffee.Price
 			};
-				_orderConcrete._orderRepository.Insert(order);
+			_orderConcrete._orderRepository.Insert(order);
 
 			// TODO: userıd eklenecek, dinamik hale getirilecek
 			OrderDetail od = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.CoffeeID == id && x.OrderOfOrderDetail.CustomerID == "1" && x.IsCompleted == false);
@@ -54,9 +56,9 @@ namespace CoffeeLand_UI.Controllers
 				od.IsCompleted = false;
 				od.UnitPrice = coffee.Price;
 				od.Quantity = Convert.ToInt16(miktar);
-				od.BaristaID = 1;// TODO: dinamik hale getirilecek
+				od.BaristaID = baristaId;
 				od.OrderID = order.ID;
-				
+
 
 				_orderDetailConcrete._orderDetailRepository.Insert(od);
 			}

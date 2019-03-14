@@ -11,8 +11,10 @@ namespace CoffeeLand_UI.Controllers
 	{
 		CoffeeConcrete _coffeeConcrete;
 		CoffeeCommentConcrete _coffeeCommentConcrete;
+		BaristaConcrete _baristaConcrete;
 		public CoffeeController()
 		{
+			_baristaConcrete = new BaristaConcrete();
 			_coffeeConcrete = new CoffeeConcrete();
 			_coffeeCommentConcrete = new CoffeeCommentConcrete();
 		}
@@ -24,6 +26,9 @@ namespace CoffeeLand_UI.Controllers
 
 		public ActionResult CoffeeDetail(int id)
 		{
+
+			ViewBag.Baristas = _baristaConcrete._baristaRepository.GetAll().ToList();
+
 			ViewData["Comments"] = _coffeeCommentConcrete._coffeeCommentRepository.GetAll().Where(x => x.CoffeeID == id).ToList();
 
 			return View(_coffeeConcrete._coffeeRepository.GetById(id));
