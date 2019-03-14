@@ -13,7 +13,7 @@
 					<div class="thumbnail">
 						<img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" />
 						<div class="caption">
-							<h3 style="height:70px;">@item.CoffeeName - @string.Format("{0:C2}",item.Price)</h3>
+							<h4 style="height:50px;">@item.CoffeeName - @string.Format("{0:C2}",item.Price)</h4>
 							<p>@Html.ActionLink("Detayı Gör","CoffeeDetail", new { id=item.ID}, new {@class="btn btn-warning form-control" })</p>
 						</div>
 					</div>
