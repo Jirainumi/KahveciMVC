@@ -26,13 +26,6 @@ namespace CoffeeLand_UI.Controllers
 
 			int baristaId = int.Parse(frm["barista"]);
 
-			ControlCart(id, baristaId, miktar);
-
-			return RedirectToAction("CoffeeDetail", "Coffee", new { id = id });
-		}
-
-		private void ControlCart(int id, int baristaId, int miktar = 1)
-		{
 			_orderConcrete = new OrderConcrete();
 			_coffeeConcrete = new CoffeeConcrete();
 			_orderDetailConcrete = new OrderDetailConcrete();
@@ -69,6 +62,8 @@ namespace CoffeeLand_UI.Controllers
 			}
 			_orderConcrete._orderUnitOfWork.SaveChanges();
 			_orderConcrete._orderUnitOfWork.Dispose();
+
+			return RedirectToAction("CoffeeDetail", "Coffee", new { id = id });
 		}
 
 		public ActionResult AddToWishList(int id)
