@@ -15,6 +15,7 @@ namespace CoffeeLand_UI.Controllers
 		CoffeeConcrete _coffeeConcrete;
 		OrderDetailConcrete _orderDetailConcrete;
 		WishListConcrete _wishListConcrete;
+        
 
 		[HttpPost]
 		public ActionResult AddToCart(int id, FormCollection frm)
@@ -116,5 +117,39 @@ namespace CoffeeLand_UI.Controllers
 			//TODO: userıd eklenecek, dinamik hale getirilecek
 			return View(_wishListConcrete._wishListRepository.GetAll().Where(x => x.CustomerID == "1" && x.IsActive == true).ToList());
 		}
-	}
+
+
+        public ActionResult RemoveFromWishList(int id)
+        {
+
+            //Status kısmı düzenlenicek viewde 
+            WishList wishList = _wishListConcrete._wishListRepository.GetById(id);
+            _wishListConcrete._wishListRepository.Delete(wishList);
+            _wishListConcrete._wishListUnitOfWork.SaveChanges();
+            _wishListConcrete._wishListUnitOfWork.Dispose();
+
+
+
+            return RedirectToAction("WishList", "Shopping");
+
+        }
+
+        public ActionResult AddToCartFromWishList(int id)
+        {
+            _coffeeConcrete = new CoffeeConcrete();
+
+             Coffee coffee = _coffeeConcrete._coffeeRepository.GetById(id); 
+
+
+
+            ControlCart(coffee.ID);
+
+
+            WishList wishlist = _wishListConcrete._wishListRepository.GetById(id);
+            wishlist.IsActive = false;
+            _wishListConcrete._wishListUnitOfWork.SaveChanges();
+            _wishListConcrete._wishListUnitOfWork.Dispose();
+            return RedirectToAction("WishList", "Shopping");
+        }
+    }
 }

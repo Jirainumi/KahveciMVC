@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<CoffeeLand_DATA.Classes.WishList>
 @{
     ViewBag.Title = "WishList";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,10 +10,10 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="noo-heading-content">
-                    <h1 class="page-title">Wishlist</h1>
+                    <h1 class="page-title">Istek Listesi</h1>
 
                     <div class="noo-page-breadcrumb">
-                        <span>@Html.ActionLink("Anasayfa", "Index", "Home") <i class="arrow_right"></i> Wishlist</span>
+                        <span>@Html.ActionLink("Anasayfa", "Index", "Home") <i class="arrow_right"></i> İstek Listesi</span>
                     </div>
                 </div>
             </div>
@@ -29,59 +29,64 @@
                         <table class="cart wishlist-table">
                             <thead>
                                 <tr>
-                                    <th class="product-remove"></th>
-                                    <th class="product-thumbnail"></th>
-                                    <th class="product-name">Product Name</th>
-                                    <th class="product-price">Unit Price</th>
-                                    <th class="product-stock-stauts">Stock Status</th>
-                                    <th class="product-add-to-cart"></th>
+                                    <th class="product-remove">Ürünü Sil</th>
+                                    <th class="product-thumbnail">Ürün Resmi</th>
+                                    <th class="product-name">Ürün Adı</th>
+                                    <th class="product-price">Fiyat</th>
+                                    <th class="product-stock-stauts">Hazırlanabilir</th>
+                                    <th class="product-add-to-cart">Sepete Ekle/th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="product-remove">
-                                        <a href="#"></a>
-                                    </td>
-                                    <td class="product-thumbnail">
-                                        <a href="shop-detail.html">
-                                            <img src="images/product/thumb/product_1.jpg" alt="" />
-                                        </a>
-                                    </td>
-                                    <td class="product-name">
-                                        <a href="shop-detail.html">Corona Classic Chair</a>
-                                    </td>
-                                    <td class="product-price">
-                                        &#36;211.00
-                                    </td>
-                                    <td class="product-stock-status">
-                                        <span class="wishlist-in-stock">In Stock</span>
-                                    </td>
-                                    <td class="product-add-to-cart">
-                                        <a href="#"> Add to Cart</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-remove">
-                                        <a href="#"></a>
-                                    </td>
-                                    <td class="product-thumbnail">
-                                        <a href="shop-detail.html">
-                                            <img src="images/product/thumb/product_2.jpg" alt="" />
-                                        </a>
-                                    </td>
-                                    <td class="product-name">
-                                        <a href="shop-detail.html">Cuba Chair</a>
-                                    </td>
-                                    <td class="product-price">
-                                        &#36;300.00
-                                    </td>
-                                    <td class="product-stock-status">
-                                        <span class="wishlist-in-stock">In Stock</span>
-                                    </td>
-                                    <td class="product-add-to-cart">
-                                        <a href="#"> Add to Cart</a>
-                                    </td>
-                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="product-remove">
+                                            <a href="@Url.Action("AddToCartFromWishlist", "Shopping", new { id = item.WishlistID})">
+                                                <span class="glyphicon glyphicon-shopping-cart" style="color:forestgreen;"></span>
+                                            </a>
+                                        </td>
+                                        <td class="product-thumbnail">
+                                            <a href="shop-detail.html">
+                                                <img src="@Url.Content(item.Coffee.ImageUrl)" alt="" />
+                                            </a>
+                                        </td>
+                                        <td class="product-name">
+                                            <a href="shop-detail.html">@item.Coffee.CoffeeName</a>
+                                        </td>
+                                        <td class="product-price">
+                                            @string.Format("{0:C2}",item.Coffee.Price)
+                                        </td>
+                                        <td class="product-stock-status">
+                                            @if (item.IsActive)
+                                            {
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            }
+                                            else
+                                            {
+
+                                                <span class="glyphicon glyphicon-warning-sign">Hazır Değil</span>
+                                            }
+                                        </td>
+                                        <td class="product-add-to-cart">
+                                            <a href="#">Sepete Ekle</a>
+                                        </td>
+                                    </tr>
+
+
+
+
+
+
+                                }
+
+
+
+
+
+
+
+                              
                             </tbody>
                         </table>
                     </div>
