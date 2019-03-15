@@ -783,6 +783,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shopping\CartList.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shopping\Orders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

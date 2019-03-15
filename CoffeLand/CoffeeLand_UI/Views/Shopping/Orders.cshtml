@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CoffeeLand_DATA.Classes.Order>
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2>Siparişlerim</h2>
+<div id="main">
+    <div class="section mt-10 mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="commerce-cart">
+                        <table class="cart wishlist-table">
+                            <thead>
+                                <tr>
+                                    <th class="product-remove">Sipariş ID</th>
+
+                                    <th class="product-name">Sipariş Zamanı</th>
+                                    <th class="product-price">Fiyat</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.ID
+                                        </td>
+                                        <td>
+                                            @item.OrderDate
+                                        </td>
+                                        <td>
+                                            @item.TotalPrice
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+                            </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
