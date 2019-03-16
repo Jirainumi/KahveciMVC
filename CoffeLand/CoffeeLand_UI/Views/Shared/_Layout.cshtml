@@ -30,9 +30,11 @@
         var _orderDetailConcrete = new CoffeeLand_BLL.Repository.Concrete.OrderDetailConcrete();
         var _wishListConcrete = new CoffeeLand_BLL.Repository.Concrete.WishListConcrete();
         var ID = 0;
+        var username = "";
         if (Session["OnlineKullanici"] != null)
         {
             ID = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).ID;
+            username = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).UserName;
         }
 
         var sepettekiSayi = _orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == ID && x.IsCompleted == false).ToList().Count;
@@ -56,13 +58,13 @@
                         </div>
                         <nav class="noo-main-menu">
                             <ul class="nav-collapse navbar-nav">
-                                <li class="menu-item-has-children">
+                                <li>
                                     @Html.ActionLink("Ana Sayfa", "Index", "Home")
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">Kahveler</a>
                                     <ul class="sub-menu">
-                                       
+
                                         <li>@Html.ActionLink("Espresso Bazlı İçeceklerimiz", "Coffee", "Coffee", new { id = 1 }, null)</li>
                                         <li>@Html.ActionLink("Filtre Kahve", "Coffee", "Coffee", new { id = 2 }, null)</li>
                                         <li>@Html.ActionLink("Türk Kahvesi", "Coffee", "Coffee", new { id = 3 }, null)</li>
@@ -72,25 +74,12 @@
                                         <li>@Html.ActionLink("Portakal Suyu", "Coffee", "Coffee", new { id = 7 }, null)</li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="@Url.Action("CartList","Shopping", new { id = ID})">
-                                        Sepete Git
-                                        <span class="badge">
-
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="@Url.Action("WishList","Shopping")">
-                                        İstek Listesini Gör
-                                        <span class="badge">
-
-                                        </span>
-                                    </a>
+                                <li>
+                                    <a href="@Url.Action("About","Home")">Hakkımızda</a>
 
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("Contact","Home")">iletişim</a> @* TODO: Contact sayfası yapılacak *@
+                                    <a href="@Url.Action("Contact","Home")">İletişim</a>
                                 </li>
                             </ul>
                         </nav>
@@ -100,27 +89,27 @@
                                     if (Session["OnlineKullanici"] == null)
                                     {
                                         <li>
-                                            <a class="noo-loop-cart icon_profile" href="@Url.Action("Login","Login")"></a>
+                                            <a class="noo-loop-cart icon_profile" href="@Url.Action("Login", "Login")"></a>
                                         </li>
                                     }
                                     else
                                     {
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                <span id="email-span">@* TO-DO Online Olan kişinin emaili yazıcak*@</span>
+                                                <span id="email-span">@username</span>
                                                 <span class="noo-loop-cart icon_profile"></span>
                                             </a>
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     <a href="#">
-                                                        @* TODO: Password reset yapılacak *@
-                                                        Şifre Değiştir
+                                                        @* TODO: Profilim sayfası yapılacak *@
+                                                        Profilim
                                                         <span class="icon_cog"></span>
                                                     </a>
                                                 </li>
                                                 <li class="divider"></li>
                                                 <li>
-                                                    <a href="@Url.Action("LogOut","Login")">
+                                                    <a href="@Url.Action("LogOut", "Login")">
                                                         Çıkış Yap
                                                         <span class="icon_close"></span>
                                                     </a>
@@ -129,7 +118,7 @@
                                         </li>
 
                                         <li>
-                                            <a class="cart-button" href="@Url.Action("WishList","Shopping")">
+                                            <a class="cart-button" href="@Url.Action("WishList", "Shopping")">
                                                 <span class="cart-item">
                                                     <i class="icon_heart_alt"></i>
                                                     <span class="cart-count">@istektekiSayi</span>
@@ -148,14 +137,41 @@
                                                 </span>
                                             </a>
                                             <div class="noo-minicart">
-                                                <div class="minicart-header">Sepetiniz Boş.</div>
+                                                <div class="minicart-header">
+                                                    @{
+                                                        if (sepettekiSayi == 0)
+                                                        {
+                                                            <span>Sepetiniz Boş.</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>Sepetinizde @sepettekiSayi tane ürün var</span>
+                                                        }
+                                                    }
+
+                                                    <div class="minicart-actions clearfix">
+                                                        <a class="button pull-left btn btn-warning btn-xs" href="@Url.Action("CartList","Shopping", new { id = ID})"><span class="text">Sepete Git</span></a>
+                                                    </div>
+
+                                                </div>
                                                 <div class="minicart-body">
                                                     @* TODO: Mini Sepet Görüntüsü eklenecek *@
                                                 </div>
                                                 <div class="minicart-footer">
                                                     <div class="minicart-actions clearfix">
-                                                        <a class="button pull-left" href="#">
-                                                            <span class="text">Alışverişe Başla</span>
+                                                        <a class="button pull-left" href="#"> @* TODO: Kahvelerin Listelencek olduğu shop sayfasına yönlendirlicek *@
+
+                                                            @{
+                                                                if (sepettekiSayi == 0)
+                                                                {
+                                                                    <span class="text">Alışverişe Başla</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span class="text">Alışverişe Devam Et</span>
+                                                                }
+                                                            }
+
                                                         </a>
                                                     </div>
                                                 </div>
@@ -222,7 +238,7 @@
                                 <h4 class="widget-title">Hakkımızda</h4>
                                 <ul class="menu">
                                     <li><a href="@Url.Action("About","Home")">Biz Kimiz?</a></li>
-                                   
+
                                 </ul>
                             </div>
                         </div>
@@ -234,7 +250,7 @@
                                     <li><a href="#">Sepet</a></li>
                                     <li><a href="#">İstek Listesi</a></li>
                                     <li><a href="#">Siparişler</a></li>
-                                   
+
                                 </ul>
                             </div>
                         </div>
@@ -246,7 +262,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <a href="#"><img src="images/payment_logo.png" alt="" /></a>
-                            <p class="mt-1">@@ 2016. Developed by Adsız</p>
+                            <p class="mt-1">@@ 2019. Developed by Adsız</p>
                         </div>
                     </div>
                 </div>
