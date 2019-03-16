@@ -11,7 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
     <link rel="shortcut icon" href="~/images/favicon.ico" />
     <title>CoffeLand</title>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 
+    <link href="~/images/Logo/LogoLayout.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" media="all" />
     <link href="~/Content/settings.css" rel="stylesheet" media="all" />
     <link href="~/Content/prettyPhoto.css" rel="stylesheet" media="all" />
@@ -52,8 +54,16 @@
                 <div class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-logo">
-                            <a class="custom-logo-link" href="@Url.Action("Index","Home")">
-                                <img src="~/images/Index/logo.svg" />
+                            <a class="custom-logo-link" href="@Url.Action("Index","Home")" style="float:left;position:relative;top:21px;">
+                                <div class="coffee-cup">
+
+                                    <div class="handle">
+
+                                    </div>
+                                    <div class="yazi" ">
+                                        CoffeeLand
+                                    </div>
+                                </div>
                             </a>
                             <button data-target=".nav-collapse" class="btn-navbar noo_icon_menu icon_menu"></button>
                         </div>
