@@ -15,6 +15,7 @@ namespace CoffeeLand_UI.Controllers
 		CoffeeConcrete _coffeeConcrete;
 		OrderDetailConcrete _orderDetailConcrete;
 		WishListConcrete _wishListConcrete;
+        int ID;
 
 		public ShoppingController()
 		{
@@ -22,6 +23,7 @@ namespace CoffeeLand_UI.Controllers
 			_coffeeConcrete = new CoffeeConcrete();
 			_orderDetailConcrete = new OrderDetailConcrete();
 			_wishListConcrete = new WishListConcrete();
+            ID = (Session["OnlineKullanici"] as Customer).ID;
 		}
 
 
@@ -38,14 +40,14 @@ namespace CoffeeLand_UI.Controllers
 			Coffee coffee = _coffeeConcrete._coffeeRepository.GetById(id);
 			Order order = new Order()
 			{
-				CustomerID = "1", //TODO: userıd eklenecek, dinamik hale getirilecek
+				CustomerID = ID, //TODO: userıd eklenecek, dinamik hale getirilecek
 				OrderDate = DateTime.Now,
 				TotalPrice = miktar * coffee.Price
 			};
 			_orderConcrete._orderRepository.Insert(order);
 
 			// TODO: userıd eklenecek, dinamik hale getirilecek
-			OrderDetail od = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.CoffeeID == id && x.OrderOfOrderDetail.CustomerID == "1" && x.IsCompleted == false);
+			OrderDetail od = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.CoffeeID == id && x.OrderOfOrderDetail.CustomerID == ID && x.IsCompleted == false);
 
 			if (od == null) //yeni kayıt yaptırıyoruz
 			{
@@ -85,14 +87,14 @@ namespace CoffeeLand_UI.Controllers
             OrderDate eklenebilir
             Update işlemi için stock kullanılıcak database güncellenicek coffee için
             */
-			OrderDetail od = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.OrderOfOrderDetail.CustomerID == "1" && x.IsCompleted == false && x.CoffeeID == id);
+			OrderDetail od = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.OrderOfOrderDetail.CustomerID == ID && x.IsCompleted == false && x.CoffeeID == id);
 
 			if (od == null)
 			{
 				od = new OrderDetail();
 
 				od.CoffeeID = id;
-				od.OrderOfOrderDetail.CustomerID = "1";//Dinamik olucak
+				od.OrderOfOrderDetail.CustomerID = ID;//Dinamik olucak
 				od.IsCompleted = false;
 				od.UnitPrice = _orderDetailConcrete._orderDetailRepository.GetById(id).CoffeeOfOrderDetail.Price;
 				od.UnitPrice = od.Quantity * od.UnitPrice;
@@ -111,14 +113,14 @@ namespace CoffeeLand_UI.Controllers
 		public void ControlWishList(int id)
 		{
 			// TODO: userıd eklenecek, dinamik hale getirilecek
-			WishList wl = _wishListConcrete._wishListRepository.GetAll().FirstOrDefault(x => x.CoffeeID == id && x.CustomerID == "1" && x.IsActive == true);
+			WishList wl = _wishListConcrete._wishListRepository.GetAll().FirstOrDefault(x => x.CoffeeID == id && x.CustomerID == ID && x.IsActive == true);
 
 			if (wl == null)
 			{
 				wl = new WishList()
 				{
 					CoffeeID = id,
-					CustomerID = "1", //TODO: userıd eklenecek, dinamik hale getirilecek
+					CustomerID = ID, //TODO: userıd eklenecek, dinamik hale getirilecek
 					IsActive = true
 				};
 				_wishListConcrete._wishListRepository.Insert(wl);
@@ -130,13 +132,13 @@ namespace CoffeeLand_UI.Controllers
 		public ActionResult CartList()
 		{
 			//TODO: userıd eklenecek, dinamik hale getirilecek
-			return View(_orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == "1" && x.IsCompleted == false).ToList());
+			return View(_orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == ID && x.IsCompleted == false).ToList());
 		}
 
 		public ActionResult WishList()
 		{
 			//TODO: userıd eklenecek, dinamik hale getirilecek
-			return View(_wishListConcrete._wishListRepository.GetAll().Where(x => x.CustomerID == "1" && x.IsActive == true).ToList());
+			return View(_wishListConcrete._wishListRepository.GetAll().Where(x => x.CustomerID == ID && x.IsActive == true).ToList());
 		}
 
 
@@ -166,7 +168,7 @@ namespace CoffeeLand_UI.Controllers
 		public ActionResult Orders(string id)
 		{
 			//Todo:CustomerId içeriye alıp burdan yönlendiricez return ün içini dinamikleştiricez			
-			return View(_orderConcrete._orderRepository.GetAll().Where(x => x.CustomerID == "1").ToList());
+			return View(_orderConcrete._orderRepository.GetAll().Where(x => x.CustomerID == 1).ToList());
 		}
 
 

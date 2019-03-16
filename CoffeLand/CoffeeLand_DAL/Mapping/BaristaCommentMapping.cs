@@ -8,19 +8,19 @@ using CoffeeLand_DATA.Classes;
 
 namespace CoffeeLand_DAL.Mapping
 {
-   public class BaristaCommentMapping:EntityTypeConfiguration<BaristaComment>
+    public class BaristaCommentMapping : EntityTypeConfiguration<BaristaComment>
     {
         public BaristaCommentMapping()
         {
             HasKey(x => x.ID);
             Property(x => x.Comment).HasColumnType("nvarchar");
             Property(x => x.Point).HasColumnType("tinyint");
-			Property(x => x.BaristaCommentDate).HasColumnType("datetime2");
+            Property(x => x.BaristaCommentDate).HasColumnType("datetime2");
 
 
             HasRequired(x => x.BaristaOfBaristaComment).WithMany(x => x.BaristaComments).HasForeignKey(x => x.BaristaID);
 
-            HasRequired(x => x.UserOfBaristaComment).WithMany(x => x.BaristaCommentsOfUser).HasForeignKey(x => x.CustomerID);
+            HasRequired(x => x.CustomerOfBaristaComment).WithMany(x => x.BaristaCommentsOfCustomer).HasForeignKey(x => x.CustomerID);
         }
     }
 }

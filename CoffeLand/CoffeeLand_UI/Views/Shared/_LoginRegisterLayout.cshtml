@@ -1,0 +1,53 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <script src="~/Areas/Admin/Scripts/chart-master/Chart.js"></script>
+
+    <link href="~/Areas/Admin/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/Content/style.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/style-responsive.css" rel="stylesheet" />
+   
+    <link href="~/Content/Index/style.css" rel="stylesheet" media="screen" />
+</head>
+<body>
+    <div id="container" class="without-padding">
+        <header class="clearfix" id="main-header">
+            <div class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                            <img src="~/images/Index/logo.svg" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div id="login-page">
+        @RenderBody()
+    </div>
+
+    <script src="~/Areas/Admin/Scripts/jquery.js"></script>
+    <script src="~/Areas/Admin/Scripts/bootstrap.min.js"></script>
+
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script src="~/Areas/Admin/Scripts/jquery.backstretch.min.js"></script>
+    <script>
+        $.backstretch("/images/Index/CoffeShopBG.jpg", { speed: 500 });
+    </script>
+</body>
+</html>

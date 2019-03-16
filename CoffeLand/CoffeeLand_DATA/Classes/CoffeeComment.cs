@@ -9,14 +9,20 @@ namespace CoffeeLand_DATA.Classes
     public class CoffeeComment
     {
         public int ID { get; set; }
+
         public string Comment { get; set; }
+
         public byte Point { get; set; }
+
 		public DateTime CoffeeCommentDate { get; set; }
+
 
 		public int CoffeeID { get; set; }
         public virtual Coffee CoffeeOfCoffeeComment { get; set; }
 
-        public string CustomerID { get; set; }
-        public virtual Customer UserOfCoffeeComment { get; set; }
+        public int CustomerID { get; set; }
+        public virtual Customer CustomerOfCoffeeComment { get; set; }
+
+
     }
 }

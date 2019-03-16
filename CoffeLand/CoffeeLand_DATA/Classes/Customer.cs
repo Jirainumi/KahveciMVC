@@ -9,18 +9,29 @@ namespace CoffeeLand_DATA.Classes
 {
     public class Customer
     {
-        [ForeignKey("ApplicationUser")]
-        public string ID { get; set; }
+
+        public int ID { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public bool Gender { get; set; }
+
+        public DateTime BirthDate { get; set; }
 
         public string UserName { get; set; }
 
         public string Password { get; set; }
 
 
-        public virtual ApplicationUser ApplicationUser{ get; set; }
-        public virtual List<Order> OrdersOfUser { get; set; }
-        public virtual List<CoffeeComment> CoffeeCommentsOfUser { get; set; }
-        public virtual List<BaristaComment> BaristaCommentsOfUser { get; set; }
+
+        public int AuthorizationID { get; set; }
+        public virtual Authorization AuthorizationsOfCustomer { get; set; }
+
+        public virtual List<Order> OrdersOfCustomer { get; set; }
+        public virtual List<CoffeeComment> CoffeeCommentsOfCustomer { get; set; }
+        public virtual List<BaristaComment> BaristaCommentsOfCustomer { get; set; }
         public virtual List<WishList> WishLists { get; set; }
     }
 }

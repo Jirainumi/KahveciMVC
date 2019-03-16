@@ -9,8 +9,11 @@ namespace CoffeeLand_DATA.Classes
     public class OrderDetail
     {
         public int ID { get; set; }
+
         public decimal UnitPrice { get; set; }
+
         public short Quantity { get; set; }
+
         public bool IsCompleted { get; set; }
 
 

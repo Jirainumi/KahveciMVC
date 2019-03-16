@@ -16,8 +16,8 @@ namespace CoffeeLand_DATA.Classes
 
 
 
-        public string CustomerID { get; set; }
-        public virtual Customer User { get; set; }
+        public int CustomerID { get; set; }
+        public virtual Customer Customer { get; set; }
 
 
         public int CoffeeID { get; set; }

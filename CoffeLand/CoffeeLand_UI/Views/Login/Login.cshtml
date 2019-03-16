@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginRegisterLayout.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-login", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h2 class="form-login-heading">Giriş Yapınız</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="login-wrap">
+            <div class="form-group">
+                <input type="text" required name="username" placeholder="Kullanıcı Adı" class="form-control" />
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <input type="password" required name="password" placeholder="Şifre" class="form-control" />
+            </div>
+
+            <br />
+
+            @*@Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+            <br>
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+            <br />*@
+
+            <button type="submit" class="btn btn-theme btn-block"><i class="fa fa-lock"></i> Giriş Yap</button>
+
+            <br />
+
+            <div class="registration">
+                Henüz bir hesabınız yok mu ?<br />
+                <a class="" href="@Url.Action("Register","Login")" style="font-size:12pt">
+                    Hesap Oluştur
+                </a>
+            </div>
+        </div>
+    }
+</div>
+

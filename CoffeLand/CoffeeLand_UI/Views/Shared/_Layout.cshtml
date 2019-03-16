@@ -1,245 +1,285 @@
 ﻿
 @{
-	Layout = null;
+    Layout = null;
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-	<link rel="shortcut icon" href="~/images/favicon.ico" />
-	<title>CoffeLand</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <link rel="shortcut icon" href="~/images/favicon.ico" />
+    <title>CoffeLand</title>
 
-	<link href="~/Content/bootstrap.min.css" rel="stylesheet" media="all" />
-	<link href="~/Content/settings.css" rel="stylesheet" media="all" />
-	<link href="~/Content/prettyPhoto.css" rel="stylesheet" media="all" />
-	<link href="~/Content/magnific-popup.css" rel="stylesheet" media="all" />
-	<link href="~/Content/font-awesome.min.css" rel="stylesheet" media="all" />
-	<link href="~/Content/elegantIcon.css" rel="stylesheet" media="all" />
-	<link href="~/Content/owl.carousel.css" rel="stylesheet" media="all" />
-	<link href="~/Content/owl.theme.css" rel="stylesheet" media="all" />
-	<link href="http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
-	<link href="~/Content/style.css" rel="stylesheet" media="all" />
-	<link href="~/Content/custom.css" rel="stylesheet" media="all" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" media="all" />
+    <link href="~/Content/settings.css" rel="stylesheet" media="all" />
+    <link href="~/Content/prettyPhoto.css" rel="stylesheet" media="all" />
+    <link href="~/Content/magnific-popup.css" rel="stylesheet" media="all" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" media="all" />
+    <link href="~/Content/elegantIcon.css" rel="stylesheet" media="all" />
+    <link href="~/Content/owl.carousel.css" rel="stylesheet" media="all" />
+    <link href="~/Content/owl.theme.css" rel="stylesheet" media="all" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet" media="all" />
+    <link href="~/Content/custom.css" rel="stylesheet" media="all" />
 </head>
 <body>
-	<div class="noo-spinner">
-		<div class="sk-rotating-plane"></div>
-	</div>
-	<div class="site">
-		<header class="noo-header fixed_top header-1">
-			<div class="navbar-wrapper">
-				<div class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-logo">
-							<a href="index.html" class="custom-logo-link">
-								<img src="images/logo.png" alt="Logo" />
-							</a>
-							<button data-target=".nav-collapse" class="btn-navbar noo_icon_menu icon_menu"></button>
-						</div>
-						<nav class="noo-main-menu">
-							<ul class="nav-collapse navbar-nav">
-								<li class="menu-item-has-children">
-									<a href="#">Coffee</a>
-									<ul class="sub-menu">
-										<li>@Html.ActionLink("Ana Sayfa", "Index", "Home")</li>
-										<li>@Html.ActionLink("Espresso Bazlı İçeceklerimiz", "Coffee", "Coffee", new { id = 1 }, null)</li>
-										<li>@Html.ActionLink("Filtre Kahve", "Coffee", "Coffee", new { id = 2 }, null)</li>
-										<li>@Html.ActionLink("Türk Kahvesi", "Coffee", "Coffee", new { id = 3 }, null)</li>
-										<li>@Html.ActionLink("Frappuccino® Blended Beverages", "Coffee", "Coffee", new { id = 4 }, null)</li>
-										<li>@Html.ActionLink("Sıcak Çikolata", "Coffee", "Coffee", new { id = 5 }, null)</li>
-										<li>@Html.ActionLink("Çaylarımız", "Coffee", "Coffee", new { id = 6 }, null)</li>
-										<li>@Html.ActionLink("Portakal Suyu", "Coffee", "Coffee", new { id = 7 }, null)</li>
-									</ul>
-								</li>
-								<li class="menu-item-has-children">
-									@* TODO: userıd eklenecek, dinamik hale getirilecek *@
-									<a href="@Url.Action("CartList","Shopping", new { id=1})">
-										Sepete Git
-										<span class="badge">
-											@{
-												var _orderDetailConcrete = new CoffeeLand_BLL.Repository.Concrete.OrderDetailConcrete();
-												var _wishListConcrete = new CoffeeLand_BLL.Repository.Concrete.WishListConcrete();
-											}
+    @{
+        var _orderDetailConcrete = new CoffeeLand_BLL.Repository.Concrete.OrderDetailConcrete();
+        var _wishListConcrete = new CoffeeLand_BLL.Repository.Concrete.WishListConcrete();
+        var ID = 0;
+        if (Session["OnlineKullanici"] != null)
+        {
+            ID = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).ID;
+        }
 
-											@* TODO: userıd eklenecek, dinamik hale getirilecek *@
-											@_orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == "1" && x.IsCompleted == false).ToList().Count
-										</span>
-									</a>
-								</li>
-								<li class="menu-item-has-children">
-									<a href="@Url.Action("WishList","Shopping")">
-									İstek Listesini Gör
-										<span class="badge">
-											@* TODO: userıd eklenecek, dinamik hale getirilecek *@
-											@_wishListConcrete._wishListRepository.GetAll().Where(x => x.CustomerID == "1" && x.IsActive == true).ToList().Count
-										</span>
-									</a>
-									
-								</li>
-								<li><a href="contact-us.html">Contact</a></li>
-							</ul>
-						</nav>
-						<div class="navbar-meta">
-							<ul>
-								<li><a class="noo-search icon_search" href="#"></a></li>
-								<li>
-									<a class="noo-wishlist icon_heart_alt" href="wishlist.html"></a>
-								</li>
-								<li class="noo-menu-item-cart minicart">
-									<a class="cart-button" href="#">
-										<span class="cart-item">
-											<i class="icon_bag_alt"></i>
-											<span class="cart-count">0</span>
-											<span class="cart-name-and-total">
-												Cart(0)
-											</span>
-										</span>
-									</a>
-									<div class="noo-minicart">
-										<div class="minicart-header">Your shopping bag is empty.</div>
-										<div class="minicart-footer">
-											<div class="minicart-actions clearfix">
-												<a class="button pull-left" href="shop.html">
-													<span class="text">Go to the shop</span>
-												</a>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="search-header">
-				<div class="remove-form"></div>
-				<div class="container">
-					<form class="form-horizontal noo-umbra-searchform">
-						<label class="note-search">Type and Press Enter to Search</label>
-						<input type="search" name="s" class="form-control" value="" placeholder="Enter keyword to search..." />
-						<button type="submit" class="noo-search-submit"><i class="icon_search"></i></button>
-					</form>
-				</div>
-			</div>
-		</header>
-		<div id="main">
-			@RenderBody()
-		</div>
-		<footer class="wrap-footer">
-			<div class="footer-top pb-5">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-3 col-sm-6 footer-item">
-							<div class="widget widget-noo-infomation">
-								<h4 class="widget-title">Umbra Furniture</h4>
-								<p class="info-desc">
-									We are a global housewares product design company. We bring thought and creativity to everyday items through original design.
-								</p>
-								<ul class="noo-infomation-attr">
-									<li>
-										<span class="text-icon">A</span>
-										<address>1001 Milacian Crest Street, Paris France </address>
-									</li>
-									<li>
-										<span class="text-icon">T</span>
-										<a href="#">+(084) 888 - 6789</a>
-									</li>
-									<li>
-										<span class="text-icon">M</span>
-										<a class="phone-text" href="mailto:Contact@Umbra.com" target="_top">Contact@Umbra.com</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 footer-item">
-							<div class="widget">
-								<h4 class="widget-title">Opening Time</h4>
-								<ul class="noo-opening-time">
-									<li>
-										Mon - Fri: 8AM - 10PM
-									</li>
-									<li>
-										Sat: 9AM-8PM
-									</li>
-									<li>
-										Sun: Closed
-									</li>
-									<li>
-										We Work All The Holidays
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 footer-item">
-							<div class="widget widget_nav_menu">
-								<h4 class="widget-title">About</h4>
-								<ul class="menu">
-									<li><a href="#">About Us</a></li>
-									<li><a href="#">Shopping Guide</a></li>
-									<li><a href="#">Delivery Information</a></li>
-									<li><a href="#">Privacy Policy</a></li>
-									<li><a href="#">Our Store</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 footer-item">
-							<div class="widget widget_nav_menu">
-								<h4 class="widget-title">Account</h4>
-								<ul class="menu">
-									<li><a href="#">My Account</a></li>
-									<li><a href="#">Wishlist</a></li>
-									<li><a href="#">Order Tracking</a></li>
-									<li><a href="#">Shipping Info</a></li>
-									<li><a href="#">Return Policy</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="footer-bottom pb-5 text-center">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-12">
-							<a href="#"><img src="images/payment_logo.png" alt="" /></a>
-							<p class="mt-1">@@ 2016. Developed by TK-Themes</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
+        var sepettekiSayi = _orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == ID && x.IsCompleted == false).ToList().Count;
 
-		<a href="#" class="go-to-top hidden-print"><i class="fa fa-angle-up"></i></a>
+        var istektekiSayi = _wishListConcrete._wishListRepository.GetAll().Where(x => x.CustomerID == ID && x.IsActive == true).ToList().Count;
+    }
 
-		<script src="~/Scripts/jquery.min.js"></script>
-		<script src="~/Scripts/jquery.migrate.js"></script>
-		<script src="~/Scripts/bootstrap.min.js"></script>
-		<script src="~/Scripts/jquery.themepunch.tools.min.js"></script>
-		<script src="~/Scripts/jquery.themepunch.revolution.min.js"></script>
-		<script src="~/Scripts/modernizr-2.7.1.min.js"></script>
-		<script src="~/Scripts/jquery.prettyPhoto.js"></script>
-		<script src="~/Scripts/jquery.prettyPhoto.init.min.js"></script>
-		<script src="~/Scripts/jquery.magnific-popup.js"></script>
-		<script src="~/Scripts/off-cavnas.js"></script>
-		<script src="~/Scripts/imagesloaded.pkgd.min.js"></script>
-		<script src="~/Scripts/owl.carousel.min.js"></script>
-		<script src="~/Scripts/jquery.countdown.min.js"></script>
-		<script src="~/Scripts/script.js"></script>
+    <div class="noo-spinner">
+        <div class="sk-rotating-plane"></div>
+    </div>
+    <div class="site">
+        <header class="noo-header fixed_top header-1">
+            <div class="navbar-wrapper">
+                <div class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-logo">
+                            <a class="custom-logo-link" href="@Url.Action("Index","Home")">
+                                <img src="~/images/Index/logo.svg" />
+                            </a>
+                            <button data-target=".nav-collapse" class="btn-navbar noo_icon_menu icon_menu"></button>
+                        </div>
+                        <nav class="noo-main-menu">
+                            <ul class="nav-collapse navbar-nav">
+                                <li class="menu-item-has-children">
+                                    <a href="#">Coffee</a>
+                                    <ul class="sub-menu">
+                                        <li>@Html.ActionLink("Ana Sayfa", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("Espresso Bazlı İçeceklerimiz", "Coffee", "Coffee", new { id = 1 }, null)</li>
+                                        <li>@Html.ActionLink("Filtre Kahve", "Coffee", "Coffee", new { id = 2 }, null)</li>
+                                        <li>@Html.ActionLink("Türk Kahvesi", "Coffee", "Coffee", new { id = 3 }, null)</li>
+                                        <li>@Html.ActionLink("Frappuccino® Blended Beverages", "Coffee", "Coffee", new { id = 4 }, null)</li>
+                                        <li>@Html.ActionLink("Sıcak Çikolata", "Coffee", "Coffee", new { id = 5 }, null)</li>
+                                        <li>@Html.ActionLink("Çaylarımız", "Coffee", "Coffee", new { id = 6 }, null)</li>
+                                        <li>@Html.ActionLink("Portakal Suyu", "Coffee", "Coffee", new { id = 7 }, null)</li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="@Url.Action("CartList","Shopping", new { id = ID})">
+                                        Sepete Git
+                                        <span class="badge">
+
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="@Url.Action("WishList","Shopping")">
+                                        İstek Listesini Gör
+                                        <span class="badge">
+
+                                        </span>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="contact-us.html">Contact</a> @* TODO: Contact sayfası yapılacak *@
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="navbar-meta">
+                            <ul>
+                                @{
+                                    if (Session["OnlineKullanici"] == null)
+                                    {
+                                        <li>
+                                            <a class="noo-loop-cart icon_profile" href="@Url.Action("Login","Login")"></a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <span id="email-span">@* TO-DO Online Olan kişinin emaili yazıcak*@</span>
+                                                <span class="noo-loop-cart icon_profile"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="#">
+                                                        @* TODO: Password reset yapılacak *@
+                                                        Şifre Değiştir
+                                                        <span class="icon_cog"></span>
+                                                    </a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="@Url.Action("LogOut","Login")">
+                                                        Çıkış Yap
+                                                        <span class="icon_close"></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a class="cart-button" href="@Url.Action("WishList","Shopping")">
+                                                <span class="cart-item">
+                                                    <i class="icon_heart_alt"></i>
+                                                    <span class="cart-count">@istektekiSayi</span>
+
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class="noo-menu-item-cart minicart">
+                                            <a class="cart-button" href="#">
+                                                <span class="cart-item">
+                                                    <i class="icon_bag_alt"></i>
+                                                    <span class="cart-count">@sepettekiSayi</span>
+                                                    <span class="cart-name-and-total">
+                                                        Cart(0)
+                                                    </span>
+                                                </span>
+                                            </a>
+                                            <div class="noo-minicart">
+                                                <div class="minicart-header">Your shopping bag is empty.</div>
+                                                <div class="minicart-body">
+                                                    @* TODO: Mini Sepet Görüntüsü eklenecek *@
+                                                </div>
+                                                <div class="minicart-footer">
+                                                    <div class="minicart-actions clearfix">
+                                                        <a class="button pull-left" href="#">
+                                                            <span class="text">Go to the shop</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="main">
+            @RenderBody()
+        </div>
+        <footer class="wrap-footer">
+            <div class="footer-top pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 footer-item">
+                            <div class="widget widget-noo-infomation">
+                                <h4 class="widget-title">Umbra Furniture</h4>
+                                <p class="info-desc">
+                                    We are a global housewares product design company. We bring thought and creativity to everyday items through original design.
+                                </p>
+                                <ul class="noo-infomation-attr">
+                                    <li>
+                                        <span class="text-icon">A</span>
+                                        <address>1001 Milacian Crest Street, Paris France </address>
+                                    </li>
+                                    <li>
+                                        <span class="text-icon">T</span>
+                                        <a href="#">+(084) 888 - 6789</a>
+                                    </li>
+                                    <li>
+                                        <span class="text-icon">M</span>
+                                        <a class="phone-text" href="mailto:Contact@Umbra.com" target="_top">Contact@Umbra.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 footer-item">
+                            <div class="widget">
+                                <h4 class="widget-title">Opening Time</h4>
+                                <ul class="noo-opening-time">
+                                    <li>
+                                        Mon - Fri: 8AM - 10PM
+                                    </li>
+                                    <li>
+                                        Sat: 9AM-8PM
+                                    </li>
+                                    <li>
+                                        Sun: Closed
+                                    </li>
+                                    <li>
+                                        We Work All The Holidays
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 footer-item">
+                            <div class="widget widget_nav_menu">
+                                <h4 class="widget-title">About</h4>
+                                <ul class="menu">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Shopping Guide</a></li>
+                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Our Store</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 footer-item">
+                            <div class="widget widget_nav_menu">
+                                <h4 class="widget-title">Account</h4>
+                                <ul class="menu">
+                                    <li><a href="#">My Account</a></li>
+                                    <li><a href="#">Wishlist</a></li>
+                                    <li><a href="#">Order Tracking</a></li>
+                                    <li><a href="#">Shipping Info</a></li>
+                                    <li><a href="#">Return Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom pb-5 text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a href="#"><img src="images/payment_logo.png" alt="" /></a>
+                            <p class="mt-1">@@ 2016. Developed by TK-Themes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <a href="#" class="go-to-top hidden-print"><i class="fa fa-angle-up"></i></a>
+
+        <script src="~/Scripts/jquery.min.js"></script>
+        <script src="~/Scripts/jquery.migrate.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/jquery.themepunch.tools.min.js"></script>
+        <script src="~/Scripts/jquery.themepunch.revolution.min.js"></script>
+        <script src="~/Scripts/modernizr-2.7.1.min.js"></script>
+        <script src="~/Scripts/jquery.prettyPhoto.js"></script>
+        <script src="~/Scripts/jquery.prettyPhoto.init.min.js"></script>
+        <script src="~/Scripts/jquery.magnific-popup.js"></script>
+        <script src="~/Scripts/off-cavnas.js"></script>
+        <script src="~/Scripts/imagesloaded.pkgd.min.js"></script>
+        <script src="~/Scripts/owl.carousel.min.js"></script>
+        <script src="~/Scripts/jquery.countdown.min.js"></script>
+        <script src="~/Scripts/script.js"></script>
 
 
-		<script src="~/Scripts/extensions/revolution.extension.video.min.js"></script>
-		<script src="~/Scripts/extensions/revolution.extension.slideanims.min.js"></script>
-		<script src="~/Scripts/extensions/revolution.extension.actions.min.js"></script>
-		<script src="~/Scripts/extensions/revolution.extension.layeranimation.min.js"></script>
-		<script src="~/Scripts/extensions/revolution.extension.kenburn.min.js"></script>
-		<script src="~/Scripts/extensions/revolution.extension.navigation.min.js"></script>
-		<script src="~/Scripts/extensions/revolution.extension.migration.min.js"></script>
-		<script src="~/Scripts/extensions/revolution.extension.parallax.min.js"></script>
+        <script src="~/Scripts/extensions/revolution.extension.video.min.js"></script>
+        <script src="~/Scripts/extensions/revolution.extension.slideanims.min.js"></script>
+        <script src="~/Scripts/extensions/revolution.extension.actions.min.js"></script>
+        <script src="~/Scripts/extensions/revolution.extension.layeranimation.min.js"></script>
+        <script src="~/Scripts/extensions/revolution.extension.kenburn.min.js"></script>
+        <script src="~/Scripts/extensions/revolution.extension.navigation.min.js"></script>
+        <script src="~/Scripts/extensions/revolution.extension.migration.min.js"></script>
+        <script src="~/Scripts/extensions/revolution.extension.parallax.min.js"></script>
 
-	</div>
+    </div>
 </body>
 </html>
