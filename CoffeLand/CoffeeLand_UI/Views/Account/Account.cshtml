@@ -1,0 +1,102 @@
+﻿@model CoffeeLand_DATA.Classes.Customer
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-single">
+    <div class="container">
+        <div class="row ipad-width">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="user-information">
+                    <div class="user-img">
+                        <a href="#"><img src="~/images/avatar/avatar_1.jpg" /><br></a>
+                        <a href="#" class="redbtn">Change avatar</a>
+
+                    </div>
+                    <div class="user-fav">
+                        <p>Hesabım</p>
+                        <ul>
+                            <li><a href="@Url.Action("Account","Account", new { username = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).UserName})">Kişisel Bilgilerim</a></li>
+                        </ul>
+                    </div>
+                    <div class="user-fav">
+                        <ul>
+                            <li><a href="@Url.Action("LogOut","Login")">Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-12 col-xs-12">
+                <div class="form-style-1 user-pro" action="">
+                    @using (Html.BeginForm("ProfileUpdate", "Account", FormMethod.Post))
+                    {
+                    <form action="" class="user">
+                        <h4>Profil Bilgileri</h4>
+                        <div class="row">
+                            <div class="form-it">
+                                <label>Kullanıcı Adı</label>
+                                <input type="text" name="username" placeholder="Kullanıcı Adı" value="@Model.UserName" readonly >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-it">
+                                <label>İsim</label>
+                                <input type="text" name="firstname" placeholder="İsminiz" value="@Model.FirstName" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-it">
+                                <label>Soyisim</label>
+                                <input type="text" name="lastname" placeholder="Soyisminiz" value="@Model.LastName" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-it">
+                                <label>Doğum Tarihi</label>
+                                <input type="date" name="birthdate" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+                                <input class="submit" type="submit" value="Güncelle">
+                            </div>
+                        </div>
+                    </form>
+                    }
+                    @using (Html.BeginForm("ChangePassword", "Account", FormMethod.Post))
+                    {
+                        <form action="" class="password">
+                            <h4>Şifre Değiştir</h4>
+                            <div class="row">
+                                <div class="form-it">
+                                    <label>Şuanki Şifre</label>
+                                    <input type="text" name="oldpassword" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-it">
+                                    <label>Yeni Şifre</label>
+                                    <input type="text" name="newpassword" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-it">
+                                    <label>Yeni Şifre Tekrar</label>
+                                    <input type="text" name="confirmnewpassword" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+                                    <input class="submit" type="submit" value="Değiştir">
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

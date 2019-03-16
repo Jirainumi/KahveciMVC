@@ -24,6 +24,7 @@
     <link href="http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
     <link href="~/Content/style.css" rel="stylesheet" media="all" />
     <link href="~/Content/custom.css" rel="stylesheet" media="all" />
+    <link href="~/Content/profileStyle.css" rel="stylesheet" />
 </head>
 <body>
     @{
@@ -101,8 +102,7 @@
                                             </a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <a href="#">
-                                                        @* TODO: Profilim sayfası yapılacak *@
+                                                    <a href="@Url.Action("Account","Account", new { username = username})">
                                                         Profilim
                                                         <span class="icon_cog"></span>
                                                     </a>
@@ -159,7 +159,8 @@
                                                 </div>
                                                 <div class="minicart-footer">
                                                     <div class="minicart-actions clearfix">
-                                                        <a class="button pull-left" href="#"> @* TODO: Kahvelerin Listelencek olduğu shop sayfasına yönlendirlicek *@
+                                                        <a class="button pull-left" href="#">
+                                                            @* TODO: Kahvelerin Listelencek olduğu shop sayfasına yönlendirlicek *@
 
                                                             @{
                                                                 if (sepettekiSayi == 0)
@@ -185,6 +186,17 @@
                 </div>
             </div>
         </header>
+        <div class="noo-page-heading cart-heading">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="noo-heading-content">
+                            <h1 class="page-title">@ViewBag.PageWord</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="main">
             @RenderBody()
         </div>
@@ -285,7 +297,7 @@
         <script src="~/Scripts/owl.carousel.min.js"></script>
         <script src="~/Scripts/jquery.countdown.min.js"></script>
         <script src="~/Scripts/script.js"></script>
-
+        <script src="~/Scripts/jquery.js"></script>
 
         <script src="~/Scripts/extensions/revolution.extension.video.min.js"></script>
         <script src="~/Scripts/extensions/revolution.extension.slideanims.min.js"></script>

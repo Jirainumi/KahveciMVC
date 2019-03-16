@@ -1,0 +1,374 @@
+.user-information {
+    border: 3px solid #0f2133;
+    margin-right: 30px;
+    margin-top: -200px;
+    background-color: antiquewhite;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+@media (max-width: 991px) {
+    .user-information {
+        margin-right: 0;
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 767px) {
+    .user-information {
+        margin-top: 0;
+    }
+}
+
+.user-information .user-img {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 30px 0 20px 0;
+}
+
+    .user-information .user-img img {
+        margin-bottom: 30px;
+    }
+
+.user-information ul {
+    padding: 0 25px;
+}
+
+    .user-information ul li {
+        margin-bottom: 15px;
+    }
+
+        .user-information ul li a {
+            font-family: 'Dosis', sans-serif;
+            font-size: 14px;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+            .user-information ul li a:hover {
+                color: red;
+            }
+
+        .user-information ul li.active a {
+            color: red;
+        }
+
+.user-information .user-fav {
+    border-top: 1px solid black;
+    padding: 25px 0;
+}
+
+    .user-information .user-fav p {
+        padding-left: 25px;
+    }
+
+.buster-light .user-information {
+    background-color: #e4eaf0;
+    border: none;
+}
+
+    .buster-light .user-information .user-fav {
+        border-color: black;
+    }
+
+    .buster-light .user-information ul li a {
+        color: #020d18;
+    }
+
+        .buster-light .user-information ul li a:hover {
+            color: #dd003f;
+        }
+
+    .buster-light .user-information ul li.active a {
+        color: #dd003f;
+    }
+
+.form-style-1 {
+    margin-bottom: 60px;
+    background-color: white;
+    border: 3px solid black;
+    padding: 15px;
+}
+
+    .form-style-1 .form-it {
+        margin-bottom: 15px;
+    }
+
+    .form-style-1 label {
+        font-family: 'Dosis', sans-serif;
+        font-size: 14px;
+        color: #abb7c4;
+        font-weight: bold;
+        text-transform: none;
+        margin-bottom: 10px;
+    }
+
+    .form-style-1 input,
+    .form-style-1 select {
+        font-family: 'Nunito', sans-serif;
+        font-size: 14px;
+        color: black;
+        font-weight: 300;
+        text-transform: none;
+        background-color: antiquewhite;
+        border: none;
+        -webkit-border-radius: 3px !important;
+        -moz-border-radius: 3px !important;
+        border-radius: 3px !important;
+        height: 40px;
+    }
+
+        .form-style-1 input::-webkit-input-placeholder {
+            color: black;
+        }
+
+    .form-style-1 select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /* Firefox */
+        background: url('../images/drop-icon.png') no-repeat right 20px center;
+        background-color: white;
+    }
+
+@media (max-width: 991px) {
+    .form-style-1 select {
+        margin-bottom: 30px;
+    }
+}
+
+.form-style-1 input.submit {
+    font-family: 'Dosis', sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #dd003f;
+    width: 100%;
+}
+
+.form-style-1 .group-ip {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: row;
+}
+
+    .form-style-1 .group-ip .ui.selection.dropdown,
+    .form-style-1 .group-ip .ui.multiple.dropdown .menu {
+        background-color: black;
+    }
+
+    .form-style-1 .group-ip .ui.multiple.dropdown > .text {
+        font-family: 'Nunito', sans-serif;
+        font-size: 12px;
+        color: #abb7c4;
+        font-weight: 300;
+        text-transform: none;
+        margin-top: 8px;
+    }
+
+    .form-style-1 .group-ip .ui.multiple.dropdown .menu > .item {
+        font-family: 'Nunito', sans-serif;
+        font-size: 12px;
+        color: #abb7c4;
+        font-weight: 300;
+        text-transform: none;
+        border-top: 1px solid #405266;
+    }
+
+    .form-style-1 .group-ip .ui.multiple.dropdown > .label {
+        font-family: 'Nunito', sans-serif;
+        font-size: 12px;
+        color: #ffffff;
+        font-weight: 300;
+        text-transform: none;
+        background-color: black;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        height: 30px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .form-style-1 .group-ip .ui.label > .close.icon,
+    .form-style-1 .group-ip .ui.label > .delete.icon {
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+        -webkit-opacity: 1;
+        opacity: 1;
+        -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+        filter: alpha(opacity=100);
+    }
+
+    .form-style-1 .group-ip .ui.dropdown > .dropdown.icon {
+        font-family: "Ionicons";
+        margin-top: -5px;
+    }
+
+    .form-style-1 .group-ip i.icon.dropdown:before {
+        content: "\f123";
+        color: #abb7c4;
+    }
+
+    .form-style-1 .group-ip i.icon.delete:before {
+        content: "\f12a";
+        font-family: "Ionicons";
+    }
+
+    .form-style-1 .group-ip .ui.label > .delete.icon {
+        font-size: 8px;
+    }
+
+.buster-light .form-style-1 {
+    background-color: black;
+    border: none;
+}
+
+    .buster-light .form-style-1 label {
+        color: #020d18;
+    }
+
+    .buster-light .form-style-1 input:not(.submit),
+    .buster-light .form-style-1 select:not(.submit) {
+        background-color: #fff;
+        color: #9ca9b7;
+        border: 1px solid #9ca9b7;
+    }
+
+    .buster-light .form-style-1 input::-webkit-input-placeholder {
+        color: #9ca9b7;
+    }
+
+    .buster-light .form-style-1 .group-ip .ui.selection.dropdown,
+    .buster-light .form-style-1 .ui.multiple.dropdown .menu {
+        background-color: #fff;
+        border-color: #9ca9b7;
+    }
+
+.user-pro {
+    padding: 30px;
+}
+
+    .user-pro h4 {
+        font-family: 'Dosis', sans-serif;
+        font-size: 14px;
+        color: black;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+    }
+
+    .user-pro input.submit {
+        -webkit-border-radius: 50px !important;
+        -moz-border-radius: 50px !important;
+        border-radius: 50px !important;
+    }
+
+    .user-pro .user {
+        padding-bottom: 30px;
+        border-bottom: 1px solid black;
+    }
+
+    .user-pro .password {
+        padding-top: 30px;
+    }
+
+.buster-light .user-pro .user {
+    border-color: #d0dae4;
+}
+
+.page-single {
+    background-color: white;
+    padding: 75px 0;
+}
+
+.buster-light .page-single {
+    background-color: black;
+}
+
+@media (max-width: 991px) {
+    .ipad-width {
+        max-width: 550px;
+        margin: 0 auto;
+    }
+}
+
+.landing-hero .redbtn {
+    display: inline-block;
+    width: 210px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
+
+    .landing-hero .redbtn:hover {
+        color: #fff;
+    }
+
+.landing-version .redbtn:hover {
+    color: #fff;
+}
+
+.redbtn {
+    font-family: 'Dosis', sans-serif;
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #dd003f;
+    color: #ffffff;
+    padding: 13px 25px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+    .redbtn i {
+        margin-right: 10px;
+    }
+
+.movie-single .movie-img .movie-btn .redbtn:hover,
+.movie-single .mv-ceb .movie-btn .redbtn:hover {
+    color: #ffffff;
+}
+
+.movie-single .movie-single-ct .tab .rv-hd .redbtn {
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.middle-content .redbtn {
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+}
+
+.left-content form input.redbtn {
+    border: none;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    position: absolute;
+    right: 0;
+    height: 42px;
+    padding-top: 10px;
+}
+
+.sliderv2 .movie-item .title-in .redbtn {
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    width: 130px;
+}
+
+    .sliderv2 .movie-item .title-in .redbtn:hover {
+        color: #ffffff;
+    }

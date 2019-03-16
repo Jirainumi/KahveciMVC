@@ -91,7 +91,7 @@ namespace CoffeeLand_UI.Controllers
         {
             Session["OnlineKullanici"] = null;
 
-            return Redirect(Tools.ReturnUrl);
+            return Redirect(Request.UrlReferrer.ToString());
         }
     }
 }
