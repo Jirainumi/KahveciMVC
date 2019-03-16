@@ -18,8 +18,12 @@ namespace CoffeeLand_UI.Controllers
 			_coffeeConcrete = new CoffeeConcrete();
 			_coffeeCommentConcrete = new CoffeeCommentConcrete();
 		}
+        public ActionResult Coffees()
+        {
+            return View(_coffeeConcrete._coffeeRepository.GetAll().ToList());
+        }
 
-		public ActionResult Coffee(int id)
+        public ActionResult Coffee(int id)
 		{	
 			return View(_coffeeConcrete._coffeeRepository.GetAll().Where(x => x.CategoryID == id).ToList());
 		}

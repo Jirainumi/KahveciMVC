@@ -617,6 +617,7 @@
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Account\Account.cshtml" />
+    <Content Include="Views\Coffee\Coffees.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
