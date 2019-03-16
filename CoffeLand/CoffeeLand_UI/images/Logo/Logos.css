@@ -1,0 +1,65 @@
+﻿.coffee-cup {
+    height: 40px;
+    width: 55px;
+   
+    position: relative;
+    top: 45%;
+    left: 45%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0px 0px 0px 5px white;
+}
+
+    .coffee-cup:hover {
+        cursor: pointer;
+        animation: fill 3s infinite;
+        background: url(../../images/Logo/indir.png);
+        background-repeat: repeat-x;
+        background-position: 0px 100px;
+    }
+
+
+
+@keyframes fill {
+    0% {
+        background-position: 0px 40px;
+    }
+
+    25% {
+        background-position: 100px 30px;
+    }
+
+    50% {
+        background-position: 200px 14px;
+    }
+
+    75% {
+        background-position: 360px -14px;
+    }
+
+    100% {
+        background-position: 0px 20px;
+    }
+}
+
+.handle {
+    height: 20px;
+    width: 14px;
+    border: 5px solid white;
+    position: relative;
+    left: 56px;
+    top: 2px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.yazi {
+    position: relative;
+    left: 80px;
+    /*font-family: 'Open Sans', sans-serif;
+        İsterseniz ana family bu buna geçebiliriz
+
+    */
+    font-family: 'Dancing Script', cursive;
+   color:white;
+    font-size: 1.4em;
+}

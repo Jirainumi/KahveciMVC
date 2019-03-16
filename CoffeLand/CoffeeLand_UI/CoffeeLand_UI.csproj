@@ -348,6 +348,9 @@
     <Content Include="images\image_1.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\Index\logo.svg" />
+    <Content Include="images\Logo\indir.png" />
+    <Content Include="images\Logo\LogoLayout.css" />
+    <Content Include="images\Logo\Logos.css" />
     <Content Include="images\next_ow.png" />
     <Content Include="images\partner\partner_1.png" />
     <Content Include="images\partner\partner_2.png" />
