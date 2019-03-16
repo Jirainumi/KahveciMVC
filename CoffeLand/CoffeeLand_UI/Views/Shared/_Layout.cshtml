@@ -57,9 +57,12 @@
                         <nav class="noo-main-menu">
                             <ul class="nav-collapse navbar-nav">
                                 <li class="menu-item-has-children">
-                                    <a href="#">Coffee</a>
+                                    @Html.ActionLink("Ana Sayfa", "Index", "Home")
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">Kahveler</a>
                                     <ul class="sub-menu">
-                                        <li>@Html.ActionLink("Ana Sayfa", "Index", "Home")</li>
+                                       
                                         <li>@Html.ActionLink("Espresso Bazlı İçeceklerimiz", "Coffee", "Coffee", new { id = 1 }, null)</li>
                                         <li>@Html.ActionLink("Filtre Kahve", "Coffee", "Coffee", new { id = 2 }, null)</li>
                                         <li>@Html.ActionLink("Türk Kahvesi", "Coffee", "Coffee", new { id = 3 }, null)</li>
@@ -87,7 +90,7 @@
 
                                 </li>
                                 <li>
-                                    <a href="contact-us.html">Contact</a> @* TODO: Contact sayfası yapılacak *@
+                                    <a href="@Url.Action("Contact","Home")">iletişim</a> @* TODO: Contact sayfası yapılacak *@
                                 </li>
                             </ul>
                         </nav>
@@ -145,14 +148,14 @@
                                                 </span>
                                             </a>
                                             <div class="noo-minicart">
-                                                <div class="minicart-header">Your shopping bag is empty.</div>
+                                                <div class="minicart-header">Sepetiniz Boş.</div>
                                                 <div class="minicart-body">
                                                     @* TODO: Mini Sepet Görüntüsü eklenecek *@
                                                 </div>
                                                 <div class="minicart-footer">
                                                     <div class="minicart-actions clearfix">
                                                         <a class="button pull-left" href="#">
-                                                            <span class="text">Go to the shop</span>
+                                                            <span class="text">Alışverişe Başla</span>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -175,66 +178,63 @@
                     <div class="row">
                         <div class="col-md-3 col-sm-6 footer-item">
                             <div class="widget widget-noo-infomation">
-                                <h4 class="widget-title">Umbra Furniture</h4>
+                                <h4 class="widget-title">CoffeeLand</h4>
                                 <p class="info-desc">
-                                    We are a global housewares product design company. We bring thought and creativity to everyday items through original design.
+                                    Biz küresel bir kahve şirketiyiz.Özgün kahveleerimizle ile geleneksel kahve kültürüne yeni solıuklar getiriyoruz.
                                 </p>
                                 <ul class="noo-infomation-attr">
                                     <li>
                                         <span class="text-icon">A</span>
-                                        <address>1001 Milacian Crest Street, Paris France </address>
+                                        <address>Zuhuratbaba Mahallesi, Bakırköy,İstanbul/Türkiye </address>
                                     </li>
                                     <li>
                                         <span class="text-icon">T</span>
-                                        <a href="#">+(084) 888 - 6789</a>
+                                        <a href="#">+21-555-555-5555</a>
                                     </li>
                                     <li>
                                         <span class="text-icon">M</span>
-                                        <a class="phone-text" href="mailto:Contact@Umbra.com" target="_top">Contact@Umbra.com</a>
+                                        <a class="phone-text" href="#" target="_top">coffeeLand@coffee.com</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6 footer-item">
                             <div class="widget">
-                                <h4 class="widget-title">Opening Time</h4>
+                                <h4 class="widget-title">Çalışma saatleri</h4>
                                 <ul class="noo-opening-time">
                                     <li>
-                                        Mon - Fri: 8AM - 10PM
+                                        Pazartesi - Cuma: 8:00 - 22:00
                                     </li>
                                     <li>
-                                        Sat: 9AM-8PM
+                                        Cumartesi: 9:00 - 20:00
                                     </li>
                                     <li>
-                                        Sun: Closed
+                                        Pazar: 9:00 - 20:00
                                     </li>
                                     <li>
-                                        We Work All The Holidays
+                                        Tüm Tatillerde Çalışıyoruz
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6 footer-item">
                             <div class="widget widget_nav_menu">
-                                <h4 class="widget-title">About</h4>
+                                <h4 class="widget-title">Hakkımızda</h4>
                                 <ul class="menu">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Shopping Guide</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Our Store</a></li>
+                                    <li><a href="@Url.Action("About","Home")">Biz Kimiz?</a></li>
+                                   
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6 footer-item">
                             <div class="widget widget_nav_menu">
-                                <h4 class="widget-title">Account</h4>
+                                <h4 class="widget-title">Hesabım</h4>
                                 <ul class="menu">
-                                    <li><a href="#">My Account</a></li>
-                                    <li><a href="#">Wishlist</a></li>
-                                    <li><a href="#">Order Tracking</a></li>
-                                    <li><a href="#">Shipping Info</a></li>
-                                    <li><a href="#">Return Policy</a></li>
+                                    <li><a href="#">Profil</a></li>
+                                    <li><a href="#">Sepet</a></li>
+                                    <li><a href="#">İstek Listesi</a></li>
+                                    <li><a href="#">Siparişler</a></li>
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -246,7 +246,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <a href="#"><img src="images/payment_logo.png" alt="" /></a>
-                            <p class="mt-1">@@ 2016. Developed by TK-Themes</p>
+                            <p class="mt-1">@@ 2016. Developed by Adsız</p>
                         </div>
                     </div>
                 </div>
