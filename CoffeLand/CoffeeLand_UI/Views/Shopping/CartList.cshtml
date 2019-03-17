@@ -28,7 +28,7 @@
 						<table class="cart wishlist-table">
 							<thead>
 								<tr>
-									<th class="product-remove"></th>
+									<th class="product-remove">Ürünü Sil</th>
 									<th class="product-thumbnail">Ürün Görseli</th>
 									<th class="product-name">Ürün Adı</th>
 									<th class="product-price">Fiyatı</th>
@@ -44,10 +44,12 @@
 										toplamTutar += item.OrderOfOrderDetail.TotalPrice;
 										<tr>
 											<td class="product-remove">
-												<a href="@Url.Action("RemoveFromCart","Shopping", new { id=item.OrderID})" style="font-size:25pt;"><span class="glyphicon glyphicon-trash" style="width:75px;height:75px;color:darkred"></span></a>
+												<a href="@Url.Action("RemoveFromCart","Shopping", new { id=item.OrderID})">
+													<span class="glyphicon glyphicon-shopping-cart" style="color:forestgreen;"></span>
+												</a>
 											</td>
 											<td class="product-thumbnail">
-												<img src="@Url.Content(item.CoffeeOfOrderDetail.ImageUrl)" alt="@Url.Content(item.CoffeeOfOrderDetail.AltText)" style="width:100px;height:130px;" />
+												<img src="@Url.Content(item.CoffeeOfOrderDetail.ImageUrl)" alt="@Url.Content(item.CoffeeOfOrderDetail.AltText)" style="width:100px;height:100px;" />
 											</td>
 											<td class="product-name">
 												<p class="lead">@item.CoffeeOfOrderDetail.CoffeeName</p>
@@ -65,7 +67,9 @@
 												}
 											</td>
 											<td class="product-add-to-cart">
-												<a href="@Url.Action("AddToWishListFromCart","Shopping", new { id=item.OrderID})"><span class="glyphicon glyphicon-heart" style="color:blueviolet;font-size:25pt;"></span> </a>
+												<a href="@Url.Action("AddToWishListFromCart","Shopping", new { id=item.OrderID})">
+													İstek Listesine Ekle
+												</a>
 											</td>
 										</tr>
 									}

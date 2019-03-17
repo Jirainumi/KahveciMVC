@@ -135,7 +135,7 @@ namespace CoffeeLand_UI.Controllers
                 wl = new WishList()
                 {
                     CoffeeID = id,
-                    CustomerID = (Session["OnlineKullanici"] as Customer).ID, //TODO: userıd eklenecek, dinamik hale getirilecek
+                    CustomerID = (Session["OnlineKullanici"] as Customer).ID, 
                     IsActive = true
                 };
                 _wishListConcrete._wishListRepository.Insert(wl);
@@ -167,8 +167,33 @@ namespace CoffeeLand_UI.Controllers
 
             return RedirectToAction("WishList", "Shopping");
         }
+		public ActionResult RemoveFromCart(int id)
+		{
+			Order order = _orderConcrete._orderRepository.GetById(id);
+			int orderID = order.ID;
+			OrderDetail orderDetail = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x=>x.OrderID==orderID);
+			int coffeeID = orderDetail.CoffeeID;
+			WishList wl = _wishListConcrete._wishListRepository.GetAll().FirstOrDefault(x => x.CoffeeID == coffeeID && x.CustomerID == (Session["OnlineKullanici"] as Customer).ID && x.IsActive == true);
+			if (wl == null)
+			{
+				wl = new WishList()
+				{
+					CoffeeID = id,
+					CustomerID = (Session["OnlineKullanici"] as Customer).ID,
+					IsActive = true
+				};
+				_wishListConcrete._wishListRepository.Insert(wl);
+			}
 
-        public ActionResult AddToCartFromWishList(int id)
+			_orderConcrete._orderRepository.Delete(order);
+			_orderDetailConcrete._orderDetailRepository.Delete(orderDetail);
+			_orderDetailConcrete._orderDetailUnitOfWork.SaveChanges();
+			_orderDetailConcrete._orderDetailUnitOfWork.Dispose();
+
+			return RedirectToAction("CartList", "Shopping");
+		}
+
+		public ActionResult AddToCartFromWishList(int id)
         {
             Coffee coffee = _coffeeConcrete._coffeeRepository.GetById(id);
             ControlCart(coffee.ID);
@@ -185,8 +210,36 @@ namespace CoffeeLand_UI.Controllers
             //Todo:CustomerId içeriye alıp burdan yönlendiricez return ün içini dinamikleştiricez			
             return View(_orderConcrete._orderRepository.GetAll().Where(x => x.CustomerID == (Session["OnlineKullanici"] as Customer).ID).ToList());
         }
+		public ActionResult AddToWishListFromCart(int id)
+		{
+			Order order = _orderConcrete._orderRepository.GetById(id);
+			int orderID = order.ID;
+			OrderDetail orderDetail = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.OrderID == orderID);
+
+			_orderConcrete._orderRepository.Delete(order);
+			_orderDetailConcrete._orderDetailRepository.Delete(orderDetail);
+			_orderDetailConcrete._orderDetailUnitOfWork.SaveChanges();
+			_orderDetailConcrete._orderDetailUnitOfWork.Dispose();
+
+			return Redirect(Request.UrlReferrer.ToString());
+		}
+
+		public ActionResult UpdateQuantity(int id, FormCollection frm)
+		{
+			Order order = _orderConcrete._orderRepository.GetById(id);
+			int orderID = order.ID;
+			OrderDetail orderDetail = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.OrderID == orderID);
+
+			
+			orderDetail.Quantity = Convert.ToInt16(frm["quantity"]);
+			order.TotalPrice = orderDetail.Quantity * orderDetail.UnitPrice;
+
+			_orderDetailConcrete._orderDetailUnitOfWork.SaveChanges();
+			_orderDetailConcrete._orderDetailUnitOfWork.Dispose();
+
+			return Redirect(Request.UrlReferrer.ToString());
+		}
 
 
-
-    }
+	}
 }
