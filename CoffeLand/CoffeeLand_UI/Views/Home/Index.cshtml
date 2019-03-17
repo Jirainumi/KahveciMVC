@@ -21,6 +21,26 @@
     <link href="~/Content/Index/style.css" rel="stylesheet" media="screen" />
     <link href="~/images/Logo/Logos.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+
+    <style>
+        #navbar {
+            color: black;
+            text-align: center;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 400;
+            font-family: 'Open Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 20px;
+            border-color: none;
+            background-color: none;
+            opacity: 0.8;
+        }
+
+            
+    </style>
+
 </head>
 <body>
 
@@ -30,32 +50,87 @@
             <div class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand " href="@Url.Action("Index","Home")" style="float:left;">
                             <div class="coffee-cup">
-
                                 <div class="handle">
-
                                 </div>
                                 <div class="yazi" style="font-size:30pt;">
                                     CoffeeLand
                                 </div>
                             </div>
-                            
-                            
                         </a>
                     </div>
-                    <div class="navbar-collapse collapse">
+                    <div id="navbar" class="navbar-collapse collapse">
                         <a href="#" class="open-menu">
-                            <span></span>
                             <span class="opened"></span>
-                            <span></span>
+                            <span class="opened"></span>
+                            <span class="opened"></span>
                         </a>
+                        <ul class="nav navbar-nav"></ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="list-unstyled">
+                                @Html.ActionLink("ANASAYFA", "Index", "Home")
+                            </li>
+                            <li class="list-unstyled">
+                                @Html.ActionLink("KAHVELERİMİZ", "Coffees", "Coffee")
+                            </li>
+                            <li class="list-unstyled">
+                                @Html.ActionLink("HAKKIMIZDA", "About", "Home")
+                            </li>
+                            <li class="list-unstyled">
+                                @Html.ActionLink("İLETİŞİM", "Contact", "Home")
+                            </li>
+                        </ul>
                     </div>
+
+
+
+
+
+
+                    @*<div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand " href="@Url.Action("Index","Home")" style="float:left;">
+                                <div class="coffee-cup">
+                                    <div class="handle">
+                                    </div>
+                                    <div class="yazi" style="font-size:30pt;">
+                                        CoffeeLand
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <a href="#" class="open-menu">
+                                <span class="opened"></span>
+                                <span class="opened"></span>
+                                <span class="opened"></span>
+                            </a>
+                            <ul>
+                                <li class="list-unstyled">
+                                    @Html.ActionLink("ANASAYFA", "Index", "Home")
+                                </li>
+                                <li class="list-unstyled">
+                                    @Html.ActionLink("KAHVELERİMİZ", "Coffees", "Coffee")
+                                </li>
+                                <li class="list-unstyled">
+                                    @Html.ActionLink("HAKKIMIZDA", "About", "Home")
+                                </li>
+                                <li class="list-unstyled">
+                                    @Html.ActionLink("İLETİŞİM", "Contact", "Home")
+                                </li>
+                            </ul>
+                        </div>*@
                 </div>
             </div>
         </header>
@@ -160,7 +235,7 @@
                     <a href="@Url.Action("Index","Home")" class="menu-logo" style="font-family: 'Dancing Script', cursive;position:relative;font-size:1.5em;top:100px;">
                         <div style="font-size:40pt;">
                             CoffeeLand
-                        </div> 
+                        </div>
                     </a>
                 </div>
                 <ul>
@@ -168,9 +243,7 @@
                         @Html.ActionLink("ANASAYFA", "Index", "Home")
                     </li>
                     <li>
-                      <a href="@Url.Action("Coffees","Coffee")">
-                          KAHVELERİMİZ
-                      </a>
+                        @Html.ActionLink("KAHVELERİMİZ", "Coffees", "Coffee")
                     </li>
                     <li>
                         @Html.ActionLink("HAKKIMIZDA", "About", "Home")
