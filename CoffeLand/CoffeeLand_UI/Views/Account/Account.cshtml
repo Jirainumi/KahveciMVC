@@ -17,9 +17,11 @@
                     </div>
                     <div class="user-fav">
                         <p>Hesabım</p>
-                        <ul>
-                            <li><a href="@Url.Action("Account","Account", new { username = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).UserName})">Kişisel Bilgilerim</a></li>
-                        </ul>
+						<ul>
+							<li><a href="@Url.Action("Account","Account", new { username = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).UserName})">Kişisel Bilgilerim</a></li>
+
+							<li><a href="@Url.Action("MyOrders","Account", new { username = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).UserName})">Siparişlerim</a></li>
+						</ul>
                     </div>
                     <div class="user-fav">
                         <ul>

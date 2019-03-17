@@ -1,0 +1,89 @@
+﻿@{
+	ViewBag.Title = "MyOrders";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main">
+	<div class="section mt-10 mb-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="commerce-cart">
+						<h2>Siparislerim</h2>
+						<p class="lead">Not: Ürün ve barista oylaması en erken siparis tarihinden  15 dakika sonra yapılabilir!</p>
+						<table class="cart wishlist-table">
+							<thead style="text-align:center">
+								<tr>
+									<th class="product-thumbnail">Ürün Görseli</th>
+									<th class="product-price"> Geçen Toplam Dakika</th>
+									<th class="product-price">Barista Adı</th>
+									<th class="product-price">Ürüne Oy Ver</th>
+									<th class="product-price">Baristaya Oy Ver</th>
+									<th class="product-add-to-car"></th>
+
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									foreach (var item in ViewBag.MyOrders as IEnumerable<CoffeeLand_DATA.Classes.OrderDetail>)
+									{
+										// TODO: Dakika Hesaplama düzeltilecek
+										var minute = (DateTime.Now.Minute) - (item.OrderOfOrderDetail.OrderDate.Minute);
+										<tr>
+											<td class="product-thumbnail">
+												<img src="@Url.Content(item.CoffeeOfOrderDetail.ImageUrl)" alt="@Url.Content(item.CoffeeOfOrderDetail.AltText)" style="width:60px;height:60px;" /><br />						  <p>@item.CoffeeOfOrderDetail.CoffeeName</p>
+											</td>
+											<td class="product-price">
+												<p style="text-align:center">@minute</p>
+											</td>
+											<td class="product-price">
+												<p>@item.BaristaOfOrderDetail.FullName</p>
+											</td>
+
+											@using (Html.BeginForm("GiveRate", "Account", new { id = item.ID }, FormMethod.Post))
+											{
+												if (minute <= -15)
+												{
+													<td class="product-stock-stauts">
+														<label>Henüz ürüne oy veremezsiniz !.</label>
+													</td>
+													<td class="product-stock-stauts">
+														<label>Henüz Barista'ya oy veremezsiniz !.</label>
+													</td>
+												}
+												else
+												{
+													<td class="product-stock-stauts">
+														<label><input type="radio" name="coffe_rate" value="0" /> (0) - Çok Kötü</label><br />
+														<label><input type="radio" name="coffe_rate" value="1" /> (1) - Kötü</label><br />
+														<label><input type="radio" name="coffe_rate" value="2" /> (2) - Ne İyi Ne Kötü</label><br />
+														<label><input type="radio" name="coffe_rate" value="3" /> (3) - İyi</label><br />
+														<label><input type="radio" name="coffe_rate" value="4" checked /> (4) - Çok İyi</label>
+
+													</td>
+													<td class="product-stock-stauts">
+
+														<label><input type="radio" name="barista_rate" value="0" /> (0) - Çok Kötü</label><br />
+														<label><input type="radio" name="barista_rate" value="1" /> (1) - Kötü</label><br />
+														<label><input type="radio" name="barista_rate" value="2" /> (2) - Ne İyi Ne Kötü</label><br />
+														<label><input type="radio" name="barista_rate" value="3" /> (3) - İyi</label><br />
+														<label><input type="radio" name="barista_rate" value="4" checked /> (4) - Çok İyi</label>
+													</td>
+													<td class="product-add-to-cart">
+														@* TODO: Butona birkere tıklanınca disabled olacak *@
+														<button type="submit" class="btn btn-sm btn-warning" onclick="this.form.submit();this.disabled=true;  ">OY VER</button>
+													</td>
+												}
+											}
+										</tr>
+									}
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

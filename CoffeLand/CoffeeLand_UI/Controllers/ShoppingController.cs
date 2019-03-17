@@ -15,6 +15,7 @@ namespace CoffeeLand_UI.Controllers
 		CoffeeConcrete _coffeeConcrete;
 		OrderDetailConcrete _orderDetailConcrete;
 		WishListConcrete _wishListConcrete;
+		CustomerConcrete _customerConcrete;
 
 		public ShoppingController()
 		{
@@ -22,6 +23,7 @@ namespace CoffeeLand_UI.Controllers
 			_coffeeConcrete = new CoffeeConcrete();
 			_orderDetailConcrete = new OrderDetailConcrete();
 			_wishListConcrete = new WishListConcrete();
+			_customerConcrete = new CustomerConcrete();
 		}
 
 		[HttpPost]
@@ -107,6 +109,7 @@ namespace CoffeeLand_UI.Controllers
 				_wishListConcrete._wishListUnitOfWork.Dispose();
 			}
 		}
+
 		public ActionResult CartList()
 		{
 			return View(_orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == (Session["OnlineKullanici"] as Customer).ID && x.IsCompleted == false).ToList());
@@ -127,6 +130,7 @@ namespace CoffeeLand_UI.Controllers
 
 			return RedirectToAction("WishList", "Shopping");
 		}
+
 		public ActionResult RemoveFromCart(int id)
 		{
 			Order order = _orderConcrete._orderRepository.GetById(id);
@@ -207,7 +211,6 @@ namespace CoffeeLand_UI.Controllers
 			_orderDetailConcrete._orderDetailUnitOfWork.SaveChanges();
 			_orderDetailConcrete._orderDetailUnitOfWork.Dispose();
 
-			//return RedirectToAction("WishList", "Shopping");
 			return Redirect(Request.UrlReferrer.ToString());
 		}
 
@@ -226,6 +229,32 @@ namespace CoffeeLand_UI.Controllers
 
 			return Redirect(Request.UrlReferrer.ToString());
 		}
+		public ActionResult GoToPayment()
+		{
+			List<OrderDetail> cart = _orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == (Session["OnlineKullanici"] as Customer).ID && x.IsCompleted == false).ToList();
+			
+			ViewBag.OrderDetails = cart;
 
+			return View(_customerConcrete._customerRepository.GetById((Session["OnlineKullanici"] as Customer).ID));
+		}
+
+		[HttpPost]
+		public ActionResult CompleteShopping(FormCollection frm)
+		{
+			List<OrderDetail> cart = _orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == (Session["OnlineKullanici"] as Customer).ID && x.IsCompleted == false).ToList();
+
+			foreach (var item in cart)
+			{
+				item.IsCompleted = true;		
+			}
+
+			_orderDetailConcrete._orderDetailUnitOfWork.SaveChanges();
+
+			return RedirectToAction("FinishShopping", "Shopping");
+		}
+		public ActionResult FinishShopping()
+		{
+			return View();
+		}
 	}
 }

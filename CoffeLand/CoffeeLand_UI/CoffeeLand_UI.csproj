@@ -618,6 +618,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Account\Account.cshtml" />
     <Content Include="Views\Coffee\Coffees.cshtml" />
+    <Content Include="Views\Shopping\GoToPayment.cshtml" />
+    <Content Include="Views\Shopping\FinishShopping.cshtml" />
+    <Content Include="Views\Account\MyOrders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
