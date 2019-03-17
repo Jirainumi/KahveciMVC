@@ -198,28 +198,18 @@ namespace CoffeeLand_UI.Controllers
         }
 		public ActionResult AddToWishListFromCart(int id)
 		{
-			Order order = _orderConcrete._orderRepository.GetById(id);
-			int orderID = order.ID;
-			OrderDetail orderDetail = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.OrderID == orderID);
+			OrderDetail orderDetail = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.OrderID == id);
+			Order order = _orderConcrete._orderRepository.GetById(orderDetail.OrderID);
 
 			int coffeeID = orderDetail.CoffeeID;
-			WishList wl = _wishListConcrete._wishListRepository.GetAll().FirstOrDefault(x => x.CoffeeID == coffeeID && x.CustomerID == (Session["OnlineKullanici"] as Customer).ID && x.IsActive == true);
-			if (wl == null)
-			{
-				wl = new WishList()
-				{
-					CoffeeID = coffeeID,
-					CustomerID = (Session["OnlineKullanici"] as Customer).ID,
-					IsActive = true
-				};
-				_wishListConcrete._wishListRepository.Insert(wl);
-			}
+			ControlWishList(coffeeID);
 
 			_orderConcrete._orderRepository.Delete(order);
 			_orderDetailConcrete._orderDetailRepository.Delete(orderDetail);
 			_orderDetailConcrete._orderDetailUnitOfWork.SaveChanges();
 			_orderDetailConcrete._orderDetailUnitOfWork.Dispose();
 
+			//return RedirectToAction("WishList", "Shopping");
 			return Redirect(Request.UrlReferrer.ToString());
 		}
 

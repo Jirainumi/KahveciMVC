@@ -25,59 +25,67 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="commerce-cart">
-                        <table class="cart wishlist-table">
-                            <thead>
-                                <tr>
-                                    <th class="product-remove">Ürünü Sil</th>
-                                    <th class="product-thumbnail">Ürün Resmi</th>
-                                    <th class="product-name">Ürün Adı</th>
-                                    <th class="product-price">Fiyat</th>
-                                    <th class="product-stock-stauts">Hazırlanabilir</th>
-                                    <th class="product-add-to-cart">Sepete Ekle/th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td class="product-remove">
-                                            <a href="@Url.Action("RemoveFromWishList", "Shopping", new { id = item.WishlistID})">
-                                                <span class="glyphicon glyphicon-shopping-cart" style="color:forestgreen;"></span>
-                                            </a>
-                                        </td>
-                                        <td class="product-thumbnail">
-                                            <a href="shop-detail.html">
-                                                <img src="@Url.Content(item.Coffee.ImageUrl)" alt="" />
-                                            </a>
-                                        </td>
-                                        <td class="product-name">
-                                            <a href="shop-detail.html">@item.Coffee.CoffeeName</a>
-                                        </td>
-                                        <td class="product-price">
-                                            @string.Format("{0:C2}",item.Coffee.Price)
-                                        </td>
-                                        <td class="product-stock-status">
-                                            @if (item.IsActive)
-                                            {
-                                                <span class="glyphicon glyphicon-ok"></span>
-                                            }
-                                            else
-                                            {
+					<div class="commerce-cart">
+						<table class="cart wishlist-table">
+							<thead>
+								<tr>
+									<th class="product-remove">Ürünü Sil</th>
+									<th class="product-thumbnail">Ürün Resmi</th>
+									<th class="product-name">Ürün Adı</th>
+									<th class="product-price">Fiyat</th>
+									<th class="product-stock-stauts">Hazırlanabilir</th>
+									<th class="product-add-to-cart">Sepete Ekle/th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td class="product-remove">
+											<a href="@Url.Action("RemoveFromWishList", "Shopping", new { id = item.WishlistID})">
+												<span class="glyphicon glyphicon-shopping-cart" style="color:forestgreen;"></span>
+											</a>
+										</td>
+										<td class="product-thumbnail">
+											<a href="shop-detail.html">
+												<img src="@Url.Content(item.Coffee.ImageUrl)" alt="" />
+											</a>
+										</td>
+										<td class="product-name">
+											<a href="shop-detail.html">@item.Coffee.CoffeeName</a>
+										</td>
+										<td class="product-price">
+											@string.Format("{0:C2}", item.Coffee.Price)
+										</td>
+										<td class="product-stock-status">
+											@if (item.IsActive)
+											{
+												<span class="glyphicon glyphicon-ok"></span>
+											}
+											else
+											{
 
-                                                <span class="glyphicon glyphicon-warning-sign">Hazır Değil</span>
-                                            }
-                                        </td>
-                                        <td class="product-add-to-cart">
-                                            <a href="#">Sepete Ekle</a>
-                                        </td>
-                                    </tr>
+												<span class="glyphicon glyphicon-warning-sign">Hazır Değil</span>
+											}
+										</td>
+										<td class="product-add-to-cart">
+											<a href="#">Sepete Ekle</a>
+										</td>
+									</tr>
 
-                                }
-                              
-                            </tbody>
-                        </table>
-                    </div>
+								}
+
+							</tbody>
+						</table>
+						@{
+							if (Model.ToList().Count == 0)
+							{
+								<span class="lead">
+									Henüz istek listesine ürün eklenmemis!
+								</span>
+							}							
+						}
+					</div>
                 </div>
             </div>
         </div>
