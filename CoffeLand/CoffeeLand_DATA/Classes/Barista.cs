@@ -46,5 +46,5 @@ namespace CoffeeLand_DATA.Classes
 
         public virtual List<OrderDetail> OrderDetails { get; set; }
         public virtual List<BaristaComment> BaristaComments { get; set; }
-    }
+	}
 }

@@ -15,12 +15,12 @@ namespace CoffeeLand_DATA.Classes
         public bool IsActive { get; set; }
 
 
-
         public int CustomerID { get; set; }
         public virtual Customer Customer { get; set; }
 
 
         public int CoffeeID { get; set; }
         public virtual Coffee Coffee { get; set; }
-    }
+
+	}
 }

@@ -193,6 +193,7 @@ namespace CoffeeLand_UI.Controllers
 			//Todo:CustomerId içeriye alıp burdan yönlendiricez return ün içini dinamikleştiricez			
 			return View(_orderConcrete._orderRepository.GetAll().Where(x => x.CustomerID == (Session["OnlineKullanici"] as Customer).ID).ToList());
 		}
+
 		public ActionResult AddToWishListFromCart(int id)
 		{
 			OrderDetail orderDetail = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.OrderID == id);
@@ -225,7 +226,6 @@ namespace CoffeeLand_UI.Controllers
 
 			return Redirect(Request.UrlReferrer.ToString());
 		}
-
 
 	}
 }
