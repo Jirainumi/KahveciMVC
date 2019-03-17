@@ -109,7 +109,7 @@ namespace CoffeeLand_UI.Controllers
                 od = new OrderDetail();
 
                 od.CoffeeID = id;
-                od.OrderOfOrderDetail.CustomerID = (Session["OnlineKullanici"] as Customer).ID;//Dinamik olucak
+                od.OrderOfOrderDetail.CustomerID = (Session["OnlineKullanici"] as Customer).ID;
                 od.IsCompleted = false;
                 od.UnitPrice = _orderDetailConcrete._orderDetailRepository.GetById(id).CoffeeOfOrderDetail.Price;
                 od.UnitPrice = od.Quantity * od.UnitPrice;
@@ -127,7 +127,6 @@ namespace CoffeeLand_UI.Controllers
 
         public void ControlWishList(int id)
         {
-            // TODO: userıd eklenecek, dinamik hale getirilecek
             WishList wl = _wishListConcrete._wishListRepository.GetAll().FirstOrDefault(x => x.CoffeeID == id && x.CustomerID == (Session["OnlineKullanici"] as Customer).ID && x.IsActive == true);
 
             if (wl == null)
@@ -146,16 +145,13 @@ namespace CoffeeLand_UI.Controllers
         }
         public ActionResult CartList()
         {
-            //TODO: userıd eklenecek, dinamik hale getirilecek
             return View(_orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == (Session["OnlineKullanici"] as Customer).ID && x.IsCompleted == false).ToList());
         }
 
         public ActionResult WishList()
         {
-            //TODO: userıd eklenecek, dinamik hale getirilecek
             return View(_wishListConcrete._wishListRepository.GetAll().Where(x => x.CustomerID == (Session["OnlineKullanici"] as Customer).ID && x.IsActive == true).ToList());
         }
-
 
         public ActionResult RemoveFromWishList(int id)
         {
@@ -173,17 +169,7 @@ namespace CoffeeLand_UI.Controllers
 			int orderID = order.ID;
 			OrderDetail orderDetail = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x=>x.OrderID==orderID);
 			int coffeeID = orderDetail.CoffeeID;
-			WishList wl = _wishListConcrete._wishListRepository.GetAll().FirstOrDefault(x => x.CoffeeID == coffeeID && x.CustomerID == (Session["OnlineKullanici"] as Customer).ID && x.IsActive == true);
-			if (wl == null)
-			{
-				wl = new WishList()
-				{
-					CoffeeID = id,
-					CustomerID = (Session["OnlineKullanici"] as Customer).ID,
-					IsActive = true
-				};
-				_wishListConcrete._wishListRepository.Insert(wl);
-			}
+			
 
 			_orderConcrete._orderRepository.Delete(order);
 			_orderDetailConcrete._orderDetailRepository.Delete(orderDetail);
@@ -215,6 +201,19 @@ namespace CoffeeLand_UI.Controllers
 			Order order = _orderConcrete._orderRepository.GetById(id);
 			int orderID = order.ID;
 			OrderDetail orderDetail = _orderDetailConcrete._orderDetailRepository.GetAll().FirstOrDefault(x => x.OrderID == orderID);
+
+			int coffeeID = orderDetail.CoffeeID;
+			WishList wl = _wishListConcrete._wishListRepository.GetAll().FirstOrDefault(x => x.CoffeeID == coffeeID && x.CustomerID == (Session["OnlineKullanici"] as Customer).ID && x.IsActive == true);
+			if (wl == null)
+			{
+				wl = new WishList()
+				{
+					CoffeeID = coffeeID,
+					CustomerID = (Session["OnlineKullanici"] as Customer).ID,
+					IsActive = true
+				};
+				_wishListConcrete._wishListRepository.Insert(wl);
+			}
 
 			_orderConcrete._orderRepository.Delete(order);
 			_orderDetailConcrete._orderDetailRepository.Delete(orderDetail);

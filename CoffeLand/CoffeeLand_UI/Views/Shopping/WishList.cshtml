@@ -42,7 +42,7 @@
                                 {
                                     <tr>
                                         <td class="product-remove">
-                                            <a href="@Url.Action("AddToCartFromWishlist", "Shopping", new { id = item.WishlistID})">
+                                            <a href="@Url.Action("RemoveFromWishList", "Shopping", new { id = item.WishlistID})">
                                                 <span class="glyphicon glyphicon-shopping-cart" style="color:forestgreen;"></span>
                                             </a>
                                         </td>
@@ -73,19 +73,7 @@
                                         </td>
                                     </tr>
 
-
-
-
-
-
                                 }
-
-
-
-
-
-
-
                               
                             </tbody>
                         </table>
