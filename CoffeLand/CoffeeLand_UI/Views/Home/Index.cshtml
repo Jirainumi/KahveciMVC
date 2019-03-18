@@ -37,13 +37,17 @@
             background-color: none;
             opacity: 0.8;
         }
-
-            
     </style>
 
 </head>
 <body>
-
+    @{
+        var username = "";
+        if (Session["OnlineKullanici"] != null)
+        {
+            username = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).UserName;
+        }
+    }
 
     <div id="container" class="without-padding">
         <header class="clearfix" id="main-header">
@@ -75,16 +79,25 @@
                         <ul class="nav navbar-nav"></ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="list-unstyled">
-                                @Html.ActionLink("ANASAYFA", "Index", "Home")
-                            </li>
-                            <li class="list-unstyled">
-                                @Html.ActionLink("KAHVELERİMİZ", "Coffees", "Coffee")
+                                @Html.ActionLink("KAHVELER", "Coffees", "Coffee")
                             </li>
                             <li class="list-unstyled">
                                 @Html.ActionLink("HAKKIMIZDA", "About", "Home")
                             </li>
                             <li class="list-unstyled">
                                 @Html.ActionLink("İLETİŞİM", "Contact", "Home")
+                            </li>
+                            <li class="list-unstyled">
+                                @{
+                                    if (Session["OnlineKullanici"] == null)
+                                    {
+                                        <a href="@Url.Action("Login","Login")">GİRİŞ YAP</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("Account","Account", new { username = username})">PROFİL SAYFASI</a>
+                                    }
+                                }
                             </li>
                         </ul>
                     </div>
@@ -240,9 +253,6 @@
                 </div>
                 <ul>
                     <li>
-                        @Html.ActionLink("ANASAYFA", "Index", "Home")
-                    </li>
-                    <li>
                         @Html.ActionLink("KAHVELERİMİZ", "Coffees", "Coffee")
                     </li>
                     <li>
@@ -250,6 +260,18 @@
                     </li>
                     <li>
                         @Html.ActionLink("İLETİŞİM", "Contact", "Home")
+                    </li>
+                    <li>
+                        @{
+                            if (Session["OnlineKullanici"] == null)
+                            {
+                                <a href="@Url.Action("Login","Login")">GİRİŞ YAP</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Account","Account", new { username = username})">PROFİL SAYFASI</a>
+                            }
+                        }
                     </li>
                 </ul>
             </div>

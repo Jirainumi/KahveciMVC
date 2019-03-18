@@ -83,7 +83,7 @@ namespace CoffeeLand_UI.Controllers
 
                 if (Tools.ReturnUrl == "http://localhost:50714/Login/Register")
                 {
-                    return RedirectToAction("Coffees", "Shopping");
+                    return RedirectToAction("Coffees", "Coffee");
                 }
                 else
                 {

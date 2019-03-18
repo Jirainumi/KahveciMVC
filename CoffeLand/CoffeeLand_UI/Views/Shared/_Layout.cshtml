@@ -160,9 +160,7 @@
                                                 </div>
                                                 <div class="minicart-footer">
                                                     <div class="minicart-actions clearfix">
-                                                        <a class="button pull-left" href="#">
-                                                            @* TODO: Kahvelerin Listelencek olduğu shop sayfasına yönlendirlicek *@
-
+                                                        <a class="button pull-left" href="@Url.Action("Coffees","Coffe")">
                                                             @{
                                                                 if (sepettekiSayi == 0)
                                                                 {
@@ -259,11 +257,8 @@
                             <div class="widget widget_nav_menu">
                                 <h4 class="widget-title">Hesabım</h4>
                                 <ul class="menu">
-                                    <li><a href="#">Profil</a></li>
-                                    <li><a href="#">Sepet</a></li>
-                                    <li><a href="#">İstek Listesi</a></li>
-                                    <li><a href="#">Siparişler</a></li>
-
+                                    <li><a href="@Url.Action("CartList","Shopping")">Sepet</a></li>
+                                    <li><a href="@Url.Action("WishList","Shopping")">İstek Listesi</a></li>
                                 </ul>
                             </div>
                         </div>
