@@ -30,7 +30,7 @@ namespace CoffeeLand_UI.Controllers
         {
             string kullaniciAdi = frm["username"];
 
-            Customer customer = _customerConcrete.GetCustomerByUsername(kullaniciAdi);
+            Customer customer = _customerConcrete.RegisterControl(kullaniciAdi);
 
             if (customer != null)
             {
@@ -66,7 +66,14 @@ namespace CoffeeLand_UI.Controllers
 
         public ActionResult Login()
         {
-            Tools.ReturnUrl = System.Web.HttpContext.Current.Request.UrlReferrer.ToString();
+            if (System.Web.HttpContext.Current.Request.UrlReferrer == null)
+            {
+
+            }
+            else
+            {
+                Tools.ReturnUrl = System.Web.HttpContext.Current.Request.UrlReferrer.ToString();
+            }
             return View();
         }
 
@@ -80,8 +87,11 @@ namespace CoffeeLand_UI.Controllers
             if (customer != null)
             {
                 Session["OnlineKullanici"] = customer;
-
-                if (Tools.ReturnUrl == "http://localhost:50714/Login/Register")
+                if (Tools.ReturnUrl == null)
+                {
+                    return RedirectToAction("Coffees", "Coffee");
+                }
+                else if (Tools.ReturnUrl == "http://localhost:50714/Login/Register")
                 {
                     return RedirectToAction("Coffees", "Coffee");
                 }
@@ -90,7 +100,6 @@ namespace CoffeeLand_UI.Controllers
                     return Redirect(Tools.ReturnUrl);
                 }
             }
-
             return View();
         }
 

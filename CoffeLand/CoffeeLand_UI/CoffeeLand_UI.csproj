@@ -448,15 +448,9 @@
     <Content Include="Areas\Admin\Views\ExtraMaterial\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ExtraMaterial\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ExtraMaterial\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Order\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Order\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\OrderDetail\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\OrderDetail\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\OrderDetail\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\OrderDetail\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\OrderDetail\Index.cshtml" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

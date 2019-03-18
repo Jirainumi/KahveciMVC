@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeLand_DATA.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,20 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            Customer customer = Session["OnlineKullanici"] as Customer;
+
+            if (customer == null)
+            {
+                return Redirect("/Login/Login");
+            }
+            else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect("/Coffee/Coffees");
+            }
         }
     }
 }

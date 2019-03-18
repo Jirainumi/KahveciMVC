@@ -30,7 +30,7 @@ namespace CoffeeLand_BLL.Repository.Concrete
 
             double avgPoint = totalCoffeePoint / countCoffeePoint;
 
-            int AVGPoint = Convert.ToInt32(Math.Floor(avgPoint));
+            int AVGPoint = Convert.ToInt32(Math.Round(avgPoint));
 
             return AVGPoint;
         }

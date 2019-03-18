@@ -23,14 +23,14 @@ namespace CoffeeLand_BLL.Repository.Concrete
             _customerRepository = _customerUnitOfWork.GetRepository<Customer>();
         }
 
-        public Customer GetCustomerByUsername(string username)
-        {
-            return _customerRepository.GetAll().FirstOrDefault(x => x.UserName == username);
-        }
-
         public Customer LoginControl(string username,string password)
         {
             return _customerRepository.GetAll().FirstOrDefault(x => x.UserName == username && x.Password == password);
+        }
+
+        public Customer RegisterControl(string username)
+        {
+            return _customerRepository.GetAll().FirstOrDefault(x => x.UserName == username);
         }
     }
 }

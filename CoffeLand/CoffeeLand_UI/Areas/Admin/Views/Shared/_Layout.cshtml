@@ -17,6 +17,9 @@
     <link href="~/Areas/Admin/Content/zabuto_calendar.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Scripts/gritter/css/jquery.gritter.css" rel="stylesheet" />
     <link href="~/Areas/Admin/lineicons/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+
+    <link href="~/images/Logo/LogoLayout.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="~/Areas/Admin/Content/style.css" rel="stylesheet" />
@@ -33,11 +36,21 @@
                     <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
                 </div>
                 <!--logo start-->
-                <a href="index.html" class="logo"><b>DASHGUM FREE</b></a>
+                <a class="custom-logo-link" href="@Url.Action("Index","Home")" style="float:left;position:relative;top:13px;">
+                    <div class="coffee-cup">
+
+                        <div class="handle">
+
+                        </div>
+                        <div class="yazi" style="font-size:25pt">
+                            CoffeeLand
+                        </div>
+                    </div>
+                </a>
                 <!--logo end-->
                 <div class="top-menu">
                     <ul class="nav pull-right top-menu">
-                        <li><a class="logout" href="login.html">Logout</a></li>
+                        <li><a class="logout" href="@Url.Action("LogOut","Login")">Logout</a></li>
                     </ul>
                 </div>
             </header>

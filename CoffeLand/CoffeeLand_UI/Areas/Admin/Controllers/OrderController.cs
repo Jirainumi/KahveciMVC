@@ -15,102 +15,49 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
     public class OrderController : Controller
     {
         OrderConcrete _orderConrete;
-        CustomerConcrete _customerConcrete;
 
         public OrderController()
         {
             _orderConrete = new OrderConcrete();
-            _customerConcrete = new CustomerConcrete();
         }
 
         // GET: Admin/Orders
         public ActionResult Index()
         {
-            return View(_orderConrete._orderRepository.GetAll());
+            Customer customer = Session["OnlineKullanici"] as Customer;
+
+            if (customer == null)
+            {
+                return Redirect("/Login/Login");
+            }
+            else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+            {
+                return View(_orderConrete._orderRepository.GetAll());
+            }
+            else
+            {
+                return Redirect("/Coffee/Coffees");
+            }
         }
 
         // GET: Admin/Orders/Details/5
         public ActionResult Details(int id)
         {
-            Order order = _orderConrete._orderRepository.GetById(id);
-            return View(order);
-        }
+            Customer customer = Session["OnlineKullanici"] as Customer;
 
-        // GET: Admin/Orders/Create
-        public ActionResult Create()
-        {
-            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
-            return View();
-        }
-
-        // POST: Admin/Orders/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,OrderDate,TotalPrice,UserID")] Order order)
-        {
-            if (ModelState.IsValid)
+            if (customer == null)
             {
-                _orderConrete._orderRepository.Insert(order);
-                _orderConrete._orderUnitOfWork.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect("/Login/Login");
             }
-
-            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
-            return View(order);
-        }
-
-        // GET: Admin/Orders/Edit/5
-        public ActionResult Edit(int id)
-        {
-            Order order = _orderConrete._orderRepository.GetById(id);
-            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName");
-            return View(order);
-        }
-
-        // POST: Admin/Orders/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,OrderDate,TotalPrice,UserID")] Order order)
-        {
-            if (ModelState.IsValid)
+            else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
             {
-                _orderConrete._orderRepository.Update(order);
-                _orderConrete._orderUnitOfWork.SaveChanges();
-                return RedirectToAction("Index");
+                Order order = _orderConrete._orderRepository.GetById(id);
+                return View(order);
             }
-            ViewBag.UserID = new SelectList(_customerConcrete._customerRepository.GetEntity(), "ID", "UserName", order.CustomerID);
-            return View(order);
-        }
-
-        // GET: Admin/Orders/Delete/5
-        public ActionResult Delete(int id)
-        {
-            Order order = _orderConrete._orderRepository.GetById(id);
-            return View(order);
-        }
-
-        // POST: Admin/Orders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Order order = _orderConrete._orderRepository.GetById(id);
-            _orderConrete._orderRepository.Delete(order);
-            _orderConrete._orderUnitOfWork.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            else
             {
-                _orderConrete._orderUnitOfWork.Dispose();
+                return Redirect("/Coffee/Coffees");
             }
-            base.Dispose(disposing);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿@{
+    /**/
+
     ViewBag.Title = "MyOrders";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -32,7 +34,8 @@
                                         var minute = ((DateTime.Now) - (item.OrderOfOrderDetail.OrderDate)).TotalMinutes;
                                         <tr>
                                             <td class="product-thumbnail">
-                                                <img src="@Url.Content(item.CoffeeOfOrderDetail.ImageUrl)" alt="@Url.Content(item.CoffeeOfOrderDetail.AltText)" style="width:60px;height:60px;" /><br />						  <p>@item.CoffeeOfOrderDetail.CoffeeName</p>
+                                                <img src="@Url.Content(item.CoffeeOfOrderDetail.ImageUrl)" alt="@Url.Content(item.CoffeeOfOrderDetail.AltText)" style="width:60px;height:60px;" /><br />
+                                                <p>@item.CoffeeOfOrderDetail.CoffeeName</p>
                                             </td>
                                             <td class="product-price">
                                                 <p style="text-align:center">@Math.Round(minute, 0)</p>
