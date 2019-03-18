@@ -12,10 +12,7 @@ namespace CoffeeLand_DATA.Classes
 
         public string Comment { get; set; }
 
-        public byte Point { get; set; }
-
 		public DateTime CoffeeCommentDate { get; set; }
-
 
 		public int CoffeeID { get; set; }
         public virtual Coffee CoffeeOfCoffeeComment { get; set; }

@@ -59,13 +59,26 @@
 							foreach (var item in ViewData["Comments"] as IEnumerable<CoffeeLand_DATA.Classes.CoffeeComment>)
 							{
 								<li>
-									<p><strong>@item.CoffeeOfCoffeeComment.CoffeeName</strong></p>
-									<p><strong>@item.CoffeeCommentDate</strong></p>
+									<p>@item.CoffeeCommentDate</p>
 									<p>@item.Comment</p>
 								</li>
 							}
 						}
 					</ul>
+					@{
+						if (Session["OnlineKullanici"] != null)
+						{
+							<h4>Yorum Ekle</h4>
+							using (Html.BeginForm("AddReview", "Coffee", new { id = Model.ID }, FormMethod.Post))
+							{
+								<p>
+									<strong>Yorumunuz: </strong>
+									<textarea rows="3" name="review" class="form-control"></textarea>
+								</p>
+								<input type="submit" class="btn btn-info form-control" value="EKLE" />
+							}
+						}
+					}
 				</div>
 			</div>
 		</div>

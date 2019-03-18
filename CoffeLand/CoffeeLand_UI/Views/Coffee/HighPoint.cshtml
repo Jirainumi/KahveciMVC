@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<CoffeeLand_DATA.Classes.Coffee>
 @{
-
-
-	ViewBag.Title = "Coffees";
+	ViewBag.Title = "HighPoint";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
@@ -45,8 +43,8 @@
 					<div class="thumbnail">
 						<img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" style="height:200px;" />
 						<div class="caption">
-							<h4 style="height:50px;">@item.CoffeeName</h4>
-							<h4 style="height:50px;">@string.Format("{0:C2}", item.Price)</h4>
+							<h4 style="height:30px;">@item.CoffeeName - @string.Format("{0:C2}", item.Price)</h4>
+							<h4 style="height:30px;">AVG Puanı: @item.AVGPoint</h4>
 							<p>@Html.ActionLink("Detayı Gör", "CoffeeDetail", new { id = item.ID }, new { @class = "btn btn-warning form-control" })</p>
 						</div>
 					</div>
@@ -55,6 +53,4 @@
 		}
 	</div>
 </div>
-
-
 

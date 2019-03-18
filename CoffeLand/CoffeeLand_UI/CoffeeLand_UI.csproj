@@ -620,6 +620,10 @@
     <Content Include="Views\Shopping\GoToPayment.cshtml" />
     <Content Include="Views\Shopping\FinishShopping.cshtml" />
     <Content Include="Views\Account\MyOrders.cshtml" />
+    <Content Include="Views\Coffee\HighPrice.cshtml" />
+    <Content Include="Views\Coffee\LowPrice.cshtml" />
+    <Content Include="Views\Coffee\HighPoint.cshtml" />
+    <Content Include="Views\Coffee\NumberOfComment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
