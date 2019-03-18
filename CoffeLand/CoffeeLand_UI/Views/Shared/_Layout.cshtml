@@ -73,17 +73,7 @@
                                     @Html.ActionLink("Ana Sayfa", "Index", "Home")
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">İÇECEKLERİMİZ</a>
-                                    <ul class="sub-menu">
-
-                                        <li>@Html.ActionLink("Espresso Bazlı İçeceklerimiz", "Coffee", "Coffee", new { id = 1 }, null)</li>
-                                        <li>@Html.ActionLink("Filtre Kahve", "Coffee", "Coffee", new { id = 2 }, null)</li>
-                                        <li>@Html.ActionLink("Türk Kahvesi", "Coffee", "Coffee", new { id = 3 }, null)</li>
-                                        <li>@Html.ActionLink("Frappuccino® Blended Beverages", "Coffee", "Coffee", new { id = 4 }, null)</li>
-                                        <li>@Html.ActionLink("Sıcak Çikolata", "Coffee", "Coffee", new { id = 5 }, null)</li>
-                                        <li>@Html.ActionLink("Çaylarımız", "Coffee", "Coffee", new { id = 6 }, null)</li>
-                                        <li>@Html.ActionLink("Portakal Suyu", "Coffee", "Coffee", new { id = 7 }, null)</li>
-                                    </ul>
+                                    <a href="@Url.Action("Coffees","Coffee")">İÇECEKLERİMİZ</a>
                                 </li>
                                 <li>
                                     <a href="@Url.Action("About","Home")">Hakkımızda</a>

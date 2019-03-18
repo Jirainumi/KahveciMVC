@@ -2,29 +2,58 @@
 @{
 
 
-    ViewBag.Title = "Coffees";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Coffees";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
 <div class="container">
-    <div class="row" style="margin-top:50px;">
-        @{
-            foreach (var item in Model)
-            {
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" style="height:200px;" />
-                        <div class="caption">
-                            <h4 style="height:50px;">@item.CoffeeName</h4>
-                            <h4 style="height:50px;">@string.Format("{0:C2}", item.Price)</h4>
-                            <p>@Html.ActionLink("Detayı Gör", "CoffeeDetail", new { id = item.ID }, new { @class = "btn btn-warning form-control" })</p>
-                        </div>
-                    </div>
-                </div>
-            }
-        }
-    </div>
+	<div class="row" style="margin-top:15px;">
+		<nav class="navbar navbar-inverse noo-main-menu ">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav ">
+					<li class="dropdown menu-item-has-children">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategoriler <span class="caret"></span></a>
+						<ul class="sub-menu">
+							<li>@Html.ActionLink("Espresso", "Coffee", "Coffee", new { id = 1 }, null)</li>
+							<li>@Html.ActionLink("Filtre Kahve", "Coffee", "Coffee", new { id = 2 }, null)</li>
+							<li>@Html.ActionLink("Türk Kahvesi", "Coffee", "Coffee", new { id = 3 }, null)</li>
+							<li>@Html.ActionLink("Frappuccino", "Coffee", "Coffee", new { id = 4 }, null)</li>
+							<li>@Html.ActionLink("Sıcak Çikolata", "Coffee", "Coffee", new { id = 5 }, null)</li>
+							<li>@Html.ActionLink("Çaylarımız", "Coffee", "Coffee", new { id = 6 }, null)</li>
+							<li>@Html.ActionLink("Portakal Suyu", "Coffee", "Coffee", new { id = 7 }, null)</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown menu-item-has-children">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sıralama Seçenekleri <span class="caret"></span></a>
+						<ul class="sub-menu">
+							<li>@Html.ActionLink("En Yüksek Puanlı", "Coffee", "Coffee", new { id = 7 }, null)</li>
+							<li>@Html.ActionLink("Fiyata Göre Artan", "Coffee", "Coffee", new { id = 7 }, null)</li>
+							<li>@Html.ActionLink("Fiyata Göre Azalan", "Coffee", "Coffee", new { id = 7 }, null)</li>
+							<li>@Html.ActionLink("Satış Miktarı", "Coffee", "Coffee", new { id = 7 }, null)</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div class="row" style="margin-top:280px;">
+		@{
+			foreach (var item in Model)
+			{
+				<div class="col-md-3">
+					<div class="thumbnail">
+						<img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" style="height:200px;" />
+						<div class="caption">
+							<h4 style="height:50px;">@item.CoffeeName</h4>
+							<h4 style="height:50px;">@string.Format("{0:C2}", item.Price)</h4>
+							<p>@Html.ActionLink("Detayı Gör", "CoffeeDetail", new { id = item.ID }, new { @class = "btn btn-warning form-control" })</p>
+						</div>
+					</div>
+				</div>
+			}
+		}
+	</div>
 </div>
 
 
