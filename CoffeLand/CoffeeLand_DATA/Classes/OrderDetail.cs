@@ -18,7 +18,8 @@ namespace CoffeeLand_DATA.Classes
 
 
         public int OrderID { get; set; }
-        public virtual Order OrderOfOrderDetail { get; set; }
+        public virtual Order OrderOfOrderDetail { get; set; } 
+
 
         public int CoffeeID { get; set; }
         public virtual Coffee CoffeeOfOrderDetail { get; set; }

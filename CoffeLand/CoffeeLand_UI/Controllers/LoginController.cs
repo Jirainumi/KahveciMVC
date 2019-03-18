@@ -45,7 +45,7 @@ namespace CoffeeLand_UI.Controllers
                 DateTime dogumTarihi = DateTime.Parse(frm["birthdate"]);
 
                 customer = new Customer();
-                
+
                 customer.FirstName = isim;
                 customer.LastName = soyisim;
                 customer.UserName = kullaniciAdi;
@@ -81,7 +81,14 @@ namespace CoffeeLand_UI.Controllers
             {
                 Session["OnlineKullanici"] = customer;
 
-                return Redirect(Tools.ReturnUrl);
+                if (Tools.ReturnUrl == "http://localhost:50714/Login/Register")
+                {
+                    return RedirectToAction("Coffees", "Shopping");
+                }
+                else
+                {
+                    return Redirect(Tools.ReturnUrl);
+                }
             }
 
             return View();

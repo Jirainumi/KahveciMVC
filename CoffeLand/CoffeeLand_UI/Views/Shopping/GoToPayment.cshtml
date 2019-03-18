@@ -1,66 +1,65 @@
 ﻿@model CoffeeLand_DATA.Classes.Customer
 @{
-	ViewBag.Title = "GoToPayment";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "GoToPayment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 <div class="row" style="margin-top:50px;">
-	<div class="col-md-6 col-md-offset-3">
-		<h2>Ödeme İşlemi</h2><br />
-		<table border="1">
-			<thead>
-				<tr>
-					<td><b>Ürün Adı</b></td>
-					<td><b>Ürün Adedi</b></td>
-				</tr>
-			</thead>
-			<tbody>
-				@{
-					decimal toplamTutar = 0;
+    <div class="col-md-6 col-md-offset-3">
+        <h2>Ödeme İşlemi</h2><br />
+        <table border="1">
+            <thead>
+                <tr>
+                    <td><b>Ürün Adı</b></td>
+                    <td><b>Ürün Adedi</b></td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    decimal toplamTutar = 0;
 
-					foreach (var item in ViewBag.OrderDetails as IEnumerable<CoffeeLand_DATA.Classes.OrderDetail>)
-					{
-						<tr>
-							<td>@item.CoffeeOfOrderDetail.CoffeeName</td>
-							<td style="text-align:center">@item.Quantity</td>
-						</tr>
-						toplamTutar += item.OrderOfOrderDetail.TotalPrice;
+                    foreach (var item in ViewBag.OrderDetails as IEnumerable<CoffeeLand_DATA.Classes.OrderDetail>)
+                    {
+                        <tr>
+                            <td>@item.CoffeeOfOrderDetail.CoffeeName</td>
+                            <td style="text-align:center">@item.Quantity</td>
+                        </tr>
+                        toplamTutar += item.Quantity * item.UnitPrice;
+                    }
+                }
+            </tbody>
+        </table>
+        <span class="lead">
+            <strong>Toplam Tutar : @string.Format("{0:C2}", toplamTutar)</strong>
+        </span><br />
+        <hr />
 
-					}
-				}
-			</tbody>
-		</table>
-		<span class="lead">
-			<strong>Toplam Tutar : @string.Format("{0:C2}", toplamTutar)</strong>
-		</span><br />
-		<hr />
+        @if (toplamTutar > 0)
+        {
+            using (Html.BeginForm("CompleteShopping", "Shopping", FormMethod.Post))
+            {
+                <h5>Ödeme Seçenekleri</h5>
 
-		@if (toplamTutar > 0)
-		{
-			using (Html.BeginForm("CompleteShopping", "Shopping", FormMethod.Post))
-			{
-				<h5>Ödeme Seçenekleri</h5>
+                <label>
+                    <input type="radio" name="paymentType" checked />
+                    Kredi Kartı ile Öde
+                </label><br />
+                <label>
+                    <input type="radio" name="paymentType" checked />
+                    Nakit ile Öde
+                </label><br />
+                <label>
+                    <input type="radio" name="paymentType" checked />
+                    Ticket ile Öde
+                </label>
+                <br />
 
-				<label>
-					<input type="radio" name="paymentType" checked />
-					Kredi Kartı ile Öde
-				</label><br />
-				<label>
-					<input type="radio" name="paymentType" checked />
-					Nakit ile Öde
-				</label><br />
-				<label>
-					<input type="radio" name="paymentType" checked />
-					Ticket ile Öde
-				</label>
-				<br />
-
-				<hr />
-				<p>
-					<input type="submit" value="Alışverişi Tamamla" class="btn btn-lg btn-info form-control" />
-				</p>
-			}
-		}
-	</div>
+                <hr />
+                <p>
+                    <input type="submit" value="Alışverişi Tamamla" class="btn btn-lg btn-info form-control" />
+                </p>
+            }
+        }
+    </div>
 </div>

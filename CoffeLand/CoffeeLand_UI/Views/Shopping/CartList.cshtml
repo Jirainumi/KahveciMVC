@@ -37,11 +37,10 @@
 								</tr>
 							</thead>
 							<tbody>
-								@{
-									decimal toplamTutar = 0;
-									foreach (var item in Model as IEnumerable<CoffeeLand_DATA.Classes.OrderDetail>)
-									{
-										toplamTutar += item.OrderOfOrderDetail.TotalPrice;
+								@{  decimal toplamTutar = 0;
+                                    foreach (var item in Model as IEnumerable<CoffeeLand_DATA.Classes.OrderDetail>)
+                                    {
+                                        toplamTutar += item.Quantity * item.UnitPrice;
 										<tr>
 											<td class="product-remove">
 												<a href="@Url.Action("RemoveFromCart","Shopping", new { id=item.OrderID})">

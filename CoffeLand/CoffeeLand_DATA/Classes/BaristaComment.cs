@@ -12,7 +12,7 @@ namespace CoffeeLand_DATA.Classes
 
         public string Comment { get; set; }
 
-        public byte Point { get; set; }
+        public byte? Point { get; set; }
 
 		public DateTime BaristaCommentDate { get; set; }
 

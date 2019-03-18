@@ -22,5 +22,17 @@ namespace CoffeeLand_BLL.Repository.Concrete
 			_coffeeCommentUnitOfWork = new EFUnitOfWork(_dbContext);
 			_coffeeCommentRepository = _coffeeCommentUnitOfWork.GetRepository<CoffeeComment>();
 		}
-	}
+
+        public int CalculateCoffeeAVGPoint()
+        {
+            int totalCoffeePoint = _coffeeCommentRepository.GetAll().Sum(x => x.Point).Value;
+            int countCoffeePoint = _coffeeCommentRepository.GetAll().Count;
+
+            double avgPoint = totalCoffeePoint / countCoffeePoint;
+
+            int AVGPoint = Convert.ToInt32(Math.Floor(avgPoint));
+
+            return AVGPoint;
+        }
+    }
 }

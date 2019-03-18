@@ -1,15 +1,15 @@
 ﻿@model CoffeeLand_DATA.Classes.Coffee
 @{
-	ViewBag.Title = "CoffeeDetail";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "CoffeeDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
-	<div class="row" style="margin-top:50px;">
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<img src="@Url.Content(Model.ImageUrl)" alt="@Url.Content(Model.AltText)" style="height:250px;" />
-			</div>
-		</div>
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="@Url.Content(Model.ImageUrl)" alt="@Url.Content(Model.AltText)" style="height:250px;" />
+            </div>
+        </div>
         <div class="col-md-8">
             <h2>@Model.CoffeeName</h2>
             @{for (int i = 0; i < 5; i++)
@@ -20,7 +20,7 @@
             }
             <h3 style="color:orange;">Fiyatı: @string.Format("{0:C2}", Model.Price)</h3>
             <span style="background-color:gold"><strong>Ortalama Puanı:</strong>@Model.AVGPoint</span><br />
-            
+
             @if (Model.IsPrepared)
             {
                 <h4>
@@ -33,7 +33,7 @@
                     Hazırlanabilir:<span class="glyphicon glyphicon-warning-sign"></span>
                 </h3>
             }
-                <br />
+            <br />
             @using (Html.BeginForm("AddToCart", "Shopping", new { id = Model.ID }, FormMethod.Post))
             {
                 <p>
@@ -70,10 +70,16 @@
                 <div class="tab-pane fade" id="comments">
                     <ul>
                         @{
+                            if ((ViewData["Comments"] as IEnumerable<CoffeeLand_DATA.Classes.CoffeeComment>).Count() == 0)  
+                            {
+                                <li>
+                                    <p><strong>Bu Ürüne Ait Yorum Bulunmamaktadır...</strong></p>
+                                </li>
+                            }
                             foreach (var item in ViewData["Comments"] as IEnumerable<CoffeeLand_DATA.Classes.CoffeeComment>)
                             {
                                 <li>
-                                    <p>@item.CoffeeCommentDate</p>
+                                    <p>@item.CoffeeCommentDate - @item.CustomerOfCoffeeComment.UserName</p>
                                     <p>@item.Comment</p>
                                 </li>
                             }
@@ -96,6 +102,5 @@
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 </div>
-
