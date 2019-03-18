@@ -34,7 +34,7 @@
 									<th class="product-name">Ürün Adı</th>
 									<th class="product-price">Fiyat</th>
 									<th class="product-stock-stauts">Hazırlanabilir</th>
-									<th class="product-add-to-cart">Sepete Ekle/th>
+									<th class="product-add-to-cart">Sepete Ekle</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -68,10 +68,18 @@
 												<span class="glyphicon glyphicon-warning-sign">Hazırlanamaz</span>
 											}
 										</td>
-										<td class="product-add-to-cart">
-                                            @* TO DO Eren Biliyor *@
-											<a href="@Url.Action("AddToCartFromWishList","Shopping", new { id=item.WishlistID})">SEPETE EKLE</a>
-										</td>
+                                        <td class="product-add-to-cart">
+                                            @if (item.Coffee.IsPrepared)
+                                            {
+                                                <a href="@Url.Action("AddToCartFromWishList","Shopping", new { id=item.WishlistID})">SEPETE EKLE</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("AddToCartFromWishList","Shopping", new { id=item.WishlistID})" style="pointer-events: none;">SEPETE EKLE</a>
+
+                                            }
+
+                                        </td>
 									</tr>
 
 								}

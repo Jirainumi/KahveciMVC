@@ -24,13 +24,13 @@
             @if (Model.IsPrepared)
             {
                 <h4>
-                    Hazırlanabilir:<span class="glyphicon glyphicon-file"></span>
+                    Hazırlanabilir: <span class="glyphicon glyphicon-ok-sign"></span>
                 </h4>
             }
             else
             {
                 <h3>
-                    Hazırlanabilir:<span class="glyphicon glyphicon-warning-sign"></span>
+                    Hazırlanabilir: <span class="glyphicon glyphicon-warning-sign"></span>
                 </h3>
             }
             <br />
@@ -51,7 +51,7 @@
                     <br />
                 }
                 <br />
-                <button type="submit" class="btn btn-warning">Sepete Ekle</button>
+                <button  type="submit" class="btn btn-warning">Sepete Ekle</button>
                 <a class="btn btn-danger" href="@Url.Action("OrderNow", "Order", new { id = Model.ID })" role="button">Hemen Sipariş Ver</a>
                 <a class="btn btn-warning" href="@Url.Action("AddToWishList","Shopping",new { id=Model.ID})" role="button">İstek Listesine Ekle</a>
             }
