@@ -22,6 +22,7 @@ namespace CoffeeLand_DATA.Classes
 
 		public string AltText { get; set; }
 
+        public bool IsPrepared { get; set; }
 
         public int ExtraMaterialsID { get; set; }
         public virtual ExtraMaterial ExtraMaterialOfCoffee { get; set; }

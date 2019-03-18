@@ -58,14 +58,14 @@
 											@string.Format("{0:C2}", item.Coffee.Price)
 										</td>
 										<td class="product-stock-status">
-											@if (item.IsActive)
+											@if (item.Coffee.IsPrepared)
 											{
-												<span class="glyphicon glyphicon-ok"></span>
+												<span class="glyphicon glyphicon-ok">Hazırlanabilir</span>
 											}
 											else
 											{
 
-												<span class="glyphicon glyphicon-warning-sign">Hazır Değil</span>
+												<span class="glyphicon glyphicon-warning-sign">Hazırlanamaz</span>
 											}
 										</td>
 										<td class="product-add-to-cart">
