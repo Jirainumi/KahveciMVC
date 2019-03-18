@@ -20,21 +20,19 @@
 									<th class="product-price">Ürüne Oy Ver</th>
 									<th class="product-price">Baristaya Oy Ver</th>
 									<th class="product-add-to-car"></th>
-
 								</tr>
 							</thead>
 							<tbody>
 								@{
 									foreach (var item in ViewBag.MyOrders as IEnumerable<CoffeeLand_DATA.Classes.OrderDetail>)
 									{
-										// TODO: Dakika Hesaplama düzeltilecek
-										var minute = (DateTime.Now.Minute) - (item.OrderOfOrderDetail.OrderDate.Minute);
+										var minute = ((DateTime.Now) - (item.OrderOfOrderDetail.OrderDate)).TotalMinutes;
 										<tr>
 											<td class="product-thumbnail">
 												<img src="@Url.Content(item.CoffeeOfOrderDetail.ImageUrl)" alt="@Url.Content(item.CoffeeOfOrderDetail.AltText)" style="width:60px;height:60px;" /><br />						  <p>@item.CoffeeOfOrderDetail.CoffeeName</p>
 											</td>
 											<td class="product-price">
-												<p style="text-align:center">@minute</p>
+												<p style="text-align:center">@Math.Round(minute,1)</p>
 											</td>
 											<td class="product-price">
 												<p>@item.BaristaOfOrderDetail.FullName</p>
@@ -42,7 +40,7 @@
 
 											@using (Html.BeginForm("GiveRate", "Account", new { id = item.ID }, FormMethod.Post))
 											{
-												if (minute <= -15)
+												if (minute <= 15)
 												{
 													<td class="product-stock-stauts">
 														<label>Henüz ürüne oy veremezsiniz !.</label>
@@ -59,10 +57,8 @@
 														<label><input type="radio" name="coffe_rate" value="2" /> (2) - Ne İyi Ne Kötü</label><br />
 														<label><input type="radio" name="coffe_rate" value="3" /> (3) - İyi</label><br />
 														<label><input type="radio" name="coffe_rate" value="4" checked /> (4) - Çok İyi</label>
-
 													</td>
 													<td class="product-stock-stauts">
-
 														<label><input type="radio" name="barista_rate" value="0" /> (0) - Çok Kötü</label><br />
 														<label><input type="radio" name="barista_rate" value="1" /> (1) - Kötü</label><br />
 														<label><input type="radio" name="barista_rate" value="2" /> (2) - Ne İyi Ne Kötü</label><br />

@@ -245,6 +245,7 @@ namespace CoffeeLand_UI.Controllers
 
 			foreach (var item in cart)
 			{
+				item.OrderOfOrderDetail.OrderDate = DateTime.Now;
 				item.IsCompleted = true;		
 			}
 
