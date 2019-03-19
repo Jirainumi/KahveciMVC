@@ -110,6 +110,11 @@ namespace CoffeeLand_UI.Controllers
 		[HttpPost]
 		public ActionResult GiveRate(int id, FormCollection frm)
 		{
+            if (Session["OnlineKullanici"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
 			OrderDetail orderDetail = _orderDetailConcrete._orderDetailRepository.GetById(id);
 			int baristaId = orderDetail.BaristaID;
 			int coffeeId = orderDetail.CoffeeID;

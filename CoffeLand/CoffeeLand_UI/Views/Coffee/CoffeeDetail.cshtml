@@ -10,98 +10,107 @@
                 <img src="@Url.Content(Model.ImageUrl)" alt="@Url.Content(Model.AltText)" style="height:250px;" />
             </div>
         </div>
-		<div class="col-md-8">
-			<h2>@Model.CoffeeName</h2>
-			@{for (int i = 0; i < Model.AVGPoint; i++)
-				{
-					@*<span style="color:red;font-size:15pt;">*</span>*@
-					<span class="glyphicon glyphicon-star" style="font-size:20px;color:orangered"></span>
-				}
-			}
-			<h3 style="color:orange;">Fiyatı: @string.Format("{0:C2}", Model.Price)</h3>
-			<span style="background-color:gold"><strong>Ortalama Puanı:</strong>@Model.AVGPoint</span><br />
+        <div class="col-md-8">
+            <h2>@Model.CoffeeName</h2>
+            <span style="color:red;font-size:15pt;"><strong>Ortalama Puanı:</strong></span>
+            @{
+                for (int i = 0; i < Model.AVGPoint; i++)
+                {
+                    @*<span style="color:red;font-size:15pt;">*</span>*@
+                    <span class="glyphicon glyphicon-star" style="font-size:25px;color:gold"></span>
+                }
+            }
+            <br />
+            <br />
+            <p style="color:saddlebrown;font-size:15pt;">Fiyatı: @string.Format("{0:C2}", Model.Price)</p>
 
-			@if (Model.IsPrepared)
-			{
-				<h4>
-					Hazırlanabilir: <span class="glyphicon glyphicon-ok-sign"></span>
-				</h4>
-			}
-			else
-			{
-				<h3>
-					Hazırlanamaz: <span class="glyphicon glyphicon-warning-sign"></span>
-				</h3>
-			}
-			<br />
-			@using (Html.BeginForm("AddToCart", "Shopping", new { id = Model.ID }, FormMethod.Post))
-			{
-				<p>
-					<strong>Kaç Adet: </strong>
-					<input type="number" name="miktar" value="1" min="1" max="10" />
-				</p>
+            @if (Model.IsPrepared)
+            {
+                <h4>
+                    Hazırlanabilir: <span class="glyphicon glyphicon-ok-sign"></span>
+                </h4>
+            }
+            else
+            {
+                <h3>
+                    Hazırlanamaz: <span class="glyphicon glyphicon-warning-sign"></span>
+                </h3>
+            }
+            <br />
+            @using (Html.BeginForm("AddToCart", "Shopping", new { id = Model.ID }, FormMethod.Post))
+            {
+                <p>
+                    <strong>Kaç Adet: </strong>
+                    <input type="number" name="miktar" value="1" min="1" max="10" />
+                </p>
 
-				<h5>Barista Seçiniz</h5>
-				foreach (var item in ViewBag.Baristas as IEnumerable<CoffeeLand_DATA.Classes.Barista>)
-				{
-					<label>
-						<input type="radio" name="barista" value="@item.ID" checked />
-						@item.FullName - AVG Puanı: @item.AVGPoint
-					</label>
-					<br />
-				}
-				<br />
-				<button type="submit" class="btn btn-warning" name="sepet">Sepete Ekle</button>
-				<button type="submit" class="btn btn-danger" name="hemenSiparis">Hemen Sipariş Ver</button>
-				@*<a class="btn btn-danger" href="@Url.Action("OrderNow", "Shopping", new { id = Model.ID })" role="button">Hemen Sipariş Ver</a>*@
-				<a class="btn btn-warning" href="@Url.Action("AddToWishList","Shopping",new { id=Model.ID})" role="button">İstek Listesine Ekle</a>
-			}
-			<ul class="nav nav-tabs">
-				<li class="active">
-					<a href="#description" data-toggle="tab">Coffee Açıklaması</a>
-				</li>
-				<li>
-					<a href="#comments" data-toggle="tab">Yorumlar</a>
-				</li>
-			</ul>
-			<div class="tab-content">
-				<div class="tab-pane fade in active" id="description">
-					<p>@Model.Description</p>
-				</div>
-				<div class="tab-pane fade" id="comments">
-					<ul>
-						@{
-							if ((ViewData["Comments"] as IEnumerable<CoffeeLand_DATA.Classes.CoffeeComment>).Count() == 0)
-							{
-								<li>
-									<p><strong>Bu Ürüne Ait Yorum Bulunmamaktadır...</strong></p>
-								</li>
-							}
-							foreach (var item in ViewData["Comments"] as IEnumerable<CoffeeLand_DATA.Classes.CoffeeComment>)
-							{
-								<li>
-									<p>@item.CoffeeCommentDate - @item.CustomerOfCoffeeComment.UserName</p>
-									<p>@item.Comment</p>
-								</li>
-							}
-						}
-					</ul>
-					@{
-						if (Session["OnlineKullanici"] != null)
-						{
-							<h4>Yorum Ekle</h4>
-							using (Html.BeginForm("AddReview", "Coffee", new { id = Model.ID }, FormMethod.Post))
-							{
-								<p>
-									<strong>Yorumunuz: </strong>
-									<textarea rows="3" name="review" class="form-control"></textarea>
-								</p>
-								<input type="submit" class="btn btn-info form-control" value="EKLE" />
-							}
-						}
-					}
-				</div>
-			</div>
-		</div>
+                <h5>Barista Seçiniz</h5>
+                foreach (var item in ViewBag.Baristas as IEnumerable<CoffeeLand_DATA.Classes.Barista>)
+                {
+
+                    <label>
+                        <input type="radio" name="barista" value="@item.ID" checked />
+                        @item.FullName - 
+                        @{for (int i = 0; i < item.AVGPoint; i++)
+                            {
+                                <span class="glyphicon glyphicon-star" style="font-size:20px;color:gold"></span>
+                            }
+                        }
+                    </label>
+                    <br />
+                            }
+                            <br />
+                            <button type="submit" class="btn btn-warning" name="sepet">Sepete Ekle</button>
+                            <button type="submit" class="btn btn-danger" name="hemenSiparis">Hemen Sipariş Ver</button>
+                            @*<a class="btn btn-danger" href="@Url.Action("OrderNow", "Shopping", new { id = Model.ID })" role="button">Hemen Sipariş Ver</a>*@
+                            <a class="btn btn-warning" href="@Url.Action("AddToWishList","Shopping",new { id=Model.ID})" role="button">İstek Listesine Ekle</a>
+                            }
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#description" data-toggle="tab">Coffee Açıklaması</a>
+                </li>
+                <li>
+                    <a href="#comments" data-toggle="tab">Yorumlar</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="description">
+                    <p>@Model.Description</p>
+                </div>
+                <div class="tab-pane fade" id="comments">
+                    <ul>
+                        @{
+                            if ((ViewData["Comments"] as IEnumerable<CoffeeLand_DATA.Classes.CoffeeComment>).Count() == 0)
+                            {
+                                <li>
+                                    <p><strong>Bu Ürüne Ait Yorum Bulunmamaktadır...</strong></p>
+                                </li>
+                            }
+                            foreach (var item in ViewData["Comments"] as IEnumerable<CoffeeLand_DATA.Classes.CoffeeComment>)
+                            {
+                                <li>
+                                    <p>@item.CoffeeCommentDate - @item.CustomerOfCoffeeComment.UserName</p>
+                                    <p>@item.Comment</p>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    @{
+                        if (Session["OnlineKullanici"] != null)
+                        {
+                            <h4>Yorum Ekle</h4>
+                            using (Html.BeginForm("AddReview", "Coffee", new { id = Model.ID }, FormMethod.Post))
+                            {
+                                <p>
+                                    <strong>Yorumunuz: </strong>
+                                    <textarea rows="3" name="review" class="form-control"></textarea>
+                                </p>
+                                <input type="submit" class="btn btn-info form-control" value="EKLE" />
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </div>
