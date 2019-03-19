@@ -74,6 +74,9 @@ namespace CoffeeLand_UI.Controllers
 				_orderDetailConcrete._orderDetailUnitOfWork.SaveChanges();
 				_orderDetailConcrete._orderDetailUnitOfWork.Dispose();
 
+				if (frm["hemenSiparis"] != null)
+					return RedirectToAction("GoToPayment", "Shopping");
+			
 				return RedirectToAction("CoffeeDetail", "Coffee", new { id = id });
 			}
 		}
@@ -150,7 +153,7 @@ namespace CoffeeLand_UI.Controllers
 		public ActionResult AddToCartFromWishList(int id)
 		{
 			int coffeeID = _wishListConcrete._wishListRepository.GetAll().FirstOrDefault(x => x.WishlistID == id).CoffeeID;
-			
+
 			Coffee coffee = _coffeeConcrete._coffeeRepository.GetById(coffeeID);
 			Order order = new Order()
 			{
@@ -232,7 +235,7 @@ namespace CoffeeLand_UI.Controllers
 		public ActionResult GoToPayment()
 		{
 			List<OrderDetail> cart = _orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == (Session["OnlineKullanici"] as Customer).ID && x.IsCompleted == false).ToList();
-			
+
 			ViewBag.OrderDetails = cart;
 
 			return View(_customerConcrete._customerRepository.GetById((Session["OnlineKullanici"] as Customer).ID));
@@ -246,7 +249,7 @@ namespace CoffeeLand_UI.Controllers
 			foreach (var item in cart)
 			{
 				item.OrderOfOrderDetail.OrderDate = DateTime.Now;
-				item.IsCompleted = true;		
+				item.IsCompleted = true;
 			}
 
 			_orderDetailConcrete._orderDetailUnitOfWork.SaveChanges();
