@@ -62,6 +62,7 @@ namespace CoffeeLand_UI.Controllers
 					od.Quantity = Convert.ToInt16(miktar);
 					od.BaristaID = baristaId;
 					od.OrderID = order.ID;
+					od.IsRated = false;
 
 					_orderDetailConcrete._orderDetailRepository.Insert(od);
 				}
@@ -125,7 +126,6 @@ namespace CoffeeLand_UI.Controllers
 
 		public ActionResult RemoveFromWishList(int id)
 		{
-			//Status kısmı düzenlenicek viewde 
 			WishList wishList = _wishListConcrete._wishListRepository.GetById(id);
 			_wishListConcrete._wishListRepository.Delete(wishList);
 			_wishListConcrete._wishListUnitOfWork.SaveChanges();
@@ -173,8 +173,9 @@ namespace CoffeeLand_UI.Controllers
 				od.IsCompleted = false;
 				od.UnitPrice = coffee.Price;
 				od.Quantity = 1;
-				od.BaristaID = 3; //TODO wishliste baristaıdeklenecek
+				od.BaristaID = 3; 
 				od.OrderID = order.ID;
+				od.IsRated = false;
 
 				_orderDetailConcrete._orderDetailRepository.Insert(od);
 			}

@@ -1,100 +1,124 @@
 ﻿@{
-    /**/
+	/**/
 
-    ViewBag.Title = "MyOrders";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "MyOrders";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div id="main">
-    <div class="section mt-10 mb-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="commerce-cart">
-                        <h2>Siparislerim</h2>
-                        <p class="lead">Not: Ürün ve barista oylaması en erken siparis tarihinden  15 dakika sonra yapılabilir!</p>
-                        <table class="cart wishlist-table">
-                            <thead style="text-align:center">
-                                <tr>
-                                    <th class="product-thumbnail">Ürün Görseli</th>
-                                    <th class="product-price"> Geçen Toplam Dakika</th>
-                                    <th class="product-price">Barista Adı</th>
-                                    <th class="product-price">Ürüne Oy Ver</th>
-                                    <th class="product-price">Baristaya Oy Ver</th>
-                                    <th class="product-add-to-car"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @{
+	<div class="section mt-10 mb-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="commerce-cart">
+						<h2>Siparislerim</h2>
+						<p class="lead">Not: Ürün ve barista oylaması en erken siparis tarihinden  15 dakika sonra yapılabilir!</p>
+						<table class="cart wishlist-table">
+							<thead style="text-align:center">
+								<tr>
+									<th class="product-thumbnail">Ürün Görseli</th>
+									<th class="product-price"> Geçen Toplam Dakika</th>
+									<th class="product-price">Barista Adı</th>
+									<th class="product-price">Ürüne Oy Ver</th>
+									<th class="product-price">Baristaya Oy Ver</th>
+									<th class="product-add-to-car"></th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
 
-                                    List<CoffeeLand_DATA.Classes.OrderDetail> listem = ViewBag.MyOrders as List<CoffeeLand_DATA.Classes.OrderDetail>;
-                                    listem.Reverse();
-                                    foreach (var item in listem)
-                                    {
-                                        var minute = ((DateTime.Now) - (item.OrderOfOrderDetail.OrderDate)).TotalMinutes;
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <img src="@Url.Content(item.CoffeeOfOrderDetail.ImageUrl)" alt="@Url.Content(item.CoffeeOfOrderDetail.AltText)" style="width:60px;height:60px;" /><br />
-                                                <p>@item.CoffeeOfOrderDetail.CoffeeName</p>
-                                            </td>
-                                            <td class="product-price">
-                                                <p style="text-align:center">@Math.Round(minute, 0)</p>
-                                            </td>
-                                            <td class="product-price">
-                                                <p>@item.BaristaOfOrderDetail.FullName</p>
-                                            </td>
+									List<CoffeeLand_DATA.Classes.OrderDetail> listem = ViewBag.MyOrders as List<CoffeeLand_DATA.Classes.OrderDetail>;
+									listem.Reverse();
+									foreach (var item in listem)
+									{
+										var minute = ((DateTime.Now) - (item.OrderOfOrderDetail.OrderDate)).TotalMinutes;
+										<tr>
+											<td class="product-thumbnail">
+												<img src="@Url.Content(item.CoffeeOfOrderDetail.ImageUrl)" alt="@Url.Content(item.CoffeeOfOrderDetail.AltText)" style="width:60px;height:60px;" /><br />
+												<p>@item.CoffeeOfOrderDetail.CoffeeName</p>
+											</td>
+											<td class="product-price">
+												<p style="text-align:center">@Math.Round(minute, 0)</p>
+											</td>
+											<td class="product-price">
+												<p>@item.BaristaOfOrderDetail.FullName</p>
+											</td>
 
-                                            @using (Html.BeginForm("GiveRate", "Account", new { id = item.ID }, FormMethod.Post))
-                                            {
-                                                if (minute <= 1)
-                                                {
-                                                    <td class="product-stock-stauts">
-                                                        <label>Henüz ürüne oy veremezsiniz !.</label>
-                                                    </td>
-                                                    <td class="product-stock-stauts">
-                                                        <label>Henüz Barista'ya oy veremezsiniz !.</label>
-                                                    </td>
-                                                }
-                                                else
-                                                {
-                                                    <td class="product-stock-stauts rate-area">
-                                                        <input type="radio" id="5-star" name="crating" value="5" />
-                                                        <label for="5-star" title="Mükemmel">5</label><br />
-                                                        <input type="radio" id="4-star" name="crating" value="4" />
-                                                        <label for="4-star" title="İyi">4</label><br />
-                                                        <input type="radio" id="3-star" name="crating" value="3" />
-                                                        <label for="3-star" title="Ortalama">3</label><br />
-                                                        <input type="radio" id="2-star" name="crating" value="2" />
-                                                        <label for="2-star" title="Fena Değil">2</label><br />
-                                                        <input type="radio" id="1-star" name="crating" value="1" />
-                                                        <label for="1-star" title="Kötü">1</label><br />
-                                                    </td>
-                                                    <td class="product-stock-stauts rate-area">
-                                                        <input type="radio" id="b5-star" name="brating" value="5" />
-                                                        <label for="b5-star" title="Mükemmel">5</label><br />
-                                                        <input type="radio" id="b4-star" name="brating" value="4" />
-                                                        <label for="b4-star" title="İyi">4</label><br />
-                                                        <input type="radio" id="b3-star" name="brating" value="3" />
-                                                        <label for="b3-star" title="Ortalama">3</label><br />
-                                                        <input type="radio" id="b2-star" name="brating" value="2" />
-                                                        <label for="b2-star" title="Fena Değil">2</label><br />
-                                                        <input type="radio" id="b1-star" name="brating" value="1" />
-                                                        <label for="b1-star" title="Kötü">1</label><br />
-                                                    </td>
-                                                    <td class="product-add-to-cart">
-                                                        @* TODO: Butona birkere tıklanınca disabled olacak *@
-                                                        <button type="submit" class="btn btn-sm btn-warning">OY VER</button>
-                                                    </td>
-                                                }
-                                            }
-                                        </tr>
-                                    }
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+											@using (Html.BeginForm("GiveRate", "Account", new { id = item.ID }, FormMethod.Post))
+											{
+												if (minute <= 1)
+												{
+													<td class="product-stock-stauts">
+														<label>Henüz ürüne oy veremezsiniz !.</label>
+													</td>
+													<td class="product-stock-stauts">
+														<label>Henüz Barista'ya oy veremezsiniz !.</label>
+													</td>
+												}
+												else
+												{
+													if (item.IsRated == true)
+													{														
+													<td class="product-stock-stauts rate-area">
+														@*TODO: point düzeltilecek *@
+														@for (int i = 0; i < item.CoffeeOfOrderDetail.AVGPoint; i++)
+														{
+															<span class="glyphicon glyphicon-star" style="font-size:15px;color:orangered"></span>
+
+														}
+													</td>
+													<td class="product-stock-stauts rate-area">
+														@*TODO: point düzeltilecek *@
+														@for (int i = 0; i < item.BaristaOfOrderDetail.AVGPoint; i++)
+														{
+															<span class="glyphicon glyphicon-star" style="font-size:15px;color:orangered"></span>
+
+														}
+													</td>
+														<td class="product-add-to-cart">
+															<button type="submit" class="btn btn-sm btn-warning" disabled>OY VER</button>
+														</td>
+													}
+													else
+													{
+														<td class="product-stock-stauts rate-area">
+															<input type="radio" id="5-star" name="crating" value="5" />
+															<label for="5-star" title="Mükemmel">5</label><br />
+															<input type="radio" id="4-star" name="crating" value="4" />
+															<label for="4-star" title="İyi">4</label><br />
+															<input type="radio" id="3-star" name="crating" value="3" />
+															<label for="3-star" title="Ortalama">3</label><br />
+															<input type="radio" id="2-star" name="crating" value="2" />
+															<label for="2-star" title="Fena Değil">2</label><br />
+															<input type="radio" id="1-star" name="crating" value="1" />
+															<label for="1-star" title="Kötü">1</label><br />
+														</td>
+														<td class="product-stock-stauts rate-area">
+															<input type="radio" id="b5-star" name="brating" value="5" />
+															<label for="b5-star" title="Mükemmel">5</label><br />
+															<input type="radio" id="b4-star" name="brating" value="4" />
+															<label for="b4-star" title="İyi">4</label><br />
+															<input type="radio" id="b3-star" name="brating" value="3" />
+															<label for="b3-star" title="Ortalama">3</label><br />
+															<input type="radio" id="b2-star" name="brating" value="2" />
+															<label for="b2-star" title="Fena Değil">2</label><br />
+															<input type="radio" id="b1-star" name="brating" value="1" />
+															<label for="b1-star" title="Kötü">1</label><br />
+														</td>
+														<td class="product-add-to-cart">
+															<button type="submit" class="btn btn-sm btn-warning">OY VER</button>
+														</td>
+													}
+												}
+											}
+										</tr>
+									}
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

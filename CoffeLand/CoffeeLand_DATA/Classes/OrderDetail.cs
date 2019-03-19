@@ -15,9 +15,10 @@ namespace CoffeeLand_DATA.Classes
         public short Quantity { get; set; }
 
         public bool IsCompleted { get; set; }
+		public bool IsRated { get; set; }
 
 
-        public int OrderID { get; set; }
+		public int OrderID { get; set; }
         public virtual Order OrderOfOrderDetail { get; set; } 
 
 
