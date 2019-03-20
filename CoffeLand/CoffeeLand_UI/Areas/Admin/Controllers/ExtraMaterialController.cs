@@ -24,20 +24,59 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         // GET: Admin/ExtraMaterial
         public ActionResult Index()
         {
-            return View(_extraMaterialsConcrete._extraMaterialRepository.GetAll());
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				return View(_extraMaterialsConcrete._extraMaterialRepository.GetAll());
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // GET: Admin/ExtraMaterial/Details/5
         public ActionResult Details(int id)
         {
-            ExtraMaterial extraMaterial = _extraMaterialsConcrete._extraMaterialRepository.GetById(id);
-            return View(extraMaterial);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				ExtraMaterial extraMaterial = _extraMaterialsConcrete._extraMaterialRepository.GetById(id);
+				return View(extraMaterial);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // GET: Admin/ExtraMaterial/Create
         public ActionResult Create()
         {
-            return View();
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				return View();
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // POST: Admin/ExtraMaterial/Create
@@ -47,21 +86,47 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,UnitPrice,Quantity")] ExtraMaterial extraMaterial)
         {
-            if (ModelState.IsValid)
-            {
-                _extraMaterialsConcrete._extraMaterialRepository.Insert(extraMaterial);
-                _extraMaterialsConcrete._extraMaterialUnitOfWork.SaveChanges();
-                return RedirectToAction("Index");
-            }
+			Customer customer = Session["OnlineKullanici"] as Customer;
 
-            return View(extraMaterial);
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				if (ModelState.IsValid)
+				{
+					_extraMaterialsConcrete._extraMaterialRepository.Insert(extraMaterial);
+					_extraMaterialsConcrete._extraMaterialUnitOfWork.SaveChanges();
+					return RedirectToAction("Index");
+				}
+
+				return View(extraMaterial);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // GET: Admin/ExtraMaterial/Edit/5
         public ActionResult Edit(int id)
         {
-            ExtraMaterial extraMaterial = _extraMaterialsConcrete._extraMaterialRepository.GetById(id);
-            return View(extraMaterial);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				ExtraMaterial extraMaterial = _extraMaterialsConcrete._extraMaterialRepository.GetById(id);
+				return View(extraMaterial);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // POST: Admin/ExtraMaterial/Edit/5
@@ -71,20 +136,46 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,UnitPrice,Quantity")] ExtraMaterial extraMaterial)
         {
-            if (ModelState.IsValid)
-            {
-                _extraMaterialsConcrete._extraMaterialRepository.Update(extraMaterial);
-                _extraMaterialsConcrete._extraMaterialUnitOfWork.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(extraMaterial);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				if (ModelState.IsValid)
+				{
+					_extraMaterialsConcrete._extraMaterialRepository.Update(extraMaterial);
+					_extraMaterialsConcrete._extraMaterialUnitOfWork.SaveChanges();
+					return RedirectToAction("Index");
+				}
+				return View(extraMaterial);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // GET: Admin/ExtraMaterial/Delete/5
         public ActionResult Delete(int id)
         {
-            ExtraMaterial extraMaterial = _extraMaterialsConcrete._extraMaterialRepository.GetById(id);
-            return View(extraMaterial);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				ExtraMaterial extraMaterial = _extraMaterialsConcrete._extraMaterialRepository.GetById(id);
+				return View(extraMaterial);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // POST: Admin/ExtraMaterial/Delete/5
@@ -92,10 +183,23 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ExtraMaterial extraMaterial = _extraMaterialsConcrete._extraMaterialRepository.GetById(id);
-            _extraMaterialsConcrete._extraMaterialRepository.Delete(extraMaterial);
-            _extraMaterialsConcrete._extraMaterialUnitOfWork.SaveChanges();
-            return RedirectToAction("Index");
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				ExtraMaterial extraMaterial = _extraMaterialsConcrete._extraMaterialRepository.GetById(id);
+				_extraMaterialsConcrete._extraMaterialRepository.Delete(extraMaterial);
+				_extraMaterialsConcrete._extraMaterialUnitOfWork.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         protected override void Dispose(bool disposing)

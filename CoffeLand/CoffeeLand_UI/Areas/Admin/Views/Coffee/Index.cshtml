@@ -13,13 +13,13 @@
 <table class="table">
     <tr>
         <th>
-            Image
+            @Html.DisplayNameFor(model => model.CategoryOfCoffee.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExtraMaterialOfCoffee.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CoffeeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryOfCoffee.CategoryName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -31,47 +31,52 @@
             @Html.DisplayNameFor(model => model.AVGPoint)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExtraMaterialOfCoffee.Name)
+            @Html.DisplayNameFor(model => model.ImageUrl)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AltText)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPrepared)
+        </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                <img src="@item.ImageUrl" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CoffeeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryOfCoffee.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AVGPoint)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExtraMaterialOfCoffee.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AltText)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-success" }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-warning" })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryOfCoffee.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExtraMaterialOfCoffee.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoffeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AVGPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPrepared)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
 
 </table>

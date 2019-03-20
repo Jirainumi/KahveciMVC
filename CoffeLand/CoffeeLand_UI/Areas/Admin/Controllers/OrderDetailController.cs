@@ -24,14 +24,40 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         // GET: Admin/OrderDetails
         public ActionResult Index()
         {
-            return View(_orderDetailConrete._orderDetailRepository.GetAll());
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				return View(_orderDetailConrete._orderDetailRepository.GetAll());
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // GET: Admin/OrderDetails/Details/5
         public ActionResult Details(int id)
         {
-            OrderDetail orderDetail = _orderDetailConrete._orderDetailRepository.GetById(id);
-            return View(orderDetail);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				OrderDetail orderDetail = _orderDetailConrete._orderDetailRepository.GetById(id);
+				return View(orderDetail);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
     }
 }

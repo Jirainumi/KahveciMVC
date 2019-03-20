@@ -1,309 +1,321 @@
 ﻿
 @{
-    Layout = null;
+	Layout = null;
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-    <link rel="shortcut icon" href="~/images/favicon.ico" />
-    <title>CoffeLand</title>
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+	<link rel="shortcut icon" href="~/images/favicon.ico" />
+	<title>CoffeLand</title>
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 
-    <link href="~/images/Logo/LogoLayout.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" media="all" />
-    <link href="~/Content/settings.css" rel="stylesheet" media="all" />
-    <link href="~/Content/prettyPhoto.css" rel="stylesheet" media="all" />
-    <link href="~/Content/magnific-popup.css" rel="stylesheet" media="all" />
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" media="all" />
-    <link href="~/Content/elegantIcon.css" rel="stylesheet" media="all" />
-    <link href="~/Content/owl.carousel.css" rel="stylesheet" media="all" />
-    <link href="~/Content/owl.theme.css" rel="stylesheet" media="all" />
-    <link href="http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
-    <link href="~/Content/style.css" rel="stylesheet" media="all" />
-    <link href="~/Content/custom.css" rel="stylesheet" media="all" />
-    <link href="~/Content/profileStyle.css" rel="stylesheet" />
-    <link href="~/Content/5star.css" rel="stylesheet" />
+	<link href="~/images/Logo/LogoLayout.css" rel="stylesheet" />
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet" media="all" />
+	<link href="~/Content/settings.css" rel="stylesheet" media="all" />
+	<link href="~/Content/prettyPhoto.css" rel="stylesheet" media="all" />
+	<link href="~/Content/magnific-popup.css" rel="stylesheet" media="all" />
+	<link href="~/Content/font-awesome.min.css" rel="stylesheet" media="all" />
+	<link href="~/Content/elegantIcon.css" rel="stylesheet" media="all" />
+	<link href="~/Content/owl.carousel.css" rel="stylesheet" media="all" />
+	<link href="~/Content/owl.theme.css" rel="stylesheet" media="all" />
+	<link href="http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
+	<link href="~/Content/style.css" rel="stylesheet" media="all" />
+	<link href="~/Content/custom.css" rel="stylesheet" media="all" />
+	<link href="~/Content/profileStyle.css" rel="stylesheet" />
+	<link href="~/Content/5star.css" rel="stylesheet" />
 </head>
 <body>
-    @{
-        var _orderDetailConcrete = new CoffeeLand_BLL.Repository.Concrete.OrderDetailConcrete();
-        var _wishListConcrete = new CoffeeLand_BLL.Repository.Concrete.WishListConcrete();
-        var ID = 0;
-        var username = "";
-        if (Session["OnlineKullanici"] != null)
-        {
-            ID = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).ID;
-            username = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).UserName;
-        }
+	@{
+		var _orderDetailConcrete = new CoffeeLand_BLL.Repository.Concrete.OrderDetailConcrete();
+		var _wishListConcrete = new CoffeeLand_BLL.Repository.Concrete.WishListConcrete();
+		var ID = 0;
+		var username = "";
+		if (Session["OnlineKullanici"] != null)
+		{
+			ID = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).ID;
+			username = (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).UserName;
+		}
 
-        var sepettekiSayi = _orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == ID && x.IsCompleted == false).ToList().Count;
+		var sepettekiSayi = _orderDetailConcrete._orderDetailRepository.GetAll().Where(x => x.OrderOfOrderDetail.CustomerID == ID && x.IsCompleted == false).ToList().Count;
 
-        var istektekiSayi = _wishListConcrete._wishListRepository.GetAll().Where(x => x.CustomerID == ID && x.IsActive == true).ToList().Count;
-    }
+		var istektekiSayi = _wishListConcrete._wishListRepository.GetAll().Where(x => x.CustomerID == ID && x.IsActive == true).ToList().Count;
+	}
 
-    <div class="noo-spinner">
-        <div class="sk-rotating-plane"></div>
-    </div>
-    <div class="site">
-        <header class="noo-header fixed_top header-1">
-            <div class="navbar-wrapper">
-                <div class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-logo">
-                            <a class="custom-logo-link" href="@Url.Action("Index","Home")" style="float:left;position:relative;top:21px;">
-                                <div class="coffee-cup">
+	<div class="noo-spinner">
+		<div class="sk-rotating-plane"></div>
+	</div>
+	<div class="site">
+		<header class="noo-header fixed_top header-1">
+			<div class="navbar-wrapper">
+				<div class="navbar navbar-default">
+					<div class="container-fluid">
+						<div class="navbar-logo">
+							<a class="custom-logo-link" href="@Url.Action("Index","Home")" style="float:left;position:relative;top:21px;">
+								<div class="coffee-cup">
 
-                                    <div class="handle">
+									<div class="handle">
 
-                                    </div>
-                                    <div class="yazi" style="font-size:24pt">
-                                        CoffeeLand
-                                    </div>
-                                </div>
-                            </a>
-                            <button data-target=".nav-collapse" class="btn-navbar noo_icon_menu icon_menu"></button>
-                        </div>
-                        <nav class="noo-main-menu">
-                            <ul class="nav-collapse navbar-nav">
-                                <li>
-                                    @Html.ActionLink("Ana Sayfa", "Index", "Home")
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="@Url.Action("Coffees","Coffee")">İÇECEKLERİMİZ</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("About","Home")">Hakkımızda</a>
+									</div>
+									<div class="yazi" style="font-size:24pt">
+										CoffeeLand
+									</div>
+								</div>
+							</a>
+							<button data-target=".nav-collapse" class="btn-navbar noo_icon_menu icon_menu"></button>
+						</div>
+						<nav class="noo-main-menu">
+							<ul class="nav-collapse navbar-nav">
+								<li>
+									@Html.ActionLink("Ana Sayfa", "Index", "Home")
+								</li>
+								<li class="menu-item-has-children">
+									<a href="@Url.Action("Coffees","Coffee")">İÇECEKLERİMİZ</a>
+								</li>
+								<li>
+									<a href="@Url.Action("About","Home")">Hakkımızda</a>
 
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Contact","Home")">İletişim</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="navbar-meta">
-                            <ul>
-                                @{
-                                    if (Session["OnlineKullanici"] == null)
-                                    {
-                                        <li>
-                                            <a class="noo-loop-cart icon_profile" href="@Url.Action("Login", "Login")"></a>
-                                        </li>
-                                    }
-                                    else
-                                    {
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                <span id="email-span">@username</span>
-                                                <span class="noo-loop-cart icon_profile"></span>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a href="@Url.Action("Account","Account", new { username = username})">
-                                                        Profilim
-                                                        <span class="icon_cog"></span>
-                                                    </a>
-                                                </li>
-                                                <li class="divider"></li>
-                                                <li>
-                                                    <a href="@Url.Action("LogOut", "Login")">
-                                                        Çıkış Yap
-                                                        <span class="icon_close"></span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
+								</li>
+								<li>
+									<a href="@Url.Action("Contact","Home")">İletişim</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="navbar-meta">
+							<ul>
+								@{
+									if (Session["OnlineKullanici"] == null)
+									{
+										<li>
+											<a class="noo-loop-cart icon_profile" href="@Url.Action("Login", "Login")"></a>
+										</li>
+									}
+									else
+									{
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+												<span id="email-span">@username</span>
+												<span class="noo-loop-cart icon_profile"></span>
+											</a>
+											<ul class="dropdown-menu">
 
-                                        <li>
-                                            <a class="cart-button" href="@Url.Action("WishList", "Shopping")">
-                                                <span class="cart-item">
-                                                    <i class="icon_heart_alt"></i>
-                                                    <span class="cart-count">@istektekiSayi</span>
+												@{
+													if ((Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).AuthorizationID == 1 || (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).AuthorizationID == 2)
+													{
+														<li>
+															<a href="@Url.Action("Index","Home",new { Area = "Admin" },null)">
+																Admin Paneli
+																<span class="icon_genius"></span>
+															</a>
+														</li>
+													}
+												}
+												<li>
+													<a href="@Url.Action("Account","Account", new { username = username})">
+														Profilim
+														<span class="icon_cog"></span>
+													</a>
+												</li>
+												<li class="divider"></li>
+												<li>
+													<a href="@Url.Action("LogOut", "Login")">
+														Çıkış Yap
+														<span class="icon_close"></span>
+													</a>
+												</li>
+											</ul>
+										</li>
 
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li class="noo-menu-item-cart minicart">
-                                            <a class="cart-button" href="#">
-                                                <span class="cart-item">
-                                                    <i class="icon_bag_alt"></i>
-                                                    <span class="cart-count">@sepettekiSayi</span>
-                                                    <span class="cart-name-and-total">
-                                                        Cart(0)
-                                                    </span>
-                                                </span>
-                                            </a>
-                                            <div class="noo-minicart">
-                                                <div class="minicart-header">
-                                                    @{
-                                                        if (sepettekiSayi == 0)
-                                                        {
-                                                            <span>Sepetiniz Boş.</span>
-                                                        }
-                                                        else
-                                                        {
-                                                            <span>Sepetinizde @sepettekiSayi tane ürün var</span>
-                                                        }
-                                                    }
+										<li>
+											<a class="cart-button" href="@Url.Action("WishList", "Shopping")">
+												<span class="cart-item">
+													<i class="icon_heart_alt"></i>
+													<span class="cart-count">@istektekiSayi</span>
 
-                                                    <div class="minicart-actions clearfix">
-                                                        <a class="button pull-left btn btn-warning btn-xs" href="@Url.Action("CartList","Shopping", new { id = ID})"><span class="text">Sepete Git</span></a>
-                                                    </div>
+												</span>
+											</a>
+										</li>
+										<li class="noo-menu-item-cart minicart">
+											<a class="cart-button" href="#">
+												<span class="cart-item">
+													<i class="icon_bag_alt"></i>
+													<span class="cart-count">@sepettekiSayi</span>
+													<span class="cart-name-and-total">
+														Cart(0)
+													</span>
+												</span>
+											</a>
+											<div class="noo-minicart">
+												<div class="minicart-header">
+													@{
+														if (sepettekiSayi == 0)
+														{
+															<span>Sepetiniz Boş.</span>
+														}
+														else
+														{
+															<span>Sepetinizde @sepettekiSayi tane ürün var</span>
+														}
+													}
 
-                                                </div>
-                                                <div class="minicart-body">
-                                                    @* TODO: Mini Sepet Görüntüsü eklenecek *@
-                                                </div>
-                                                <div class="minicart-footer">
-                                                    <div class="minicart-actions clearfix">
-                                                        <a class="button pull-left" href="@Url.Action("Coffees","Coffee")">
-                                                            @{
-                                                                if (sepettekiSayi == 0)
-                                                                {
-                                                                    <span class="text">Alışverişe Başla</span>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <span class="text">Alışverişe Devam Et</span>
-                                                                }
-                                                            }
+													<div class="minicart-actions clearfix">
+														<a class="button pull-left btn btn-warning btn-xs" href="@Url.Action("CartList","Shopping", new { id = ID})"><span class="text">Sepete Git</span></a>
+													</div>
 
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    }
-                                }
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <div class="noo-page-heading cart-heading">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="noo-heading-content">
-                            <h1 class="page-title">@ViewBag.PageWord</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="main">
-            @RenderBody()
-        </div>
-        <footer class="wrap-footer">
-            <div class="footer-top pb-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6 footer-item">
-                            <div class="widget widget-noo-infomation">
-                                <h4 class="widget-title">CoffeeLand</h4>
-                                <p class="info-desc">
-                                    Biz küresel bir kahve şirketiyiz.Özgün kahveleerimizle ile geleneksel kahve kültürüne yeni solıuklar getiriyoruz.
-                                </p>
-                                <ul class="noo-infomation-attr">
-                                    <li>
-                                        <span class="text-icon">A</span>
-                                        <address>Zuhuratbaba Mahallesi, Bakırköy,İstanbul/Türkiye </address>
-                                    </li>
-                                    <li>
-                                        <span class="text-icon">T</span>
-                                        <a href="#">+21-555-555-5555</a>
-                                    </li>
-                                    <li>
-                                        <span class="text-icon">M</span>
-                                        <a class="phone-text" href="#" target="_top">coffeeLand@coffee.com</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 footer-item">
-                            <div class="widget">
-                                <h4 class="widget-title">Çalışma saatleri</h4>
-                                <ul class="noo-opening-time">
-                                    <li>
-                                        Pazartesi - Cuma: 8:00 - 22:00
-                                    </li>
-                                    <li>
-                                        Cumartesi: 9:00 - 20:00
-                                    </li>
-                                    <li>
-                                        Pazar: 9:00 - 20:00
-                                    </li>
-                                    <li>
-                                        Tüm Tatillerde Çalışıyoruz
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 footer-item">
-                            <div class="widget widget_nav_menu">
-                                <h4 class="widget-title">Hakkımızda</h4>
-                                <ul class="menu">
-                                    <li><a href="@Url.Action("About","Home")">Biz Kimiz?</a></li>
+												</div>
+												<div class="minicart-body">
+													@* TODO: Mini Sepet Görüntüsü eklenecek *@
+												</div>
+												<div class="minicart-footer">
+													<div class="minicart-actions clearfix">
+														<a class="button pull-left" href="@Url.Action("Coffees","Coffee")">
+															@{
+																if (sepettekiSayi == 0)
+																{
+																	<span class="text">Alışverişe Başla</span>
+																}
+																else
+																{
+																	<span class="text">Alışverişe Devam Et</span>
+																}
+															}
 
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 footer-item">
-                            <div class="widget widget_nav_menu">
-                                <h4 class="widget-title">Hesabım</h4>
-                                <ul class="menu">
-                                    <li><a href="@Url.Action("CartList","Shopping")">Sepet</a></li>
-                                    <li><a href="@Url.Action("WishList","Shopping")">İstek Listesi</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom pb-5 text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <a href="#"><img src="images/payment_logo.png" alt="" /></a>
-                            <p class="mt-1">@@ 2019. Developed by Adsız</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+														</a>
+													</div>
+												</div>
+											</div>
+										</li>
+									}
+								}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="noo-page-heading cart-heading">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="noo-heading-content">
+							<h1 class="page-title">@ViewBag.PageWord</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="main">
+			@RenderBody()
+		</div>
+		<footer class="wrap-footer">
+			<div class="footer-top pb-5">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3 col-sm-6 footer-item">
+							<div class="widget widget-noo-infomation">
+								<h4 class="widget-title">CoffeeLand</h4>
+								<p class="info-desc">
+									Biz küresel bir kahve şirketiyiz.Özgün kahveleerimizle ile geleneksel kahve kültürüne yeni solıuklar getiriyoruz.
+								</p>
+								<ul class="noo-infomation-attr">
+									<li>
+										<span class="text-icon">A</span>
+										<address>Zuhuratbaba Mahallesi, Bakırköy,İstanbul/Türkiye </address>
+									</li>
+									<li>
+										<span class="text-icon">T</span>
+										<a href="#">+21-555-555-5555</a>
+									</li>
+									<li>
+										<span class="text-icon">M</span>
+										<a class="phone-text" href="#" target="_top">coffeeLand@coffee.com</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 footer-item">
+							<div class="widget">
+								<h4 class="widget-title">Çalışma saatleri</h4>
+								<ul class="noo-opening-time">
+									<li>
+										Pazartesi - Cuma: 8:00 - 22:00
+									</li>
+									<li>
+										Cumartesi: 9:00 - 20:00
+									</li>
+									<li>
+										Pazar: 9:00 - 20:00
+									</li>
+									<li>
+										Tüm Tatillerde Çalışıyoruz
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 footer-item">
+							<div class="widget widget_nav_menu">
+								<h4 class="widget-title">Hakkımızda</h4>
+								<ul class="menu">
+									<li><a href="@Url.Action("About","Home")">Biz Kimiz?</a></li>
 
-        <a href="#" class="go-to-top hidden-print"><i class="fa fa-angle-up"></i></a>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 footer-item">
+							<div class="widget widget_nav_menu">
+								<h4 class="widget-title">Hesabım</h4>
+								<ul class="menu">
+									<li><a href="@Url.Action("CartList","Shopping")">Sepet</a></li>
+									<li><a href="@Url.Action("WishList","Shopping")">İstek Listesi</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom pb-5 text-center">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<a href="#"><img src="images/payment_logo.png" alt="" /></a>
+							<p class="mt-1">@@ 2019. Developed by Adsız</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 
-        <script src="~/Scripts/jquery.min.js"></script>
-        <script src="~/Scripts/jquery.migrate.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
-        <script src="~/Scripts/jquery.themepunch.tools.min.js"></script>
-        <script src="~/Scripts/jquery.themepunch.revolution.min.js"></script>
-        <script src="~/Scripts/modernizr-2.7.1.min.js"></script>
-        <script src="~/Scripts/jquery.prettyPhoto.js"></script>
-        <script src="~/Scripts/jquery.prettyPhoto.init.min.js"></script>
-        <script src="~/Scripts/jquery.magnific-popup.js"></script>
-        <script src="~/Scripts/off-cavnas.js"></script>
-        <script src="~/Scripts/imagesloaded.pkgd.min.js"></script>
-        <script src="~/Scripts/owl.carousel.min.js"></script>
-        <script src="~/Scripts/jquery.countdown.min.js"></script>
-        <script src="~/Scripts/script.js"></script>
-        <script src="~/Scripts/jquery.js"></script>
+		<a href="#" class="go-to-top hidden-print"><i class="fa fa-angle-up"></i></a>
 
-        <script src="~/Scripts/extensions/revolution.extension.video.min.js"></script>
-        <script src="~/Scripts/extensions/revolution.extension.slideanims.min.js"></script>
-        <script src="~/Scripts/extensions/revolution.extension.actions.min.js"></script>
-        <script src="~/Scripts/extensions/revolution.extension.layeranimation.min.js"></script>
-        <script src="~/Scripts/extensions/revolution.extension.kenburn.min.js"></script>
-        <script src="~/Scripts/extensions/revolution.extension.navigation.min.js"></script>
-        <script src="~/Scripts/extensions/revolution.extension.migration.min.js"></script>
-        <script src="~/Scripts/extensions/revolution.extension.parallax.min.js"></script>
+		<script src="~/Scripts/jquery.min.js"></script>
+		<script src="~/Scripts/jquery.migrate.js"></script>
+		<script src="~/Scripts/bootstrap.min.js"></script>
+		<script src="~/Scripts/jquery.themepunch.tools.min.js"></script>
+		<script src="~/Scripts/jquery.themepunch.revolution.min.js"></script>
+		<script src="~/Scripts/modernizr-2.7.1.min.js"></script>
+		<script src="~/Scripts/jquery.prettyPhoto.js"></script>
+		<script src="~/Scripts/jquery.prettyPhoto.init.min.js"></script>
+		<script src="~/Scripts/jquery.magnific-popup.js"></script>
+		<script src="~/Scripts/off-cavnas.js"></script>
+		<script src="~/Scripts/imagesloaded.pkgd.min.js"></script>
+		<script src="~/Scripts/owl.carousel.min.js"></script>
+		<script src="~/Scripts/jquery.countdown.min.js"></script>
+		<script src="~/Scripts/script.js"></script>
+		<script src="~/Scripts/jquery.js"></script>
 
-    </div>
+		<script src="~/Scripts/extensions/revolution.extension.video.min.js"></script>
+		<script src="~/Scripts/extensions/revolution.extension.slideanims.min.js"></script>
+		<script src="~/Scripts/extensions/revolution.extension.actions.min.js"></script>
+		<script src="~/Scripts/extensions/revolution.extension.layeranimation.min.js"></script>
+		<script src="~/Scripts/extensions/revolution.extension.kenburn.min.js"></script>
+		<script src="~/Scripts/extensions/revolution.extension.navigation.min.js"></script>
+		<script src="~/Scripts/extensions/revolution.extension.migration.min.js"></script>
+		<script src="~/Scripts/extensions/revolution.extension.parallax.min.js"></script>
+
+	</div>
 </body>
 </html>

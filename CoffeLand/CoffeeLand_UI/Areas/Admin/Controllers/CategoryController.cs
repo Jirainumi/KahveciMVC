@@ -19,26 +19,65 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
 
         public CategoryController()
         {
-            _categoryConcrete = new CategoryConcrete();
-        }
+			_categoryConcrete = new CategoryConcrete();
+		}
 
-        // GET: Admin/Category
-        public ActionResult Index()
+		// GET: Admin/Category
+		public ActionResult Index()
         {
-            return View(_categoryConcrete._categoryRepository.GetAll());
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				return View(_categoryConcrete._categoryRepository.GetAll());
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // GET: Admin/Category/Details/5
         public ActionResult Details(int id)
         {
-            Category category = _categoryConcrete._categoryRepository.GetById(id);
-            return View(category);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				Category category = _categoryConcrete._categoryRepository.GetById(id);
+				return View(category);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // GET: Admin/Category/Create
         public ActionResult Create()
         {
-            return View();
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				return View();
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // POST: Admin/Category/Create
@@ -48,21 +87,47 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,CategoryName,Description")] Category category)
         {
-            if (ModelState.IsValid)
-            {
-                _categoryConcrete._categoryRepository.Insert(category);
-                _categoryConcrete._categoryUnitOfWork.SaveChanges();
-                return RedirectToAction("Index");
-            }
+			Customer customer = Session["OnlineKullanici"] as Customer;
 
-            return View(category);
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				if (ModelState.IsValid)
+				{
+					_categoryConcrete._categoryRepository.Insert(category);
+					_categoryConcrete._categoryUnitOfWork.SaveChanges();
+					return RedirectToAction("Index");
+				}
+
+				return View(category);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // GET: Admin/Category/Edit/5
         public ActionResult Edit(int id)
         {
-            Category category = _categoryConcrete._categoryRepository.GetById(id);
-            return View(category);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				Category category = _categoryConcrete._categoryRepository.GetById(id);
+				return View(category);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
         }
 
         // POST: Admin/Category/Edit/5
@@ -72,31 +137,74 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,CategoryName,Description")] Category category)
         {
-            if (ModelState.IsValid)
-            {
-                _categoryConcrete._categoryRepository.Update(category);
-                _categoryConcrete._categoryUnitOfWork.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(category);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				if (ModelState.IsValid)
+				{
+					_categoryConcrete._categoryRepository.Update(category);
+					_categoryConcrete._categoryUnitOfWork.SaveChanges();
+					return RedirectToAction("Index");
+				}
+				return View(category);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
+			
         }
 
         // GET: Admin/Category/Delete/5
         public ActionResult Delete(int id)
         {
-            Category category = _categoryConcrete._categoryRepository.GetById(id);
-            return View(category);
-        }
+
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				Category category = _categoryConcrete._categoryRepository.GetById(id);
+				return View(category);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
+
+		}
 
         // POST: Admin/Category/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = _categoryConcrete._categoryRepository.GetById(id);
-            _categoryConcrete._categoryRepository.Delete(category);
-            _categoryConcrete._categoryUnitOfWork.SaveChanges();
-            return RedirectToAction("Index");
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				Category category = _categoryConcrete._categoryRepository.GetById(id);
+				_categoryConcrete._categoryRepository.Delete(category);
+				_categoryConcrete._categoryUnitOfWork.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
+		
         }
 
         protected override void Dispose(bool disposing)

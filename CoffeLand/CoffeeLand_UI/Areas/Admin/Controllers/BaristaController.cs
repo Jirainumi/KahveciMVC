@@ -25,14 +25,42 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         // GET: Admin/Baristas
         public ActionResult Index()
         {
-            return View(_baristaConcrete._baristaRepository.GetAll());
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				return View(_baristaConcrete._baristaRepository.GetAll());
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
+		
         }
 
         // GET: Admin/Baristas/Details/5
         public ActionResult Details(int id)
         {
-            Barista barista = _baristaConcrete._baristaRepository.GetById(id);
-            return View(barista);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				Barista barista = _baristaConcrete._baristaRepository.GetById(id);
+				return View(barista);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
+			
         }
 
         // GET: Admin/Baristas/Create
@@ -48,21 +76,48 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Firstname,Lastname,Gender,BirthDate,HiredDate,AVGPoint")] Barista barista)
         {
-            if (ModelState.IsValid)
-            {
-                _baristaConcrete._baristaRepository.Insert(barista);
-                _baristaConcrete._baristaUnitOfWork.SaveChanges();
-                return RedirectToAction("Index");
-            }
+			Customer customer = Session["OnlineKullanici"] as Customer;
 
-            return View(barista);
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				if (ModelState.IsValid)
+				{
+					_baristaConcrete._baristaRepository.Insert(barista);
+					_baristaConcrete._baristaUnitOfWork.SaveChanges();
+					return RedirectToAction("Index");
+				}
+
+				return View(barista);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}			
         }
 
         // GET: Admin/Baristas/Edit/5
         public ActionResult Edit(int id)
         {
-            Barista barista = _baristaConcrete._baristaRepository.GetById(id);
-            return View(barista);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				Barista barista = _baristaConcrete._baristaRepository.GetById(id);
+				return View(barista);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
+			
         }
 
         // POST: Admin/Baristas/Edit/5
@@ -72,20 +127,48 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Firstname,Lastname,Gender,BirthDate,HiredDate,AVGPoint")] Barista barista)
         {
-            if (ModelState.IsValid)
-            {
-                _baristaConcrete._baristaRepository.Update(barista);
-                _baristaConcrete._baristaUnitOfWork.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(barista);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				if (ModelState.IsValid)
+				{
+					_baristaConcrete._baristaRepository.Update(barista);
+					_baristaConcrete._baristaUnitOfWork.SaveChanges();
+					return RedirectToAction("Index");
+				}
+				return View(barista);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
+			
         }
 
         // GET: Admin/Baristas/Delete/5
         public ActionResult Delete(int id)
         {
-            Barista barista = _baristaConcrete._baristaRepository.GetById(id);
-            return View(barista);
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				Barista barista = _baristaConcrete._baristaRepository.GetById(id);
+				return View(barista);
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}
+			
         }
 
         // POST: Admin/Baristas/Delete/5
@@ -93,10 +176,23 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Barista barista = _baristaConcrete._baristaRepository.GetById(id);
-            _baristaConcrete._baristaRepository.Delete(barista);
-            _baristaConcrete._baristaUnitOfWork.SaveChanges();
-            return RedirectToAction("Index");
+			Customer customer = Session["OnlineKullanici"] as Customer;
+
+			if (customer == null)
+			{
+				return Redirect("/Login/Login");
+			}
+			else if (customer.AuthorizationID == 1 || customer.AuthorizationID == 2)
+			{
+				Barista barista = _baristaConcrete._baristaRepository.GetById(id);
+				_baristaConcrete._baristaRepository.Delete(barista);
+				_baristaConcrete._baristaUnitOfWork.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			else
+			{
+				return Redirect("/Coffee/Coffees");
+			}		
         }
 
         protected override void Dispose(bool disposing)
