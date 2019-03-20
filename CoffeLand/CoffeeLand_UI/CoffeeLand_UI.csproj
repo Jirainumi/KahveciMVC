@@ -219,6 +219,7 @@
     <Content Include="Content\owl.theme.css" />
     <Content Include="Content\prettyPhoto.css" />
     <Content Include="Content\profileStyle.css" />
+    <Content Include="Content\Rating.css" />
     <Content Include="Content\settings.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />

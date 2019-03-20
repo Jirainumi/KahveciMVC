@@ -17,7 +17,7 @@
                             <thead style="text-align:center">
                                 <tr>
                                     <th class="product-thumbnail">Ürün Görseli</th>
-                                    <th class="product-price"> Geçen Toplam Dakika</th>
+                                    <th class="product-price">Alınan Tarih/Zaman</th>
                                     <th class="product-price">Barista Adı</th>
                                     <th class="product-price">Ürüne Oy Ver</th>
                                     <th class="product-price">Baristaya Oy Ver</th>
@@ -38,7 +38,16 @@
                                                 <p>@item.CoffeeOfOrderDetail.CoffeeName</p>
                                             </td>
                                             <td class="product-price">
-                                                <p style="text-align:center">@Math.Round(minute, 0)</p>
+                                                @{
+                                                    if (Math.Round(minute, 0) < 15)
+                                                    {
+                                                        <p style="text-align:center">@Math.Round(minute, 0)</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p style="text-align:center">@item.OrderOfOrderDetail.OrderDate</p>
+                                                    }
+                                                }
                                             </td>
                                             <td class="product-price">
                                                 <p>@item.BaristaOfOrderDetail.FullName</p>
@@ -62,17 +71,21 @@
                                                         <td class="product-stock-stauts rate-area">
                                                             @*TODO: point düzeltilecek *@
                                                             <p>@item.CoffeeOfOrderDetail.CoffeeName</p>
-                                                            @for (int i = 0; i < item.CoffeeOfOrderDetail.CoffeeComments.FirstOrDefault(x => x.CoffeeID == item.CoffeeID && x.CustomerID == (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).ID).Point; i++)
-                                                            {
-                                                                <span class="glyphicon glyphicon-star" style="font-size:25px;color:gold"></span>
+                                                            @{
+                                                                for (int i = 0; i < item.CoffeeOfOrderDetail.AVGPoint; i++)
+                                                                {
+                                                                    <span class="glyphicon glyphicon-star" style="font-size:25px;color:gold"></span>
+                                                                }
                                                             }
                                                         </td>
                                                         <td class="product-stock-stauts rate-area">
                                                             @*TODO: point düzeltilecek *@
                                                             <p>@item.BaristaOfOrderDetail.FullName</p>
-                                                            @for (int i = 0; i < item.BaristaOfOrderDetail.BaristaComments.FirstOrDefault(x=> x.BaristaID == item.BaristaID && x.CustomerID == (Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).ID).Point; i++)
-                                                            {
-                                                                <span class="glyphicon glyphicon-star" style="font-size:25px;color:gold"></span>
+                                                            @{
+                                                                for (int i = 0; i < item.BaristaOfOrderDetail.AVGPoint; i++)
+                                                                {
+                                                                    <span class="glyphicon glyphicon-star" style="font-size:25px;color:gold"></span>
+                                                                }
                                                             }
                                                         </td>
                                                         <td class="product-add-to-cart">
@@ -122,27 +135,3 @@
         </div>
     </div>
 </div>
-
-
-<script>
-	//$('.rate-area').on('change', '[name="crating"]', function () {
-	//	var coffeeCommentID = $(this).data("mid");
-	//	var rate = $('[name="rating"]:checked').val();
-	//	var i = 1;
-	//	$("#btnVote").click(function () {
-	//		$(".star").each(function () {
-	//			if (i <= 10 - rate) {
-	//				$(this).removeClass("star").addClass("nostar");
-	//			}
-	//			i++;
-	//		})
-	//		$('[name="rating"]').attr("checked")
-	//		$.ajax({
-	//			url: "/MoviesSeries/VoteMoviesSeries/",
-	//			type: "POST",
-	//			data: { id: moviesSeriesId, rate: rate }
-	//		});
-	//		$("#btnVote").attr("disabled", true);
-	//	})
-	//});
-</script>

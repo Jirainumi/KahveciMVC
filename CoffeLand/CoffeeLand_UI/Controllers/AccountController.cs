@@ -123,7 +123,8 @@ namespace CoffeeLand_UI.Controllers
 			{
 				BaristaID = baristaId,
 				CustomerID = (Session["OnlineKullanici"] as Customer).ID,
-				Point = Convert.ToByte(frm["brating"])
+				Point = Convert.ToByte(frm["brating"]),
+                BaristaCommentDate = DateTime.Now
 			};
 			_baristaCommentConcrete._baristaCommentRepository.Insert(baristaComment);
 			_baristaCommentConcrete._baristaCommentUnitOfWork.SaveChanges();
@@ -132,8 +133,9 @@ namespace CoffeeLand_UI.Controllers
 			{
 				CustomerID = (Session["OnlineKullanici"] as Customer).ID,
 				CoffeeID = coffeeId,
-				Point = Convert.ToByte(frm["crating"])
-			};
+				Point = Convert.ToByte(frm["crating"]),
+                CoffeeCommentDate = DateTime.Now
+            };
 
 			_coffeeCommentConcrete._coffeeCommentRepository.Insert(coffeeComment);
 			_coffeeCommentConcrete._coffeeCommentUnitOfWork.SaveChanges();
