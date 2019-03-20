@@ -26,7 +26,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown menu-item-has-children">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sıralama Seçenekleri <span class="caret"></span></a>
-						<ul class="sub-menu">
+						<ul class="sub-menu" id="filtre">
 							<li>@Html.ActionLink("En Yüksek Puanlı", "HighPoint", "Coffee")</li>
 							<li>@Html.ActionLink("Fiyata Göre Artan", "LowPrice", "Coffee")</li>
 							<li>@Html.ActionLink("Fiyata Göre Azalan", "HighPrice", "Coffee")</li>
@@ -57,4 +57,33 @@
 </div>
 
 
+<script>
+        @*$("#filtre").click(function () {
+            $.ajax({
+                method: "post",
+                url: "@Url.Action("UrunleriGetirIleBaslayan", "Urunler")",
+                data: { ara: $("#ileBas").val() }
+            }).done(function (msg) {
+                $("#hedef").html(msg);
+            });
+	});*@
+
+
+	//function loadContent() {
+	//	$.ajax({
+	//		method: "get",
+	//		url: "/Coffee/HighPoint",
+	//		headers: headers,
+	//		success: function (data) {
+	//			$.each(data, function (key, value) {
+	//				CoffeeFilter(value.ID, value.CoffeeName);
+	//			});
+	//		}
+	//	});
+	//}
+
+	//function CoffeeFilter(id, name) {
+	//	$("#filtre").append('<li><a href="#" data-not-id="' + id + '">' + name + '</a></li> ');
+	}
+</script>
 
