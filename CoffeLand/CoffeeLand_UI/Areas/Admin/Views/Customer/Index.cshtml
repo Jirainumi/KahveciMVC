@@ -1,0 +1,82 @@
+﻿@model IEnumerable<CoffeeLand_DATA.Classes.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorizationsOfCustomer.AuthorizationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorizationsOfCustomer.AuthorizationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @{
+                    if ((Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).AuthorizationID == 2 && item.AuthorizationID == 1)
+                    {
+                        <a href="@Url.Action("Edit","Customer",new { id = item.ID})" class="btn btn-success disabled">Edit</a>
+                        <a href="@Url.Action("Details","Customer",new { id = item.ID})" class="btn btn-info disabled">Details</a>
+                        <a href="@Url.Action("Delete","Customer",new { id = item.ID})" class="btn btn-warning disabled">Delete</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Edit","Customer",new { id = item.ID})" class="btn btn-success">Edit</a>
+                        <a href="@Url.Action("Details","Customer",new { id = item.ID})" class="btn btn-info">Details</a>
+                        <a href="@Url.Action("Delete","Customer",new { id = item.ID})" class="btn btn-warning">Delete</a>
+                    }
+                }
+            </td>
+        </tr>
+    }
+
+</table>

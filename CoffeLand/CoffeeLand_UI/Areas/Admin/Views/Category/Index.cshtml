@@ -24,13 +24,13 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td class="col-md-2">
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
-            <td>
+            <td class="col-md-8">
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
+            <td class="col-md-2">
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-success" }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info" }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-warning" })

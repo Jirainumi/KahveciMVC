@@ -42,31 +42,31 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td class="col-md-1">
                 @Html.DisplayFor(modelItem => item.CategoryOfCoffee.CategoryName)
             </td>
-            <td>
+            <td class="col-md-1">
                 @Html.DisplayFor(modelItem => item.CoffeeName)
             </td>
-            <td>
+            <td class="col-md-3">
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
+            <td class="col-md-1">
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-            <td>
+            <td class="col-md-1">
                 @Html.DisplayFor(modelItem => item.AVGPoint)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
+            <td class="col-md-1">
+                <img src="@Url.Content(item.ImageUrl)" alt="@Url.Content(item.AltText)" style="height:120px;" />
             </td>
-            <td>
+            <td class="col-md-1">
                 @Html.DisplayFor(modelItem => item.AltText)
             </td>
-            <td>
+            <td class="col-md-1">
                 @Html.DisplayFor(modelItem => item.IsPrepared)
             </td>
-            <td>
+            <td class="col-md-2">
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-success" }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info" }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-warning" })
