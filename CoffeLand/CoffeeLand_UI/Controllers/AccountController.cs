@@ -84,14 +84,21 @@ namespace CoffeeLand_UI.Controllers
 			else
 			{
 				Customer customer = _customerConcrete._customerRepository.GetById((Session["OnlineKullanici"] as Customer).ID);
-				customer.Password = frm["newpassword"];
+                //Şİfre kontrolü yap
 
-				_customerConcrete._customerRepository.Update(customer);
-				_customerConcrete._customerUnitOfWork.SaveChanges();
-				_customerConcrete._customerUnitOfWork.Dispose();
+                if(frm["newpassword"]== frm["confirmnewpassword"])
+                {
+                    customer.Password = frm["newpassword"];
 
-				return Redirect(Request.UrlReferrer.ToString());
-			}
+                    _customerConcrete._customerRepository.Update(customer);
+                    _customerConcrete._customerUnitOfWork.SaveChanges();
+                    _customerConcrete._customerUnitOfWork.Dispose();
+                   
+                    return Redirect(Request.UrlReferrer.ToString());
+                }
+
+                return Redirect(Request.UrlReferrer.ToString());
+            }
 		}
 
 
