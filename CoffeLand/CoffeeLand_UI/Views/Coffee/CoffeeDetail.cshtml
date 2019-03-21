@@ -50,7 +50,7 @@
 
                     <label>
                         <input type="radio" name="barista" value="@item.ID" checked />
-                        @item.FullName - 
+                        @item.FullName -
                         @{for (int i = 0; i < item.AVGPoint; i++)
                             {
                                 <span class="glyphicon glyphicon-star" style="font-size:20px;color:gold"></span>
@@ -58,13 +58,25 @@
                         }
                     </label>
                     <br />
-                            }
-                            <br />
-                            <button type="submit" class="btn btn-warning" name="sepet">Sepete Ekle</button>
-                            <button type="submit" class="btn btn-danger" name="hemenSiparis">Hemen Sipariş Ver</button>
-                            @*<a class="btn btn-danger" href="@Url.Action("OrderNow", "Shopping", new { id = Model.ID })" role="button">Hemen Sipariş Ver</a>*@
-                            <a class="btn btn-warning" href="@Url.Action("AddToWishList","Shopping",new { id=Model.ID})" role="button">İstek Listesine Ekle</a>
-                            }
+                }
+                <br />
+                if (Model.IsPrepared)
+                {
+                    <button type="submit" class="btn btn-warning" name="sepet">Sepete Ekle</button>
+                    <button type="submit" class="btn btn-danger" name="hemenSiparis">Hemen Sipariş Ver</button>
+                }
+                else
+                {
+                    <button type="submit" disabled class="btn btn-warning" name="sepet">Sepete Ekle</button>
+                    <button type="submit" disabled class="btn btn-danger" name="hemenSiparis">Hemen Sipariş Ver</button>
+                }
+
+
+
+
+                @*<a class="btn btn-danger" href="@Url.Action("OrderNow", "Shopping", new { id = Model.ID })" role="button">Hemen Sipariş Ver</a>*@
+                <a class="btn btn-warning" href="@Url.Action("AddToWishList","Shopping",new { id=Model.ID})" role="button">İstek Listesine Ekle</a>
+            }
             <ul class="nav nav-tabs">
                 <li class="active">
                     <a href="#description" data-toggle="tab">Coffee Açıklaması</a>
