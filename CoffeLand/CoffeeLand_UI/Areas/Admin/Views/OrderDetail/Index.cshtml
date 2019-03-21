@@ -7,17 +7,16 @@
 
 <h2>Sipariş Detayları</h2>
 
-
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.BaristaOfOrderDetail.Firstname)
+            Barista's Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CoffeeOfOrderDetail.CoffeeName)
+            Coffee Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderOfOrderDetail.ID)
+            OrderID
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UnitPrice)
@@ -28,27 +27,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BaristaOfOrderDetail.Firstname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CoffeeOfOrderDetail.CoffeeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderOfOrderDetail.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaristaOfOrderDetail.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoffeeOfOrderDetail.CoffeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderOfOrderDetail.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+    }
 
 </table>

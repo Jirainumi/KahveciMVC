@@ -55,7 +55,6 @@
     <Compile Include="Mapping\CategoryMapping.cs" />
     <Compile Include="Mapping\CoffeeCommentMapping.cs" />
     <Compile Include="Mapping\CoffeesMapping.cs" />
-    <Compile Include="Mapping\ExtraMaterialsMapping.cs" />
     <Compile Include="Mapping\OrderDetailMapping.cs" />
     <Compile Include="Mapping\OrderMapping.cs" />
     <Compile Include="Mapping\CustomerMapping.cs" />

@@ -16,13 +16,11 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
     {
 		CoffeeConcrete _coffeeConcrete;
 		CategoryConcrete _categoryConcrete;
-		ExtraMaterialsConcrete _extraMaterialsConcrete;
 
 		public CoffeeController()
 		{
 			_coffeeConcrete = new CoffeeConcrete();
 			_categoryConcrete = new CategoryConcrete();
-			_extraMaterialsConcrete = new ExtraMaterialsConcrete();
 		}
 
 		// GET: Admin/Coffee
@@ -110,7 +108,6 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
 				}
 
 				ViewBag.CategoryID = new SelectList(_categoryConcrete._categoryRepository.GetEntity(), "ID", "CategoryName", coffee.CategoryID);
-				ViewBag.ExtraMaterialsID = new SelectList(_categoryConcrete._categoryRepository.GetEntity(), "ID", "Name", coffee.ExtraMaterialsID);
 				return View(coffee);
 			}
 			else
@@ -134,7 +131,6 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
 				Coffee coffee = _coffeeConcrete._coffeeRepository.GetById(id);
 
 				ViewBag.CategoryID = new SelectList(_categoryConcrete._categoryRepository.GetEntity(), "ID", "CategoryName", coffee.CategoryID);
-				ViewBag.ExtraMaterialsID = new SelectList(_categoryConcrete._categoryRepository.GetEntity(), "ID", "Name", coffee.ExtraMaterialsID);
 				return View(coffee);
 			}
 			else
@@ -166,7 +162,6 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
 					return RedirectToAction("Index");
 				}
 				ViewBag.CategoryID = new SelectList(_categoryConcrete._categoryRepository.GetEntity(), "ID", "CategoryName", coffee.CategoryID);
-				ViewBag.ExtraMaterialsID = new SelectList(_categoryConcrete._categoryRepository.GetEntity(), "ID", "Name", coffee.ExtraMaterialsID);
 				return View(coffee);
 			}
 			else

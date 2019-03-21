@@ -50,7 +50,7 @@
                 <!--logo end-->
                 <div class="top-menu">
                     <ul class="nav pull-right top-menu">
-                        <li><a class="logout" href="@Url.Action("LogOut","Login")">Logout</a></li>
+                        <li><a class="logout" href="@Url.Action("LogOut","Login",new { Area = "" })">Logout</a></li>
                     </ul>
                 </div>
             </header>
@@ -79,7 +79,6 @@
                                 <li><a href="@Url.Action("Index","CoffeeComment")"><i class="fa fa-comment"></i>Coffee Comment</a></li>
                                 <li><a href="@Url.Action("Index","Barista")"><i class="fa fa-user"></i>Barista</a></li>
                                 <li><a href="@Url.Action("Index","BaristaComment")"><i class="fa fa-comment"></i>Barista Comment</a></li>
-                                <li><a href="@Url.Action("Index","ExtraMaterial")"><i class="fa fa-plus"></i>Extra Material</a></li>
                                 <li><a href="@Url.Action("Index","Order")"><i class="fa fa-list"></i>Order</a></li>
                                 <li><a href="@Url.Action("Index","OrderDetail")"><i class="fa fa-list-alt"></i>Order Detail</a></li>
                             </ul>
@@ -94,7 +93,7 @@
                 @RenderBody()
             </section>
         </div>
-        <div class="row">
+        <div class="row navbar-fixed-bottom">
             <footer class="site-footer">
                 <div class="text-center">
                     2019 - CoffeLand &copy;

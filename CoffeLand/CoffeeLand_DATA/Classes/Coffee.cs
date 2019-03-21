@@ -24,9 +24,6 @@ namespace CoffeeLand_DATA.Classes
 
         public bool IsPrepared { get; set; }
 
-        public int ExtraMaterialsID { get; set; }
-        public virtual ExtraMaterial ExtraMaterialOfCoffee { get; set; }
-
         public int CategoryID { get; set; }
         public virtual Category CategoryOfCoffee { get; set; }
 

@@ -21,14 +21,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ExtraMaterialOfCoffee.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ExtraMaterialOfCoffee.Name)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.CoffeeName)
         </dt>
 
@@ -91,7 +83,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "Index",null, new { @class = "btn btn-info" })
         </div>
     }
 </div>

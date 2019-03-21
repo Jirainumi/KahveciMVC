@@ -21,7 +21,6 @@ namespace CoffeeLand_DAL
         public DbSet<Category> Categories { get; set; }
         public DbSet<Coffee> Coffees { get; set; }
         public DbSet<CoffeeComment> CoffeeComments { get; set; }
-        public DbSet<ExtraMaterial> ExtraMaterials { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -36,10 +35,10 @@ namespace CoffeeLand_DAL
             modelBuilder.Configurations.Add(new CategoryMapping());
             modelBuilder.Configurations.Add(new CoffeesMapping());
             modelBuilder.Configurations.Add(new CoffeeCommentMapping());
-            modelBuilder.Configurations.Add(new ExtraMaterialsMapping());
             modelBuilder.Configurations.Add(new OrderDetailMapping());
             modelBuilder.Configurations.Add(new OrderMapping());
             modelBuilder.Configurations.Add(new CustomerMapping());
+            modelBuilder.Configurations.Add(new AuthorizationMapping());
 
             base.OnModelCreating(modelBuilder);
         }

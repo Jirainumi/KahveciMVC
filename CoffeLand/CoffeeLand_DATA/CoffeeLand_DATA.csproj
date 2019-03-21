@@ -59,7 +59,6 @@
     <Compile Include="Classes\Category.cs" />
     <Compile Include="Classes\Coffee.cs" />
     <Compile Include="Classes\CoffeeComment.cs" />
-    <Compile Include="Classes\ExtraMaterial.cs" />
     <Compile Include="Classes\Order.cs" />
     <Compile Include="Classes\OrderDetail.cs" />
     <Compile Include="Classes\Customer.cs" />
