@@ -67,6 +67,7 @@ namespace CoffeeLand_UI.Controllers
 				customer.BirthDate = DateTime.Parse(frm["birthdate"]);
 
 				_customerConcrete._customerRepository.Update(customer);
+				Session["OnlineKullanici"] = customer;
 				_customerConcrete._customerUnitOfWork.SaveChanges();
 				_customerConcrete._customerUnitOfWork.Dispose();
 

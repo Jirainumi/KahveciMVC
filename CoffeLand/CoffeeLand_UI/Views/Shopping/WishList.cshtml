@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<CoffeeLand_DATA.Classes.WishList>
 @{
-    ViewBag.Title = "WishList";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "WishList";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 <div id="main">
-    <div class="section mt-10 mb-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
+	<div class="section mt-10 mb-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
 					<div class="commerce-cart">
 						<table class="cart wishlist-table">
 							<thead>
@@ -52,21 +52,19 @@
 												<span class="glyphicon glyphicon-warning-sign">Hazırlanamaz</span>
 											}
 										</td>
-                                        <td class="product-add-to-cart">
-                                            @if (item.Coffee.IsPrepared)
-                                            {
-                                                <a href="@Url.Action("AddToCartFromWishList","Shopping", new { id=item.WishlistID})">SEPETE EKLE</a>
-                                            }
-                                            else
-                                            {
-                                                <a href="@Url.Action("AddToCartFromWishList","Shopping", new { id=item.WishlistID})" style="pointer-events: none;opacity:0.6;">SEPETE EKLE</a>
+										<td class="product-add-to-cart">
+											@if (item.Coffee.IsPrepared)
+											{
+												<a href="@Url.Action("AddToCartFromWishList","Shopping", new { id=item.WishlistID})">SEPETE EKLE</a>
+											}
+											else
+											{
+												<a href="@Url.Action("AddToCartFromWishList","Shopping", new { id=item.WishlistID})" style="pointer-events: none;opacity:0.6;">SEPETE EKLE</a>
 
-                                            }
-
-                                        </td>
+											}
+										</td>
 									</tr>
 								}
-
 							</tbody>
 						</table>
 						@{
@@ -75,12 +73,12 @@
 								<span class="lead">
 									Henüz istek listesine ürün eklenmemis!
 								</span>
-							}							
+							}
 						}
 					</div>
-                </div>
-            </div>
-        </div>
-    </div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
