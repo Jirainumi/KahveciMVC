@@ -64,15 +64,15 @@
                 @{
                     if ((Session["OnlineKullanici"] as CoffeeLand_DATA.Classes.Customer).AuthorizationID == 2 && item.AuthorizationID == 1)
                     {
-                        <a href="@Url.Action("Edit","Customer",new { id = item.ID})" class="btn btn-success disabled">Edit</a>
-                        <a href="@Url.Action("Details","Customer",new { id = item.ID})" class="btn btn-info disabled">Details</a>
-                        <a href="@Url.Action("Delete","Customer",new { id = item.ID})" class="btn btn-warning disabled">Delete</a>
+                        <a href="@Url.Action("Edit","Customer",new { id = item.ID})" class="btn btn-xs btn-success disabled">Edit</a>
+                        <a href="@Url.Action("Details","Customer",new { id = item.ID})" class="btn btn-xs btn-info disabled">Details</a>
+                        <a href="@Url.Action("Delete","Customer",new { id = item.ID})" class="btn btn-xs btn-warning disabled">Delete</a>
                     }
                     else
                     {
-                        <a href="@Url.Action("Edit","Customer",new { id = item.ID})" class="btn btn-success">Edit</a>
-                        <a href="@Url.Action("Details","Customer",new { id = item.ID})" class="btn btn-info">Details</a>
-                        <a href="@Url.Action("Delete","Customer",new { id = item.ID})" class="btn btn-warning">Delete</a>
+                        <a href="@Url.Action("Edit","Customer",new { id = item.ID})" class="btn btn-xs btn-success">Edit</a>
+                        <a href="@Url.Action("Details","Customer",new { id = item.ID})" class="btn btn-xs btn-info">Details</a>
+                        <a href="@Url.Action("Delete","Customer",new { id = item.ID})" class="btn btn-xs btn-warning">Delete</a>
                     }
                 }
             </td>
