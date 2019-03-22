@@ -611,7 +611,6 @@
     <Content Include="Views\Coffee\CoffeeDetail.cshtml" />
     <Content Include="Views\Shopping\WishList.cshtml" />
     <Content Include="Views\Shopping\CartList.cshtml" />
-    <Content Include="Views\Shopping\Orders.cshtml" />
     <Content Include="Views\Shared\_LoginRegisterLayout.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />

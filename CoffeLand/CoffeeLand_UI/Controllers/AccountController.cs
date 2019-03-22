@@ -101,7 +101,6 @@ namespace CoffeeLand_UI.Controllers
             }
 		}
 
-
 		public ActionResult MyOrders(string username)
 		{
 			Customer customer = _customerConcrete._customerRepository.GetAll().FirstOrDefault(x => x.UserName == username);

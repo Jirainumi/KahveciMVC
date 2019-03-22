@@ -13,7 +13,6 @@ namespace CoffeeLand_UI.Controllers
     {
         CustomerConcrete _customerConcrete;
 
-
         public LoginController()
         {
             _customerConcrete = new CustomerConcrete();

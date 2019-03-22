@@ -1,6 +1,4 @@
 ﻿@{
-    /**/
-
     ViewBag.Title = "MyOrders";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -26,7 +24,6 @@
                             </thead>
                             <tbody>
                                 @{
-
                                     List<CoffeeLand_DATA.Classes.OrderDetail> listem = ViewBag.MyOrders as List<CoffeeLand_DATA.Classes.OrderDetail>;
                                     listem.Reverse();
                                     foreach (var item in listem)
@@ -39,7 +36,7 @@
                                             </td>
                                             <td class="product-price">
                                                 @{
-                                                    if (Math.Round(minute, 0) < 15)
+                                                    if (Math.Round(minute, 0) < 1)
                                                     {
                                                         <p style="text-align:center">@Math.Round(minute, 0)</p>
                                                     }
@@ -66,7 +63,7 @@
                                                 }
                                                 else
                                                 {
-                                                    if (item.IsRated == true)
+                                                    if (item.IsRated)
                                                     {
                                                         <td class="product-stock-stauts rate-area">
                                                             @*TODO: point düzeltilecek *@
@@ -89,7 +86,7 @@
                                                             }
                                                         </td>
                                                         <td class="product-add-to-cart">
-                                                            <button type="submit" class="btn btn-sm btn-warning" disabled>OY VER</button>
+                                                            <button type="submit" disabled class="btn btn-sm btn-warning" >OY VER</button>
                                                         </td>
                                                     }
                                                     else

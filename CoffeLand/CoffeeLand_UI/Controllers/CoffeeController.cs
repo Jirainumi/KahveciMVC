@@ -19,6 +19,7 @@ namespace CoffeeLand_UI.Controllers
             _coffeeConcrete = new CoffeeConcrete();
             _coffeeCommentConcrete = new CoffeeCommentConcrete();
         }
+
         public ActionResult Coffees()
         {
             return View(_coffeeConcrete._coffeeRepository.GetAll().ToList());
@@ -28,15 +29,17 @@ namespace CoffeeLand_UI.Controllers
         {
             return View(_coffeeConcrete._coffeeRepository.GetAll().OrderByDescending(x => x.Price).Take(20).ToList());
         }
-        public ActionResult LowPrice()
+
+		public ActionResult LowPrice()
         {
             return View(_coffeeConcrete._coffeeRepository.GetAll().OrderBy(x => x.Price).Take(20).ToList());
         }
+
         public ActionResult HighPoint()
         {
             return View(_coffeeConcrete._coffeeRepository.GetAll().OrderByDescending(x => x.AVGPoint).Take(20).ToList());
-
         }
+
         public ActionResult NumberOfComment()
         {
             return View(_coffeeConcrete._coffeeRepository.GetAll().OrderByDescending(x => x.CoffeeComments.Count).Take(20).ToList());
@@ -49,7 +52,6 @@ namespace CoffeeLand_UI.Controllers
 
         public ActionResult CoffeeDetail(int id)
         {
-
             ViewBag.Baristas = _baristaConcrete._baristaRepository.GetAll().ToList();
 
             ViewData["Comments"] = _coffeeCommentConcrete._coffeeCommentRepository.GetAll().Where(x => x.CoffeeID == id).ToList();
