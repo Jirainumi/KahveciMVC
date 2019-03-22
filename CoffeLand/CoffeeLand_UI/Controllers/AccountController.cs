@@ -96,6 +96,7 @@ namespace CoffeeLand_UI.Controllers
 						_customerConcrete._customerUnitOfWork.SaveChanges();
 						_customerConcrete._customerUnitOfWork.Dispose();
 
+						Session["OnlineKullanici"] = null;
 						return Redirect(Request.UrlReferrer.ToString());
 					}
 				}
