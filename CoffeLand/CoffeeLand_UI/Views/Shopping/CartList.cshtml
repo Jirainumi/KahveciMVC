@@ -42,7 +42,7 @@
 												<p class="lead">@string.Format("{0:C2}", item.CoffeeOfOrderDetail.Price)</p>
 											</td>
 											<td class="product-stock-stauts">
-												@using (Html.BeginForm("UpdateQuantity", "Shopping", new { id = item.ID }, FormMethod.Post))
+												@using (Html.BeginForm("UpdateQuantity", "Shopping", new { id = item.OrderID }, FormMethod.Post))
 												{
 													<input type="number" value="@item.Quantity" min="1" max="10" name="quantity" />
 													<button type="submit">

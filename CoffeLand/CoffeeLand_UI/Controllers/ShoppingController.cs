@@ -223,6 +223,7 @@ namespace CoffeeLand_UI.Controllers
 			orderDetail.Quantity = Convert.ToInt16(frm["quantity"]);
 			order.TotalPrice = orderDetail.Quantity * orderDetail.UnitPrice;
 
+			_orderConcrete._orderUnitOfWork.SaveChanges();
 			_orderDetailConcrete._orderDetailUnitOfWork.SaveChanges();
 			_orderDetailConcrete._orderDetailUnitOfWork.Dispose();
 
