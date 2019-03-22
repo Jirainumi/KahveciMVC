@@ -86,8 +86,6 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         }
 
         // POST: Admin/Coffee/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,CoffeeName,Description,Price,AVGPoint,ImageUrl,AltText,IsPrepared,ExtraMaterialsID,CategoryID")] Coffee coffee, HttpPostedFileBase file)
@@ -153,8 +151,6 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         }
 
         // POST: Admin/Coffee/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,CoffeeName,Description,Price,AVGPoint,ImageUrl,AltText,IsPrepared,ExtraMaterialsID,CategoryID")] Coffee coffee, HttpPostedFileBase file)

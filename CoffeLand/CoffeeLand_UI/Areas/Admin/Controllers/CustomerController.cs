@@ -88,8 +88,6 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         }
 
         // POST: Admin/Customer/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,BirthDate,UserName,Password,AuthorizationID")] Customer customer)
@@ -160,8 +158,6 @@ namespace CoffeeLand_UI.Areas.Admin.Controllers
         }
 
         // POST: Admin/Customer/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Gender,BirthDate,UserName,Password,AuthorizationID")] Customer customer)
